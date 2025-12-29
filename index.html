@@ -1,42 +1,80 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>TAUFIQSTORE - Topup Game</title>
-  <style>
-    body { font-family: Arial; background:#111; color:#fff; margin:0; padding:0; text-align:center; }
-    
-    /* Tombol pojok kiri atas */
-    .top-left-btn {
-      position: fixed; /* tetap di pojok saat scroll */
-      top: 10px;
-      left: 10px;
-      padding: 10px 20px;
-      background: #00c853;
-      color: #000;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 1000;
-    }
+<meta charset="UTF-8">
+<title>TAUFIQSTORE - Topup Game</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    color: #fff;
+    margin:0;
+    padding:0;
+  }
 
-    .card { background:#222; margin:80px auto 20px; padding:20px; width:300px; border-radius:10px; }
-    a { display:block; margin:10px; padding:10px; background:#00c853; color:#000; text-decoration:none; border-radius:5px; }
-  </style>
+  /* Container utama */
+  .container {
+    max-width: 400px; /* lebar maksimal */
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* Tombol pojok kiri atas */
+  .top-left-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 10px 20px;
+    background: #00c853;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  /* Banner */
+  .banner {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    margin: 10px 0;
+  }
+
+  .card {
+    background:#222;
+    padding:15px;
+    margin:10px 0;
+    border-radius:10px;
+  }
+
+  .card a {
+    display:block;
+    margin:5px 0;
+    padding:10px;
+    background:#00c853;
+    color:#000;
+    text-decoration:none;
+    border-radius:5px;
+  }
+
+  footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #aaa;
+  }
+</style>
 </head>
 <body>
 
-<!-- Tombol Masuk di pojok kiri atas -->
 <button class="top-left-btn" onclick="window.location.href='login.html'">Masuk</button>
 
-<h1>TAUFIQSTORE</h1>
-<p>Topup Game Murah & Aman</p>
+<div class="container">
+  <!-- Banner -->
+  <img src="https://via.placeholder.com/350x120?text=TAUFIQSTORE" class="banner" alt="Banner TAUFIQSTORE">
 
-<div class="card">
-  <a href="order-ff.html">🔥 Free Fire</a>
-  <a href="order-ml.html">⚔️ Mobile Legends</a>
-  <a href="order-roblox.html">🧱 Roblox</a>
-</div>
-
-</body>
-  </html>
+  <h1>Selamat Datang di TAUFIQ
