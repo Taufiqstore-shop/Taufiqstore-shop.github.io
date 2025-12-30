@@ -1,40 +1,76 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>TAUFIQSTORE - Topup FF, ML, Roblox Termurah & Aman</title>
-<meta name="description" content="TAUFIQSTORE - Topup Free Fire, Mobile Legends, dan Roblox termurah dan terpercaya. Bayar mudah via WhatsApp.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>TaufiqShop</title>
 
-<!-- Favicon JPG -->
-<link rel="icon" href="favicon.jpg" type="image/jpeg">
+  <!-- FAVICON JPG -->
+  <link rel="icon" type="image/jpeg" href="favicon.jpg">
 
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #1a1a1a, #333);
-    color: #fff;
-    margin:0;
-    padding:0;
-  }
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  /* Tombol Masuk kiri atas */
-  .top-left-btn {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    padding: 10px 20px;
-    background: #00c853;
-    color: #000;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 1000;
-  }
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffffff; /* PUTIH */
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      background: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,.1);
+    }
+    .container {
+      padding: 12px;
+    }
+    .banner {
+      width: 100%;
+      border-radius: 12px;
+      margin: 12px 0;
+      object-fit: cover;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,.1);
+      text-decoration: none;
+      color: #000;
+    }
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .auth a {
+      margin-left: 10px;
+      text-decoration: none;
+      color: purple;
+      font-weight: bold;
+    }
+  </style>
+</head>
 
-  /* Profile kanan atas */
-  .profile-icon {
-    position: fixed;
+<body>
+
+<header>
+  <button>☰</button>
+  <b>TaufiqShop</b>
+  <div class="auth">
+    <a href="login.html">Login</a>
+    <a href="register.html">Daftar</a>
+  </div>
+</header>
+
+<div class="container">    position: fixed;
     top: 10px;
     right: 10px;
     width: 40px;
