@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Free Fire - TaufiqShop</title>
+</head>
+<body>
+
+<h2>Top Up Free Fire</h2>
+
+<form>
+  ID Free Fire:<br>
+  <input type="text" id="id" placeholder="Masukkan ID FF" required><br><br>
+
+  Username Free Fire:<br>
+  <input type="text" id="username" placeholder="Masukkan Username FF" required><br><br>
+
+  Nomor WhatsApp:<br>
+  <input type="text" id="wauser" placeholder="08xxxxxxxxxx" required><br><br>
+
+  Pilih Diamond:<br>
+  <select id="diamond" required>
+    <option value="">-- Pilih Diamond --</option>
+    <option>5 Diamond - Rp 1.000</option>
+    <option>12 Diamond - Rp 1.900</option>
+    <option>20 Diamond - Rp 4.260</option>
+    <option>55 Diamond - Rp 9.120</option>
+    <option>80 Diamond - Rp 12.650</option>
+    <option>100 Diamond - Rp 15.985</option>
+    <option>120 Diamond - Rp 17.987</option>
+    <option>130 Diamond - Rp 19.987</option>
+    <option>145 Diamond - Rp 21.760</option>
+    <option>150 Diamond - Rp 24.976</option>
+    <option>200 Diamond - Rp 28.543</option>
+    <option>1080 Diamond - Rp 366.986</option>
+    <option>2200 Diamond - Rp 370.866</option>
+    <option>3640 Diamond - Rp 5.448.247</option>
+  </select><br><br>
+
+  <button type="button" onclick="orderWA()">
+    🔥 Gas pencet ini untuk order via WhatsApp
+  </button>
+</form>
+
+<script>
+function orderWA() {
+  var id = document.getElementById("id").value;
+  var username = document.getElementById("username").value;
+  var wauser = document.getElementById("wauser").value;
+  var diamond = document.getElementById("diamond").value;
+
+  if(id === "" || username === "" || wauser === "" || diamond === "") {
+    alert("Lengkapi semua data dulu!");
+    return;
+  }
+
+  var pesan =
+`Haloo min
+Saya mau topup ff min
+Ini data saya:
+Id: ${id}
+Username: ${username}
+Nomer WA: ${wauser}
+Paket: ${diamond}
+
+Mohon secepat nya ya buat proces nya`;
+
+  window.open(
+    "https://wa.me/62895327513269?text=" + encodeURIComponent(pesan),
+    "_blank"
+  );
+}
+</script>
+
+</body>
+  </html>
