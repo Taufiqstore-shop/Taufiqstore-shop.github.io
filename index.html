@@ -2,33 +2,38 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>TaufiqShop</title>
-
-  <link rel="icon" type="image/jpeg" href="favicon.jpg">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- CSS DI SINI -->
+  <title>TaufiqShop - Top Up Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.png">
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #ffffff;
+      background: #0b1220;
+      color: white;
     }
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px;
-      background: #ffffff;
-      box-shadow: 0 2px 6px rgba(0,0,0,.1);
+      text-align: center;
+      padding: 20px;
+      background: #020617;
+      font-size: 24px;
+      font-weight: bold;
     }
-    .banner {
-      width: 100%;
+    .subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: #cbd5e1;
+      margin-bottom: 10px;
+    }
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    .game {
+      background: #1e293b;
       border-radius: 12px;
-      margin: 12px 0;
-    }
-    .container {
-      padding: 12px;
-    }
-    .card {
+      overflow: hidden;
+      text-align: center;
+      transition
