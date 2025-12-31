@@ -17,6 +17,13 @@
   Nomor WhatsApp:<br>
   <input type="text" id="wauser" placeholder="08xxxxxxxxxx" required><br><br>
 
+  Membership:<br>
+  <select id="member" required>
+    <option value="">-- Pilih Membership --</option>
+    <option>Membership Mingguan - Rp 20.000</option>
+    <option>Membership Bulanan - Rp 80.000</option>
+  </select><br><br>
+
   Pilih Diamond:<br>
   <select id="diamond" required>
     <option value="">-- Pilih Diamond --</option>
@@ -46,9 +53,10 @@ function orderWA() {
   var id = document.getElementById("id").value;
   var username = document.getElementById("username").value;
   var wauser = document.getElementById("wauser").value;
+  var member = document.getElementById("member").value;
   var diamond = document.getElementById("diamond").value;
 
-  if(id === "" || username === "" || wauser === "" || diamond === "") {
+  if(id === "" || username === "" || wauser === "" || member === "" || diamond === "") {
     alert("Lengkapi semua data dulu!");
     return;
   }
@@ -60,7 +68,8 @@ Ini data saya:
 Id: ${id}
 Username: ${username}
 Nomer WA: ${wauser}
-Paket: ${diamond}
+Membership: ${member}
+Paket Diamond: ${diamond}
 
 Mohon secepat nya ya buat proces nya`;
 
