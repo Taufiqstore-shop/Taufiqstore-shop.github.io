@@ -3,63 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Taufiq Shop - Top Up Game</title>
-
-  <!-- FAVICON -->
+  <title>Taufiq Shop</title>
   <link rel="icon" type="image/jpeg" href="favicon.jpg">
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-      margin: 0;
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:#0b1220;
+      color:white;
     }
-    header {
-      background: #020617;
-      padding: 20px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
+
+    header{
+      background:#0f172a;
+      padding:15px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
     }
-    .container {
-      padding: 20px;
+    header h1{
+      font-size:18px;
+      margin:0;
     }
-    .games {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
+    .login{
+      background:#4f6ef7;
+      padding:8px 14px;
+      border-radius:8px;
+      text-decoration:none;
+      color:white;
+      font-size:14px;
     }
-    .game {
-      background: #1e293b;
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-      text-decoration: none;
-      color: white;
-      transition: 0.2s;
+
+    .section{
+      padding:15px;
     }
-    .game:hover {
-      background: #2563eb;
-      transform: scale(1.05);
+    .section h2{
+      text-align:center;
+      color:#7aa2ff;
+      margin-bottom:15px;
+    }
+
+    .games{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:15px;
+    }
+    .game{
+      background:#111827;
+      padding:20px;
+      border-radius:15px;
+      text-align:center;
+      text-decoration:none;
+      color:white;
+      box-shadow:0 8px 20px rgba(0,0,0,.4);
+      transition:.2s;
+    }
+    .game:hover{
+      background:#1e40af;
+      transform:scale(1.05);
     }
   </style>
 </head>
+
 <body>
 
 <header>
-  TAUFIQ SHOP<br>
-  <small>Top Up Game Cepat & Aman</small>
+  <h1>TAUFIQ SHOP</h1>
+  <a class="login" href="#">Login / Register</a>
 </header>
 
-<div class="container">
-  <h2>Pilih Game</h2>
+<div class="section">
+  <h2>Kategori Produk</h2>
+
   <div class="games">
-    <a class="game" href="order/ff.html">Free Fire</a>
-    <a class="game" href="order/ml.html">Mobile Legends</a>
-    <a class="game" href="order/roblox.html">Roblox</a>
+    <a class="game" href="order/ff.html">🔥 Free Fire</a>
+    <a class="game" href="order/ml.html">⚔ Mobile Legends</a>
+    <a class="game" href="order/roblox.html">🧱 Roblox</a>
+    <a class="game" href="#">➕ Coming Soon</a>
   </div>
 </div>
 
 </body>
-  </html>
+</html>
