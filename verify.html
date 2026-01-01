@@ -1,36 +1,15 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verifikasi - Taufiq Shop</title>
-</head>
-<body style="font-family:Arial;text-align:center;margin-top:80px">
-
-  <h2>Verifikasi Anda</h2>
-  <p>Silakan verifikasi untuk masuk ke Taufiq Shop</p>
-
-  <form id="verify-form">
-    <div class="cf-turnstile"
-      data-sitekey="0x4AAAAAACKDx_k85U4mkOC4">
-    </div>
-    <br>
-    <button type="submit">Lanjutkan</button>
-  </form>
-
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
-  <script>
-    document.getElementById("verify-form").addEventListener("submit", function(e){
-      e.preventDefault();
-      const token = document.querySelector(".cf-turnstile-response");
-      if(token && token.value){
-        window.location.href = "index.html"; // masuk ke web topup
-      } else {
-        alert("Silakan verifikasi dulu");
-      }
-    });
-  </script>
-
-</body>
-</html>
+<script>
+document.getElementById("verify-form").addEventListener("submit", function(e){
+  e.preventDefault(); // hentikan submit default
+  const token = document.querySelector(".cf-turnstile-response");
+  
+  if(token && token.value){
+    // Simpan status verifikasi di localStorage
+    localStorage.setItem("verified", "true"); 
+    // Redirect ke web utama
+    window.location.href = "index.html"; 
+  } else {
+    alert("Silakan verifikasi dulu!");
+  }
+});
+</script>
