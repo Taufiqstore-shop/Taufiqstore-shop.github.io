@@ -1,49 +1,89 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Taufiq Shop</title>
-  <link rel="icon" href="favicon.jpg">
-  <style>
-    /* Reset & basic styles */
-    * {margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif;}
-    body {background:#f5f5f5; color:#333;}
-    header {background:#1e40af; color:white; padding:20px; text-align:center;}
-    h1 {margin-bottom:10px;}
-    .container {max-width:1200px; margin:20px auto; padding:0 20px;}
-    .games {display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin-bottom:40px;}
-    .game-btn {
-      background:white; border-radius:12px; padding:20px; width:200px; text-align:center;
-      box-shadow:0 4px 8px rgba(0,0,0,0.1); transition:0.3s; cursor:pointer; text-decoration:none; color:#333;
-    }
-    .game-btn img {width:100px; margin-bottom:10px;}
-    .game-btn:hover {transform:translateY(-5px); box-shadow:0 6px 12px rgba(0,0,0,0.2);}
-    .form-section {background:white; padding:20px; border-radius:12px; max-width:400px; margin:0 auto; box-shadow:0 4px 8px rgba(0,0,0,0.1);}
-    label {display:block; margin-bottom:5px; font-weight:bold;}
-    input, button, select {width:100%; padding:10px; margin-bottom:15px; border-radius:8px; border:1px solid #ccc;}
-    button {background:#1e40af; color:white; border:none; cursor:pointer; transition:0.3s;}
-    button:hover {background:#2563eb;}
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Taufiq Shop</h1>
-    <p>Top Up Game Termudah & Terpercaya</p>
-  </header>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taufiq Shop - Topup Termurah</title>
 
-  <div class="container">
-    <section class="games">
-      <a href="order/ff.html" class="game-btn">
-        <img src="ff.jpg" alt="Free Fire">
-        <p>Free Fire</p>
-      </a>
-      <a href="order/ml.html" class="game-btn">
-        <img src="ml.jpg" alt="Mobile Legends">
-        <p>Mobile Legends</p>
-      </a>
-      <a href="order/roblox.html" class="game-btn">
-        <img src="roblox.jpg" alt="Roblox">
-        <p>Roblox</p>
-      </a>
-    </section>>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, #6b21a8, #000000);
+  margin: 0;
+  color: #fff;
+}
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.banner-container {
+  width: 100%;
+  max-height: 300px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+.banner-slide {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+}
+.games {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.game-button {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  margin: 10px;
+  border-radius: 12px;
+  text-align: center;
+  flex: 1 1 200px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.game-button:hover {
+  background: rgba(255,255,255,0.2);
+}
+.game-button a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <!-- Banner -->
+  <div class="banner-container">
+    <img class="banner-slide" src="banner.jpg" alt="Banner">
+  </div>
+
+  <!-- Judul -->
+  <h1 style="text-align:center;">Selamat datang di Taufiq Shop</h1>
+  <p style="text-align:center;">Topup termurah untuk Free Fire, Roblox, dan Mobile Legends</p>
+
+  <!-- Tombol Game -->
+  <div class="games">
+    <div class="game-button">
+      <a href="order/ff.html">Free Fire</a>
+    </div>
+    <div class="game-button">
+      <a href="order/roblox.html">Roblox</a>
+    </div>
+    <div class="game-button">
+      <a href="order/ml.html">Mobile Legends</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
