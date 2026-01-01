@@ -1,40 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Order Free Fire - TaufiqShop</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Free Fire - Taufiq Shop</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#0b1220;
+  color:white;
+}
+header{
+  background:#0f172a;
+  padding:15px;
+  text-align:center;
+  font-weight:bold;
+}
+.container{
+  padding:20px;
+}
+.card{
+  background:#111827;
+  border-radius:15px;
+  padding:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+.game-img{
+  width:100%;
+  border-radius:15px;
+  margin-bottom:15px;
+}
+label{
+  display:block;
+  margin-top:15px;
+  font-size:14px;
+}
+input, select{
+  width:100%;
+  padding:12px;
+  margin-top:6px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+}
+button{
+  margin-top:20px;
+  width:100%;
+  padding:14px;
+  background:#22c55e;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+button:hover{
+  background:#16a34a;
+}
+.back{
+  display:block;
+  margin-top:15px;
+  text-align:center;
+  color:#7aa2ff;
+  text-decoration:none;
+}
+</style>
 </head>
+
 <body>
 
-<h2>Top Up Free Fire</h2>
+<header>ORDER FREE FIRE</header>
 
-<form>
-  ID Free Fire:<br>
-  <input type="text" id="id" placeholder="Masukkan ID FF" required><br><br>
+<div class="container">
+  <div class="card">
 
-  Username Free Fire:<br>
-  <input type="text" id="username" placeholder="Masukkan Username FF" required><br><br>
+    <!-- FOTO GAME -->
+    <img src="../ff.jpg" class="game-img" alt="Free Fire">
 
-  Nomor WhatsApp:<br>
-  <input type="text" id="wauser" placeholder="08xxxxxxxxxx" required><br><br>
+    <label>ID Player</label>
+    <input type="text" placeholder="Masukkan ID">
 
-  Membership:<br>
-  <select id="member" required>
-    <option value="">-- Pilih Membership --</option>
-    <option>Membership Mingguan - Rp 20.000</option>
-    <option>Membership Bulanan - Rp 80.000</option>
-  </select><br><br>
+    <label>Server</label>
+    <input type="text" placeholder="Masukkan Server">
 
-  Pilih Diamond:<br>
-  <select id="diamond" required>
-    <option value="">-- Pilih Diamond --</option>
-    <option>5 Diamond - Rp 1.000</option>
-    <option>12 Diamond - Rp 1.900</option>
-    <option>20 Diamond - Rp 4.260</option>
-    <option>55 Diamond - Rp 9.120</option>
-    <option>80 Diamond - Rp 12.650</option>
-    <option>100 Diamond - Rp 15.985</option>
-    <option>120 Diamond - Rp 17.987</option>
-    <option>130 Diamond - Rp 19.987</option>
+    <label>Nominal Diamond</label>
+    <select>
+      <option>Pilih Diamond --</option>
+      <option>5 Diamond - Rp 1.000</option>
+      <option>12 Diamond - Rp 1.900</option>
+      <option>20 Diamond - Rp 4.260</option>
+      <option>55 Diamond - Rp 9.120</option>
+      <option>80 Diamond - Rp 12.650</option>
+      <option>100 Diamond - Rp 15.985</option>
+      <option>120 Diamond - Rp 17.987</option>
+      <option>130 Diamond - Rp 19.987</option>
+      <option>145 Diamond - Rp 21.760</option>
+      <option>150 Diamond - Rp 24.976</option>
+      <option>200 Diamond - Rp 28.543</option>
+      <option>1080 Diamond - Rp 366.986</option>
+      <option>2200 Diamond - Rp 370.866</option>
+      <option>3640 Diamond - Rp 5.448.247</option>
+    </select>
+
+    <button>Order Sekarang</button>
+    <a class="back" href="../index.html">← Kembali ke Home</a>
+
+  </div>
+</div>
+
+</body>
+</html>    <option>130 Diamond - Rp 19.987</option>
     <option>145 Diamond - Rp 21.760</option>
     <option>150 Diamond - Rp 24.976</option>
     <option>200 Diamond - Rp 28.543</option>
