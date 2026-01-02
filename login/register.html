@@ -65,9 +65,9 @@
   <div class="box">
     <h2>Register</h2>
 
-    <input type="text" placeholder="Username" required>
-    <input type="email" placeholder="Email" required>
-    <input type="password" placeholder="Password" required>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="email" id="email" placeholder="Email (@gmail.com)" required>
+    <input type="password" id="password" placeholder="Password kuat (min 8)" required>
 
     <button onclick="register()">Register</button>
 
@@ -79,11 +79,35 @@
 
   <script>
     function register() {
-      // simulasi register
-      alert("Register berhasil, silakan login");
-      window.location.href = "index.html";
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      // wajib gmail
+      if (!email.endsWith("@gmail.com")) {
+        alert("Email harus menggunakan @gmail.com");
+        return;
+      }
+
+      // minimal 8 karakter
+      if (password.length < 8) {
+        alert("Password minimal 8 karakter");
+        return;
+      }
+
+      // password kuat
+      const strong = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/;
+      if (!strong.test(password)) {
+        alert("Password harus mengandung huruf besar, huruf kecil, dan angka");
+        return;
+      }
+
+      // set login
+      localStorage.setItem("isLogin", "true");
+
+      alert("Register berhasil");
+      window.location.href = "../index.html";
     }
   </script>
 
 </body>
-</html>
+  </html>
