@@ -6,7 +6,7 @@
   <title>Taufiq Shop - Topup Game Termurah</title>
 
   <!-- SEO -->
-  <meta name="description" content="Taufiq Shop melayani topup Free Fire, Mobile Legends, dan Roblox termurah & terpercaya. Proses cepat, aman, dan mudah.">
+  <meta name="description" content="Taufiq Shop melayani topup Free Fire, Mobile Legends, dan Roblox termurah & terpercaya.">
   <meta name="keywords" content="topup ff termurah, topup ml, topup roblox, taufiq shop">
   <meta name="author" content="Taufiq Shop">
 
@@ -22,11 +22,25 @@
     }
 
     header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
       background: linear-gradient(90deg, #d60000, #ffffff);
-      padding: 15px;
-      text-align: center;
-      font-weight: bold;
+    }
+
+    header h1 {
+      margin: 0;
       font-size: 22px;
+    }
+
+    .login-btn {
+      background: #d60000;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
     }
 
     .banner img {
@@ -39,6 +53,16 @@
       padding: 20px;
       max-width: 1100px;
       margin: auto;
+    }
+
+    .warning {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      color: #856404;
+      font-size: 14px;
     }
 
     h2 {
@@ -91,7 +115,8 @@
 <body>
 
   <header>
-    TAUFIQ SHOP — TOPUP GAME TERPERCAYA
+    <h1>Taufiq Shop</h1>
+    <a href="login/index.html" class="login-btn">Login / Register</a>
   </header>
 
   <div class="banner">
@@ -99,6 +124,14 @@
   </div>
 
   <div class="container">
+
+    <div class="warning">
+      ⚠️ <b>Peringatan:</b><br>
+      Anda tetap bisa melakukan topup tanpa login.<br>
+      <b>Risiko:</b> Admin tidak dapat mengenali Anda dan pesanan bisa tidak terdeteksi 🚨<br>
+      Disarankan <b>Login / Register</b> agar transaksi lebih aman.
+    </div>
+
     <h2>Pilih Game</h2>
 
     <div class="games">
