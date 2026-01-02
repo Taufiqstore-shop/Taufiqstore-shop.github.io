@@ -18,30 +18,7 @@ body {
 }
 .container { max-width:1000px; margin:0 auto; padding:20px; }
 .header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
-.header h1 { margin:0; color:#6b21a8; } /* judul ungu */
-.header .auth-buttons a { padding:8px 16px; border-radius:8px; text-decoration:none; font-weight:bold; margin-left:10px; }
-.header .auth-buttons a.login { background:#e02424; color:#fff; }   /* login merah + teks putih */
-.header .auth-buttons a.register { background:#e02424; color:#fff; } /* register merah + teks putih */
-.banner-container { width:100%; max-height:300px; overflow:hidden; border-radius:12px; margin-bottom:20px; }
-.banner-slide { width:100%; display:block; border-radius:12px; object-fit:cover; }
-.games { display:flex; justify-content:space-around; flex-wrap:wrap; margin-top:20px; }
-.game-button { background: rgba(224,36,36,0.1); padding:20px; margin:10px; border-radius:12px; text-align:center; flex:1 1 200px; cursor:pointer; transition:0.3s; }
-.game-button:hover { background: rgba(224,36,36,0.2); }
-.game-button a { text-decoration:none; color:#000; font-size:18px; font-weight:bold; display:flex; flex-direction:column; align-items:center; }
-.game-button img { width:80px; height:80px; margin-bottom:8px; object-fit:contain; }
-footer { text-align:center; margin-top:40px; padding:10px; color:#555; }
-</style>
-</head>
-<body>
 
-<script>
-// Cek login: jika belum login, redirect ke login.html
-const user = localStorage.getItem("currentUser");
-if(!user){
-  alert("Silahkan login/register dulu!");
-  window.location.href = "login.html";
-}
-</script>
 
 <div class="container">
 
