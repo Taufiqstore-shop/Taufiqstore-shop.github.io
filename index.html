@@ -125,7 +125,8 @@
 
   <div class="container">
 
-    <div class="warning">
+    <!-- PERINGATAN -->
+    <div id="warningBox" class="warning">
       ⚠️ <b>Peringatan:</b><br>
       Anda tetap bisa melakukan topup tanpa login.<br>
       <b>Risiko:</b> Admin tidak dapat mengenali Anda dan pesanan bisa tidak terdeteksi 🚨<br>
@@ -156,5 +157,13 @@
     © Copyright by Taufiq Shop 2026
   </footer>
 
+  <!-- LOGIN CHECK -->
+  <script>
+    if (localStorage.getItem("isLogin") === "true") {
+      const warn = document.getElementById("warningBox");
+      if (warn) warn.style.display = "none";
+    }
+  </script>
+
 </body>
-</html>
+  </html>
