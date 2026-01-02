@@ -3,38 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Taufiq Shop - Topup FF, Roblox & ML Termurah</title>
-
-<!-- Favicon -->
+<title>Taufiq Shop - Topup Termurah</title>
 <link rel="shortcut icon" href="favicon.jpg" type="image/jpeg">
-
-<!-- SEO / Deskripsi -->
 <meta name="description" content="Taufiq Shop - Tempat topup Free Fire, Roblox, dan Mobile Legends termurah dan terpercaya. Dapatkan diamond FF, GamePass Roblox, dan skin ML dengan cepat.">
 <meta name="keywords" content="topup ff termurah, taufiq shop, topup roblox, topup ml, diamond ff, robux, mobile legends, game topup">
 <meta name="author" content="Taufiq Shop">
 
 <style>
-body { font-family: Arial, sans-serif; background: linear-gradient(180deg,#6b21a8,#000); margin:0; color:#fff; }
+body { 
+  font-family: Arial, sans-serif; 
+  background: #fff;  /* background putih */
+  margin:0; 
+  color:#000; /* teks hitam */
+}
 .container { max-width:1000px; margin:0 auto; padding:20px; }
+.header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+.header h1 { margin:0; color:#6b21a8; } /* judul ungu */
+.header .auth-buttons a { padding:8px 16px; border-radius:8px; text-decoration:none; font-weight:bold; margin-left:10px; }
+.header .auth-buttons a.login { background:#e02424; color:#fff; }   /* login merah + teks putih */
+.header .auth-buttons a.register { background:#e02424; color:#fff; } /* register merah + teks putih */
 .banner-container { width:100%; max-height:300px; overflow:hidden; border-radius:12px; margin-bottom:20px; }
 .banner-slide { width:100%; display:block; border-radius:12px; object-fit:cover; }
 .games { display:flex; justify-content:space-around; flex-wrap:wrap; margin-top:20px; }
-.game-button { background: rgba(255,255,255,0.05); padding:20px; margin:10px; border-radius:12px; text-align:center; flex:1 1 200px; cursor:pointer; transition:0.3s; }
-.game-button:hover { background: rgba(255,255,255,0.2); }
-.game-button a { text-decoration:none; color:white; font-size:18px; font-weight:bold; display:flex; flex-direction:column; align-items:center; }
+.game-button { background: rgba(224,36,36,0.1); padding:20px; margin:10px; border-radius:12px; text-align:center; flex:1 1 200px; cursor:pointer; transition:0.3s; }
+.game-button:hover { background: rgba(224,36,36,0.2); }
+.game-button a { text-decoration:none; color:#000; font-size:18px; font-weight:bold; display:flex; flex-direction:column; align-items:center; }
 .game-button img { width:80px; height:80px; margin-bottom:8px; object-fit:contain; }
-footer { text-align:center; margin-top:40px; padding:10px; color:#aaa; }
+footer { text-align:center; margin-top:40px; padding:10px; color:#555; }
 </style>
 </head>
 <body>
+
+<script>
+// Cek login: jika belum login, redirect ke login.html
+const user = localStorage.getItem("currentUser");
+if(!user){
+  alert("Silahkan login/register dulu!");
+  window.location.href = "login.html";
+}
+</script>
+
 <div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Taufiq Shop</h1>
+    <div class="auth-buttons">
+      <a href="login.html" class="login">Login</a>
+      <a href="register.html" class="register">Register</a>
+    </div>
+  </div>
+
   <!-- Banner -->
   <div class="banner-container">
     <img class="banner-slide" src="banner.jpg" alt="Banner">
   </div>
 
-  <!-- Judul -->
-  <h1 style="text-align:center;">Selamat datang di Taufiq Shop</h1>
+  <!-- Deskripsi -->
   <p style="text-align:center;">Topup termurah untuk Free Fire, Roblox, dan Mobile Legends</p>
 
   <!-- Tombol Game -->
@@ -61,6 +86,7 @@ footer { text-align:center; margin-top:40px; padding:10px; color:#aaa; }
 
   <!-- Footer -->
   <footer>© copyright by Taufiq Shop 2026</footer>
+
 </div>
 </body>
 </html>
