@@ -34,6 +34,13 @@ header{
 /* BANNER */
 .banner{width:100%;max-height:300px;object-fit:cover;margin-bottom:20px;}
 
+/* HIGHLIGHT */
+.highlights{padding:20px;text-align:center;}
+.highlights h2{margin-bottom:20px;color:#d40000;}
+.cards{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+.card{background:#fff;padding:15px;border-radius:8px;width:180px;box-shadow:0 0 8px rgba(0,0,0,0.1);}
+.card h3{color:#d40000;margin-bottom:10px;}
+
 /* GAMES */
 .games{
   display:flex;
@@ -62,8 +69,35 @@ header{
 }
 .game-btn:hover{transform:scale(1.05);}
 
+/* TESTIMONIAL */
+.testimonial{padding:20px;text-align:center;background:#f9f9f9;}
+.testimonial h2{margin-bottom:20px;color:#d40000;}
+.review{margin:10px auto;padding:10px;background:#fff;width:250px;border-radius:8px;box-shadow:0 0 6px rgba(0,0,0,0.1);}
+
 /* FOOTER */
 footer{text-align:center;padding:10px;background:#222;color:#fff;margin-top:20px;}
+
+/* LOADING */
+#loading{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.7);
+  display:flex;justify-content:center;align-items:center;
+  flex-direction:column;
+  z-index:2000;
+  color:#fff;
+  font-size:18px;
+  display:none;
+}
+.loading-logo{
+  width:80px;
+  height:80px;
+  animation:spin 1s linear infinite;
+  margin-bottom:10px;
+}
+@keyframes spin{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
 </style>
 </head>
 <body>
@@ -93,45 +127,84 @@ footer{text-align:center;padding:10px;background:#222;color:#fff;margin-top:20px
 <!-- BANNER -->
 <img src="banner.jpg" alt="Banner" class="banner">
 
+<!-- HIGHLIGHTS -->
+<section class="highlights">
+  <h2>Kenapa Topup di Taufiq Shop?</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Termurah</h3>
+      <p>Harga diamond/robux paling kompetitif.</p>
+    </div>
+    <div class="card">
+      <h3>Cepat & Aman</h3>
+      <p>Transaksi otomatis dan terpercaya.</p>
+    </div>
+    <div class="card">
+      <h3>Support 24/7</h3>
+      <p>Admin siap bantu setiap saat.</p>
+    </div>
+  </div>
+</section>
+
 <!-- GAMES -->
 <div class="games">
   <!-- BARIS 1 -->
-  <a href="order/ff.html" class="game-btn">
+  <a href="javascript:void(0)" onclick="goToOrder('order/ff.html')" class="game-btn">
     <img src="ff.jpg" alt="Free Fire">
     <span>Free Fire</span>
   </a>
-  <a href="order/ml.html" class="game-btn">
+  <a href="javascript:void(0)" onclick="goToOrder('order/ml.html')" class="game-btn">
     <img src="ml.jpg" alt="Mobile Legends">
     <span>Mobile Legends</span>
   </a>
-  <a href="order/roblox.html" class="game-btn">
+  <a href="javascript:void(0)" onclick="goToOrder('order/roblox.html')" class="game-btn">
     <img src="roblox.jpg" alt="Roblox">
     <span>Roblox</span>
   </a>
-
   <!-- BARIS 2 -->
-  <a href="#" class="game-btn">
+  <a href="javascript:void(0)" onclick="goToOrder('#')" class="game-btn">
     <img src="genshin.jpg" alt="Genshin Impact">
     <span>Genshin Impact</span>
   </a>
-  <a href="#" class="game-btn">
+  <a href="javascript:void(0)" onclick="goToOrder('#')" class="game-btn">
     <img src="stumble.jpg" alt="Stumble Guys">
     <span>Stumble Guys</span>
   </a>
-  <a href="#" class="game-btn">
+  <a href="javascript:void(0)" onclick="goToOrder('#')" class="game-btn">
     <img src="8ball.jpg" alt="8Ball Poll">
     <span>8Ball Poll</span>
   </a>
 </div>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <h2>Apa Kata Pelanggan?</h2>
+  <div class="review">"Topup cepat banget! Recommended 🔥"</div>
+  <div class="review">"Admin ramah, aman, dan harganya termurah 😎"</div>
+  <div class="review">"Transaksi gampang dan terpercaya 👍"</div>
+</section>
 
 <!-- FOOTER -->
 <footer>
   © copyright by Taufiq Shop 2026
 </footer>
 
+<!-- LOADING -->
+<div id="loading">
+  <img src="shop.jpg" class="loading-logo">
+  <p>Loading...</p>
+</div>
+
 <script>
 function openMenu(){ document.getElementById("sidebar").style.left="0"; }
 function closeMenu(){ document.getElementById("sidebar").style.left="-250px"; }
+
+function goToOrder(url){
+  document.getElementById("loading").style.display="flex";
+  setTimeout(function(){
+    window.location.href = url;
+  }, 1000);
+}
 </script>
 
 </body>
