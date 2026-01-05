@@ -1,263 +1,119 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Order Free Fire - Taufiq Shop</title>
-<link rel="icon" href="../favicon.jpg">
-<style>
-*{box-sizing:border-box;font-family:Arial}
-body{
-  margin:0;
-  background:linear-gradient(135deg,#1a001a,#000);
-  color:#fff;
-}
-.container{
-  max-width:420px;
-  margin:30px auto;
-  background:#111;
-  padding:20px;
-  border-radius:12px;
-  box-shadow:0 0 15px rgba(212,0,0,0.6);
-}
-.header{text-align:center}
-.header img{
-  width:100px;border-radius:12px;
-}
-.header h2{margin:10px 0;color:#ff4444}
+  <meta charset="UTF-8">
+  <title>Topup Free Fire - Taufiq Shop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-label{margin-top:12px;display:block;font-size:14px}
-input,select{
-  width:100%;
-  padding:10px;
-  margin-top:6px;
-  border:none;
-  border-radius:6px;
-}
-
-.payments{margin-top:20px}
-.payments h3{color:#ff4444;margin-bottom:10px}
-
-.pay-btn{
-  width:100%;
-  padding:12px;
-  margin:6px 0;
-  border:none;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-}
-.qris{background:#00c853;color:#000}
-.dana{background:#2196f3;color:#fff}
-.ovo{background:#4a148c;color:#fff}
-.gopay{background:#00bcd4;color:#000}
-
-.note,footer{
-  margin-top:15px;
-  font-size:12px;
-  text-align:center;
-  color:#aaa;
-}
-</style>
-</head>
-<body>
-
-<div class="container">
-  <div class="header">
-    <img src="../ff.jpg">
-    <h2>Order Free Fire</h2>
-    <p>Isi data dengan benar sebelum bayar</p>
-  </div>
-
-  <label>ID Player</label>
-  <input type="text" id="id" placeholder="Masukkan ID FF">
-
-  <label>Nickname</label>
-  <input type="text" id="nama" placeholder="Nama akun FF">
-
-  <label>Pilih Diamond</label>
-  <select id="diamond">
-    <option>-- Pilih Diamond --</option>
-    <option>5 Diamond - Rp 1.000</option>
-    <option>12 Diamond - Rp 1.900</option>
-    <option>20 Diamond - Rp 4.260</option>
-    <option>55 Diamond - Rp 9.120</option>
-    <option>80 Diamond - Rp 12.650</option>
-    <option>100 Diamond - Rp 15.985</option>
-    <option>120 Diamond - Rp 17.987</option>
-    <option>130 Diamond - Rp 19.987</option>
-    <option>145 Diamond - Rp 21.760</option>
-    <option>150 Diamond - Rp 24.976</option>
-    <option>200 Diamond - Rp 28.543</option>
-    <option>1080 Diamond - Rp 366.986</option>
-    <option>2200 Diamond - Rp 370.866</option>
-    <option>3640 Diamond - Rp 5.448.247</option>
-  </select>
-
-  <label>Member SIP</label>
-  <select id="member">
-    <option>-- Pilih Member --</option>
-    <option>Member SIP Mingguan - Rp 28.000</option>
-    <option>Member SIP Bulanan - Rp 115.000</option>
-  </select>
-
-  <div class="payments">
-    <h3>Metode Pembayaran</h3>
-    <button class="pay-btn qris" onclick="pay('QRIS')">Bayar via QRIS</button>
-    <button class="pay-btn dana" onclick="pay('DANA')">Bayar via DANA</button>
-    <button class="pay-btn ovo" onclick="pay('OVO')">Bayar via OVO</button>
-    <button class="pay-btn gopay" onclick="pay('GoPay')">Bayar via GoPay</button>
-  </div>
-
-  <div class="note">
-    Admin: <b>Rayen Storus</b><br>
-    Pembayaran akan diarahkan ke WhatsApp
-  </div>
-
-  <footer>
-    © copyright by Taufiq Shop 2026
-  </footer>
-</div>
-
-<script>
-function pay(method){
-  const id = document.getElementById("id").value;
-  const nama = document.getElementById("nama").value;
-  const diamond = document.getElementById("diamond").value;
-  const member = document.getElementById("member").value;
-
-  if(!id || !nama){
-    alert("Lengkapi data dulu!");
-    return;
-  }
-
-  let detail = "";
-  if(diamond !== "-- Pilih Diamond --") detail += `Diamond: ${diamond}\n`;
-  if(member !== "-- Pilih Member --") detail += `Member: ${member}\n`;
-
-  const pesan =
-`Halo min saya mau topup Free Fire
-
-ID: ${id}
-Nama: ${nama}
-${detail}
-Metode Pembayaran: ${method}`;
-
-  window.open(
-    "https://wa.me/62895327513269?text=" + encodeURIComponent(pesan),
-    "_blank"
-  );
-}
-</script>
-
-</body>
-</html>}
-button {
-  background: #8b5cf6;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-button:hover {
-  background: #6b21a8;
-}
-.payment {
-  margin-top: 20px;
-}
-.payment h3 {
-  margin-bottom: 8px;
-}
-.payment button {
-  margin-top: 8px;
-  background: #9333ea;
-}
-.payment button:hover {
-  background: #7e22ce;
-}
-.admin {
-  margin-top: 40px;
-  padding: 20px;
-  background: rgba(0,0,0,0.3);
-  border-radius: 10px;
-}
-.admin a {
-  display: block;
-  margin-top: 10px;
-  text-decoration: none;
-  color: white;
-  background: #25D366;
-  padding: 12px;
-  text-align: center;
-  border-radius: 8px;
-}
-</style>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    button {
+      background: #e11d48;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    button:hover {
+      background: #be123c;
+    }
+    .payment {
+      margin-top: 25px;
+    }
+    .payment h3 {
+      margin-bottom: 10px;
+    }
+    .payment button {
+      background: #22c55e;
+    }
+    .payment button:hover {
+      background: #16a34a;
+    }
+    .warning {
+      margin-top: 15px;
+      padding: 10px;
+      background: #fee2e2;
+      color: #991b1b;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #555;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h2>Order Free Fire</h2>
+  <div class="container">
+    <h2>Topup Free Fire</h2>
 
-  <label>Nama</label>
-  <input type="text" id="nama" placeholder="Nama kamu">
+    <label>ID Player</label>
+    <input type="text" placeholder="Masukkan ID FF">
 
-  <label>ID Game</label>
-  <input type="text" id="idgame" placeholder="Contoh: 12345678">
+    <label>Server</label>
+    <input type="text" placeholder="Contoh: 1234">
 
-  <label>Pilih Diamond</label>
-  <select id="diamond">
-    <option>-- Pilih Diamond --</option>
-    <option>5 Diamond - Rp 1.000</option>
-    <option>12 Diamond - Rp 1.900</option>
-    <option>20 Diamond - Rp 4.260</option>
-    <option>55 Diamond - Rp 9.120</option>
-    <option>100 Diamond - Rp 15.985</option>
-    <option>1080 Diamond - Rp 366.986</option>
-  </select>
+    <label>Pilih Item</label>
+    <select>
+      <option>5 Diamond - Rp 1.000</option>
+      <option>50 Diamond - Rp 8.000</option>
+      <option>140 Diamond - Rp 20.000</option>
+      <option>355 Diamond - Rp 50.000</option>
+      <option>720 Diamond - Rp 100.000</option>
+      <option>Member SIP Mingguan - Rp 20.000</option>
+      <option>Member SIP Bulanan - Rp 60.000</option>
+    </select>
 
-  <div class="payment">
-    <h3>Pilih Metode Pembayaran</h3>
-    <button onclick="chatAdmin('QRIS')">QRIS</button>
-    <button onclick="chatAdmin('Dana')">Dana</button>
-    <button onclick="chatAdmin('OVO')">OVO</button>
-    <button onclick="chatAdmin('Gopay')">Gopay</button>
-    <button onclick="chatAdmin('LinkAja')">LinkAja</button>
+    <div class="payment">
+      <h3>Metode Pembayaran</h3>
+      <button>QRIS</button>
+      <button>DANA</button>
+      <button>OVO</button>
+      <button>GOPAY</button>
+    </div>
+
+    <div class="warning">
+      ⚠️ Tanpa login/register: Admin mungkin tidak mengenali pesanan kamu.
+    </div>
+
+    <footer>
+      © copyright by Taufiq Shop 2026
+    </footer>
   </div>
-
-  <div id="admin" class="admin">
-    <h3>Pembayaran & Konfirmasi</h3>
-    <p>Silakan transfer lalu kirim bukti pembayaran ke admin:</p>
-    <p><b>Nama Admin:</b> Rayen Storus</p>
-    <p><b>WhatsApp:</b> +62895327513269</p>
-    <a href="https://wa.me/62895327513269" target="_blank">Chat Admin WhatsApp</a>
-  </div>
-
-</div>
-
-<script>
-const adminWa = "62895327513269";
-
-function chatAdmin(metode){
-  const nama = document.getElementById("nama").value.trim();
-  const idgame = document.getElementById("idgame").value.trim();
-  const diamond = document.getElementById("diamond").value;
-
-  if(!nama || !idgame || diamond === "-- Pilih Diamond --"){
-    alert("Isi semua data dulu!");
-    return;
-  }
-
-  const pesan = `Hallo min saya mau topup FF nih. 
-Data saya:
-ID: ${idgame}
-Nama: ${nama}
-Jumlah diamonds: ${diamond}
-Saya mau bayar min pke metode ${metode}`;
-
-  const waUrl = `https://wa.me/${adminWa}?text=${encodeURIComponent(pesan)}`;
-  window.open(waUrl, "_blank");
-}
-</script>
 
 </body>
 </html>
