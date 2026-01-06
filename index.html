@@ -3,209 +3,189 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Taufiq Shop</title>
-<link rel="icon" href="favicon.jpg" type="image/jpeg">
+<title>Order Free Fire</title>
+
 <style>
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-
-/* HEADER */
-header{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:12px 16px;background:#d40000;color:#fff;
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:linear-gradient(135deg,#0f172a,#1e1b4b);
+  color:white;
 }
-.left{display:flex;align-items:center;gap:10px;}
-.menu-btn{font-size:22px;cursor:pointer;color:#fff;}
-.store-logo{width:36px;height:36px;border-radius:50%;border:2px solid #fff;}
-.store-name{font-weight:bold;}
-.right a{
-  background:#fff;color:#d40000;
-  padding:6px 12px;border-radius:6px;
-  margin-left:6px;text-decoration:none;
+.container{
+  max-width:420px;
+  margin:30px auto;
+  padding:20px;
+  background:rgba(255,255,255,0.06);
+  border-radius:16px;
 }
-
-/* SIDEBAR */
-#sidebar{
-  position:fixed;top:0;left:-250px;width:250px;height:100%;
-  background:#d40000;padding:20px;transition:0.3s;z-index:1000;
+.title{text-align:center;margin-bottom:20px}
+.title img{width:60px;margin-bottom:10px}
+input{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:none;
+  margin-bottom:14px;
+  outline:none;
 }
-#sidebar a{display:block;color:#fff;text-decoration:none;margin:15px 0;font-size:18px;}
+h3{margin:18px 0 10px}
 
-/* BANNER */
-.banner{width:100%;max-height:300px;object-fit:cover;margin-bottom:20px;}
-
-/* HIGHLIGHT */
-.highlights{padding:20px;text-align:center;}
-.highlights h2{margin-bottom:20px;color:#d40000;}
-.cards{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
-.card{background:#fff;padding:15px;border-radius:8px;width:180px;box-shadow:0 0 8px rgba(0,0,0,0.1);}
-.card h3{color:#d40000;margin-bottom:10px;}
-
-/* GAMES */
-.games{
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  flex-wrap:wrap;
-  margin-bottom:20px;
+/* DIAMOND CARD */
+.diamond-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
 }
-.game-btn{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+.d-card input{display:none}
+.d-box{
   background:#fff;
-  padding:10px;
-  border-radius:8px;
-  text-decoration:none;
-  color:#000;
-  width:120px;
-  transition:0.3s;
+  color:#0f172a;
+  border:2px solid #bae6fd;
+  border-radius:14px;
+  padding:16px;
+  cursor:pointer;
+  transition:.2s;
 }
-.game-btn img{
-  width:100px;
-  height:100px;
-  object-fit:cover;
-  border-radius:8px;
+.price{color:#0284c7;font-weight:700}
+.d-card input:checked + .d-box{
+  background:#e0f2fe;
+  border-color:#38bdf8;
 }
-.game-btn:hover{transform:scale(1.05);}
 
-/* TESTIMONIAL */
-.testimonial{padding:20px;text-align:center;background:#f9f9f9;}
-.testimonial h2{margin-bottom:20px;color:#d40000;}
-.review{margin:10px auto;padding:10px;background:#fff;width:250px;border-radius:8px;box-shadow:0 0 6px rgba(0,0,0,0.1);}
+/* BUTTON */
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  font-weight:700;
+  cursor:pointer;
+  background:#38bdf8;
+  color:#0f172a;
+  margin-top:12px;
+}
+button:hover{background:#0ea5e9}
 
-/* FOOTER */
-footer{text-align:center;padding:10px;background:#222;color:#fff;margin-top:20px;}
+/* PAYMENT */
+.payment{
+  margin-top:20px;
+}
+.payment button{
+  width:48%;
+  display:inline-block;
+  margin:4px 1%;
+  background:#9333ea;
+  color:white;
+}
+.payment button:hover{background:#7e22ce}
 
 /* LOADING */
 #loading{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  background:rgba(0,0,0,0.7);
-  display:flex;justify-content:center;align-items:center;
-  flex-direction:column;
-  z-index:2000;
-  color:#fff;
-  font-size:18px;
   display:none;
+  text-align:center;
+  margin-top:20px;
 }
-.loading-logo{
-  width:80px;
-  height:80px;
+.loader{
+  width:40px;height:40px;
+  border:4px solid #38bdf8;
+  border-top:4px solid transparent;
+  border-radius:50%;
   animation:spin 1s linear infinite;
-  margin-bottom:10px;
+  margin:auto;
 }
-@keyframes spin{
-  0%{transform:rotate(0deg);}
-  100%{transform:rotate(360deg);}
-}
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
+
 <body>
+<div class="container">
 
-<!-- HEADER -->
-<header>
-  <div class="left">
-    <span class="menu-btn" onclick="openMenu()">☰</span>
-    <img src="shop.jpg" class="store-logo">
-    <span class="store-name">Taufiq Shop</span>
-  </div>
-  <div class="right">
-    <a href="login.html">Login</a>
-    <a href="register.html">Register</a>
-  </div>
-</header>
-
-<!-- SIDEBAR -->
-<div id="sidebar">
-  <a href="#" onclick="closeMenu()">✕</a>
-  <a href="order/ff.html">Topup FF</a>
-  <a href="order/ml.html">Topup ML</a>
-  <a href="order/roblox.html">Topup Roblox</a>
-  <a href="#">Mau beli VPS di sini</a>
-</div>
-
-<!-- BANNER -->
-<img src="banner.jpg" alt="Banner" class="banner">
-
-<!-- HIGHLIGHTS -->
-<section class="highlights">
-  <h2>Kenapa Topup di Taufiq Shop?</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Termurah</h3>
-      <p>Harga diamond/robux paling kompetitif.</p>
-    </div>
-    <div class="card">
-      <h3>Cepat & Aman</h3>
-      <p>Transaksi otomatis dan terpercaya.</p>
-    </div>
-    <div class="card">
-      <h3>Support 24/7</h3>
-      <p>Admin siap bantu setiap saat.</p>
-    </div>
-  </div>
-</section>
-
-<!-- GAMES -->
-<div class="games">
-  <!-- BARIS 1 -->
-  <a href="javascript:void(0)" onclick="goToOrder('order/ff.html')" class="game-btn">
+  <div class="title">
     <img src="ff.jpg" alt="Free Fire">
-    <span>Free Fire</span>
-  </a>
-  <a href="javascript:void(0)" onclick="goToOrder('order/ml.html')" class="game-btn">
-    <img src="ml.jpg" alt="Mobile Legends">
-    <span>Mobile Legends</span>
-  </a>
-  <a href="javascript:void(0)" onclick="goToOrder('order/roblox.html')" class="game-btn">
-    <img src="roblox.jpg" alt="Roblox">
-    <span>Roblox</span>
-  </a>
-  <!-- BARIS 2 -->
-  <a href="javascript:void(0)" onclick="goToOrder('#')" class="game-btn">
-    <img src="genshin.jpg" alt="Genshin Impact">
-    <span>Genshin Impact</span>
-  </a>
-  <a href="javascript:void(0)" onclick="goToOrder('#')" class="game-btn">
-    <img src="stumble.jpg" alt="Stumble Guys">
-    <span>Stumble Guys</span>
-  </a>
-  <a href="javascript:void(0)" onclick="goToOrder('#')" class="game-btn">
-    <img src="8ball.jpg" alt="8Ball Poll">
-    <span>8Ball Poll</span>
-  </a>
-</div>
+    <h2>Order Free Fire</h2>
+  </div>
 
-<!-- TESTIMONIAL -->
-<section class="testimonial">
-  <h2>Apa Kata Pelanggan?</h2>
-  <div class="review">"Topup cepat banget! Recommended 🔥"</div>
-  <div class="review">"Admin ramah, aman, dan harganya termurah 😎"</div>
-  <div class="review">"Transaksi gampang dan terpercaya 👍"</div>
-</section>
+  <input id="id" placeholder="ID Player">
+  <input id="nick" placeholder="Nickname">
+  <input id="phone" placeholder="Nomor HP Anda (contoh: 08123456789)">
 
-<!-- FOOTER -->
-<footer>
-  © copyright by Taufiq Shop 2026
-</footer>
+  <h3>Pilih Diamond / Paket</h3>
+  <div class="diamond-list">
+    <label class="d-card"><input type="radio" name="dm" value="5 Diamond - Rp 1.000"><div class="d-box">5 Diamond<br><span class="price">Rp 1.000</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="12 Diamond - Rp 1.900"><div class="d-box">12 Diamond<br><span class="price">Rp 1.900</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="20 Diamond - Rp 4.260"><div class="d-box">20 Diamond<br><span class="price">Rp 4.260</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="55 Diamond - Rp 9.120"><div class="d-box">55 Diamond<br><span class="price">Rp 9.120</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="70 Diamond - Rp 10.000"><div class="d-box">70 Diamond<br><span class="price">Rp 10.000</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="80 Diamond - Rp 12.650"><div class="d-box">80 Diamond<br><span class="price">Rp 12.650</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="100 Diamond - Rp 15.985"><div class="d-box">100 Diamond<br><span class="price">Rp 15.985</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="120 Diamond - Rp 17.987"><div class="d-box">120 Diamond<br><span class="price">Rp 17.987</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="130 Diamond - Rp 19.987"><div class="d-box">130 Diamond<br><span class="price">Rp 19.987</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="145 Diamond - Rp 21.760"><div class="d-box">145 Diamond<br><span class="price">Rp 21.760</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="150 Diamond - Rp 24.976"><div class="d-box">150 Diamond<br><span class="price">Rp 24.976</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="200 Diamond - Rp 28.543"><div class="d-box">200 Diamond<br><span class="price">Rp 28.543</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="355 Diamond - Rp 45.000"><div class="d-box">355 Diamond<br><span class="price">Rp 45.000</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="500 Diamond - Rp 65.000"><div class="d-box">500 Diamond<br><span class="price">Rp 65.000</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="720 Diamond - Rp 90.000"><div class="d-box">720 Diamond<br><span class="price">Rp 90.000</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="1000 Diamond - Rp 125.000"><div class="d-box">1000 Diamond<br><span class="price">Rp 125.000</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="1080 Diamond - Rp 366.986"><div class="d-box">1080 Diamond<br><span class="price">Rp 366.986</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="2200 Diamond - Rp 370.866"><div class="d-box">2200 Diamond<br><span class="price">Rp 370.866</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="3640 Diamond - Rp 5.448.247"><div class="d-box">3640 Diamond<br><span class="price">Rp 5.448.247</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="Membership Mingguan - Rp 30.000"><div class="d-box">Member Mingguan<br><span class="price">Rp 30.000</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="Membership Bulanan - Rp 60.000"><div class="d-box">Member Bulanan<br><span class="price">Rp 60.000</span></div></label>
+  </div>
 
-<!-- LOADING -->
-<div id="loading">
-  <img src="shop.jpg" class="loading-logo">
-  <p>Loading...</p>
+  <div class="payment">
+    <h3>Pilih Metode Pembayaran</h3>
+    <button onclick="pay('QRIS')">QRIS</button>
+    <button onclick="pay('OVO')">OVO</button>
+    <button onclick="pay('DANA')">DANA</button>
+    <button onclick="pay('GoPay')">GoPay</button>
+  </div>
+
+  <button onclick="order()">Order Sekarang</button>
+
+  <div id="loading">
+    <div class="loader"></div>
+    <p>Memproses pesanan...</p>
+  </div>
+
 </div>
 
 <script>
-function openMenu(){ document.getElementById("sidebar").style.left="0"; }
-function closeMenu(){ document.getElementById("sidebar").style.left="-250px"; }
+let selectedPayment = '';
 
-function goToOrder(url){
-  document.getElementById("loading").style.display="flex";
-  setTimeout(function(){
-    window.location.href = url;
-  }, 1000);
+function pay(method){
+  selectedPayment = method;
+  alert('Metode pembayaran dipilih: '+method);
+}
+
+function order(){
+  const id = document.getElementById("id").value.trim();
+  const nick = document.getElementById("nick").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const dm = document.querySelector('input[name="dm"]:checked');
+
+  if(!id || !nick || !phone || !dm || !selectedPayment){
+    alert("Lengkapi semua data dan pilih metode pembayaran!");
+    return;
+  }
+
+  document.getElementById("loading").style.display="block";
+
+  setTimeout(()=>{
+    let msg = `ORDER FREE FIRE
+ID: ${id}
+Nickname: ${nick}
+Item: ${dm.value}
+Nomor HP: ${phone}
+Bayar pakai: ${selectedPayment}`;
+
+    window.location.href =
+      "https://wa.me/62895327513269?text=" + encodeURIComponent(msg);
+  },1500);
 }
 </script>
 
 </body>
-</html>
+                                                                                        </html>
