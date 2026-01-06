@@ -67,6 +67,19 @@ button{
 }
 button:hover{background:#0ea5e9}
 
+/* PAYMENT */
+.payment{
+  margin-top:20px;
+}
+.payment button{
+  width:48%;
+  display:inline-block;
+  margin:4px 1%;
+  background:#9333ea;
+  color:white;
+}
+.payment button:hover{background:#7e22ce}
+
 /* LOADING */
 #loading{
   display:none;
@@ -95,25 +108,39 @@ button:hover{background:#0ea5e9}
 
   <input id="id" placeholder="ID Player">
   <input id="nick" placeholder="Nickname">
+  <input id="phone" placeholder="Nomor HP Anda (contoh: 08123456789)">
 
-  <h3>Pilih Diamond</h3>
+  <h3>Pilih Diamond / Paket</h3>
   <div class="diamond-list">
-    <label class="d-card">
-      <input type="radio" name="dm" value="70 Diamond - Rp 10.000">
-      <div class="d-box">70 Diamond<br><span class="price">Rp 10.000</span></div>
-    </label>
-    <label class="d-card">
-      <input type="radio" name="dm" value="140 Diamond - Rp 20.000">
-      <div class="d-box">140 Diamond<br><span class="price">Rp 20.000</span></div>
-    </label>
-    <label class="d-card">
-      <input type="radio" name="dm" value="355 Diamond - Rp 45.000">
-      <div class="d-box">355 Diamond<br><span class="price">Rp 45.000</span></div>
-    </label>
-    <label class="d-card">
-      <input type="radio" name="dm" value="720 Diamond - Rp 90.000">
-      <div class="d-box">720 Diamond<br><span class="price">Rp 90.000</span></div>
-    </label>
+    <label class="d-card"><input type="radio" name="dm" value="5 Diamond - Rp 1.000"><div class="d-box">5 Diamond<br><span class="price">Rp 1.000</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="12 Diamond - Rp 1.900"><div class="d-box">12 Diamond<br><span class="price">Rp 1.900</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="20 Diamond - Rp 4.260"><div class="d-box">20 Diamond<br><span class="price">Rp 4.260</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="55 Diamond - Rp 9.120"><div class="d-box">55 Diamond<br><span class="price">Rp 9.120</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="70 Diamond - Rp 10.000"><div class="d-box">70 Diamond<br><span class="price">Rp 10.000</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="80 Diamond - Rp 12.650"><div class="d-box">80 Diamond<br><span class="price">Rp 12.650</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="100 Diamond - Rp 15.985"><div class="d-box">100 Diamond<br><span class="price">Rp 15.985</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="120 Diamond - Rp 17.987"><div class="d-box">120 Diamond<br><span class="price">Rp 17.987</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="130 Diamond - Rp 19.987"><div class="d-box">130 Diamond<br><span class="price">Rp 19.987</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="145 Diamond - Rp 21.760"><div class="d-box">145 Diamond<br><span class="price">Rp 21.760</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="150 Diamond - Rp 24.976"><div class="d-box">150 Diamond<br><span class="price">Rp 24.976</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="200 Diamond - Rp 28.543"><div class="d-box">200 Diamond<br><span class="price">Rp 28.543</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="355 Diamond - Rp 45.000"><div class="d-box">355 Diamond<br><span class="price">Rp 45.000</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="500 Diamond - Rp 65.000"><div class="d-box">500 Diamond<br><span class="price">Rp 65.000</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="720 Diamond - Rp 90.000"><div class="d-box">720 Diamond<br><span class="price">Rp 90.000</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="1000 Diamond - Rp 125.000"><div class="d-box">1000 Diamond<br><span class="price">Rp 125.000</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="1080 Diamond - Rp 366.986"><div class="d-box">1080 Diamond<br><span class="price">Rp 366.986</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="2200 Diamond - Rp 370.866"><div class="d-box">2200 Diamond<br><span class="price">Rp 370.866</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="3640 Diamond - Rp 5.448.247"><div class="d-box">3640 Diamond<br><span class="price">Rp 5.448.247</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="Membership Mingguan - Rp 30.000"><div class="d-box">Member Mingguan<br><span class="price">Rp 30.000</span></div></label>
+    <label class="d-card"><input type="radio" name="dm" value="Membership Bulanan - Rp 60.000"><div class="d-box">Member Bulanan<br><span class="price">Rp 60.000</span></div></label>
+  </div>
+
+  <div class="payment">
+    <h3>Pilih Metode Pembayaran</h3>
+    <button onclick="pay('QRIS')">QRIS</button>
+    <button onclick="pay('OVO')">OVO</button>
+    <button onclick="pay('DANA')">DANA</button>
+    <button onclick="pay('GoPay')">GoPay</button>
   </div>
 
   <button onclick="order()">Order Sekarang</button>
@@ -126,23 +153,33 @@ button:hover{background:#0ea5e9}
 </div>
 
 <script>
+let selectedPayment = '';
+
+function pay(method){
+  selectedPayment = method;
+  alert('Metode pembayaran dipilih: '+method);
+}
+
 function order(){
   const id = document.getElementById("id").value.trim();
   const nick = document.getElementById("nick").value.trim();
+  const phone = document.getElementById("phone").value.trim();
   const dm = document.querySelector('input[name="dm"]:checked');
 
-  if(!id || !nick || !dm){
-    alert("Lengkapi data!");
+  if(!id || !nick || !phone || !dm || !selectedPayment){
+    alert("Lengkapi semua data dan pilih metode pembayaran!");
     return;
   }
 
   document.getElementById("loading").style.display="block";
 
   setTimeout(()=>{
-    const msg = `ORDER FREE FIRE
+    let msg = `ORDER FREE FIRE
 ID: ${id}
 Nickname: ${nick}
-Item: ${dm.value}`;
+Item: ${dm.value}
+Nomor HP: ${phone}
+Bayar pakai: ${selectedPayment}`;
 
     window.location.href =
       "https://wa.me/62895327513269?text=" + encodeURIComponent(msg);
@@ -151,4 +188,4 @@ Item: ${dm.value}`;
 </script>
 
 </body>
-</html>
+  </html>
