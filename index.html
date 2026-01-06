@@ -4,30 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Taufiq Shop - Tempat Topup Termurah</title>
-
-<!-- SEO Meta Tags -->
 <meta name="description" content="Taufiq Shop - Tempat topup game termurah, Free Fire, Mobile Legends, Roblox, dan lain-lain. Cepat, aman, dan terpercaya.">
-<meta name="keywords" content="topup ff, topup mobile legends, taufiq shop, topup roblox, game termurah">
-<meta name="author" content="Taufiq Shop">
-<link rel="canonical" href="https://taufiqshop.my.id/">
-
-<!-- Favicon -->
 <link rel="icon" href="shop.jpg" type="image/jpg">
-
 <style>
 body{font-family:Arial;margin:0;background:linear-gradient(to bottom,#f87171,#fff)}
 header{display:flex;justify-content:space-between;align-items:center;padding:15px;background:#b91c1c;color:white}
 header .logo{display:flex;align-items:center;gap:10px}
 header .logo img{width:50px;border-radius:8px}
 header .menu{display:flex;align-items:center;gap:10px}
-header .menu button{background:none;border:none;color:white;font-size:24px;cursor:pointer}
 header .menu a{color:white;text-decoration:none;font-weight:bold}
-nav{display:flex;justify-content:center;gap:12px;margin:20px 0;flex-wrap:wrap}
-nav a{padding:12px 20px;background:#3b82f6;color:white;text-decoration:none;border-radius:10px;cursor:pointer}
-nav a:hover{background:#2563eb}
-.container{max-width:900px;margin:0 auto;text-align:center}
-h1{margin-top:20px;color:#b91c1c}
-.testimoni{background:rgba(0,0,0,0.05);padding:20px;margin:20px 0;border-radius:10px}
+.game-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin:20px 0;}
+.game-btn{display:flex;flex-direction:column;align-items:center;text-decoration:none;background:#3b82f6;color:white;padding:10px;border-radius:10px;transition:0.2s;cursor:pointer;width:120px;}
+.game-btn img{width:80px;height:80px;object-fit:cover;margin-bottom:8px;border-radius:8px;}
+.game-btn span{font-weight:bold;text-align:center;}
+.game-btn:hover{background:#2563eb;}
+.testimoni{background:rgba(0,0,0,0.05);padding:20px;margin:20px 0;border-radius:10px;text-align:left;max-width:800px;margin-left:auto;margin-right:auto}
 footer{background:#b91c1c;color:white;text-align:center;padding:15px;margin-top:30px;border-top:3px solid #2563eb}
 </style>
 </head>
@@ -45,18 +36,37 @@ footer{background:#b91c1c;color:white;text-align:center;padding:15px;margin-top:
 </header>
 
 <div class="container">
-  <h1>Selamat Datang di Taufiq Shop</h1>
+  <img src="banner.jpg" alt="Banner" style="width:100%;border-radius:10px;margin-top:10px;">
 
-  <nav>
-    <a href="order/ff.html">Free Fire</a>
-    <a href="order/ml.html">Mobile Legends</a>
-    <a href="order/roblox.html">Roblox</a>
-    <a href="order/genshin.html">Genshin Impact</a>
-    <a href="order/stumble.html">Stumble Guys</a>
-    <a href="order/8ball.html">8Ball Poll</a>
-  </nav>
+  <h1 style="color:#b91c1c;">Selamat Datang di Taufiq Shop</h1>
 
-  <!-- Testimoni -->
+  <div class="game-buttons">
+    <a href="order/ff.html" class="game-btn">
+      <img src="ff.jpg" alt="Free Fire">
+      <span>Free Fire</span>
+    </a>
+    <a href="order/ml.html" class="game-btn">
+      <img src="ml.jpg" alt="Mobile Legends">
+      <span>Mobile Legends</span>
+    </a>
+    <a href="order/roblox.html" class="game-btn">
+      <img src="roblox.jpg" alt="Roblox">
+      <span>Roblox</span>
+    </a>
+    <a href="order/genshin.html" class="game-btn">
+      <img src="genshin.jpg" alt="Genshin Impact">
+      <span>Genshin Impact</span>
+    </a>
+    <a href="order/stumble.html" class="game-btn">
+      <img src="stumble.jpg" alt="Stumble Guys">
+      <span>Stumble Guys</span>
+    </a>
+    <a href="order/8ball.html" class="game-btn">
+      <img src="8ball.jpg" alt="8Ball Poll">
+      <span>8Ball Poll</span>
+    </a>
+  </div>
+
   <div class="testimoni">
     <h2>Testimoni Pelanggan</h2>
     <p>"Topup cepat & aman! Recommended banget 👍" - Andi</p>
