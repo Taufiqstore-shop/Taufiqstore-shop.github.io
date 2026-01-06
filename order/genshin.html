@@ -5,41 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Order Genshin Impact</title>
 <style>
-body{margin:0;font-family:Arial;background:#0f172a;color:white}
-.box{max-width:420px;margin:30px auto;padding:20px;background:#1e293b;border-radius:16px}
+body{font-family:Arial;background:#f8fafc;margin:0}
+.container{max-width:420px;margin:auto;padding:20px}
 h2{text-align:center}
-img{width:80px;display:block;margin:0 auto 10px}
-input,select{width:100%;padding:14px;border:none;border-radius:10px;margin-bottom:12px}
-button{width:100%;padding:14px;border:none;border-radius:10px;background:#38bdf8;font-weight:bold;cursor:pointer}
+input{width:100%;padding:12px;margin-top:10px;border-radius:8px;border:1px solid #ccc}
+.box{background:#bfdbfe;padding:12px;margin-top:8px;border-radius:10px;
+display:flex;justify-content:space-between;cursor:pointer;font-weight:600}
+.box.active{background:#3b82f6;color:#fff}
+button{width:100%;margin-top:15px;padding:14px;border:none;border-radius:10px;
+background:#2563eb;color:white;font-size:16px}
+.note{margin-top:10px;font-size:13px;color:#ef4444}
 </style>
 </head>
 <body>
 
-<div class="box">
-<img src="../genshin.jpg">
+<div class="container">
 <h2>Order Genshin Impact</h2>
 
-<input id="uid" placeholder="UID">
-<input id="nama" placeholder="Nama Akun">
+<input id="uid" placeholder="UID Genshin">
+<input id="server" placeholder="Server (Asia/America/EU)">
+<input id="hp" placeholder="Nomor WhatsApp">
 
-<select id="paket">
-  <option value="">Pilih Paket</option>
-  <option>60 Genesis - Rp 15.000</option>
-  <option>300 Genesis - Rp 75.000</option>
-  <option>980 Genesis - Rp 230.000</option>
-</select>
+<div class="box" onclick="pilih(this,'Blessing Welkin - Rp 75.000')">
+<span>Blessing Welkin</span><span>Rp 75.000</span></div>
 
-<button onclick="order()">Order via WhatsApp</button>
+<div class="box" onclick="pilih(this,'Battle Pass - Rp 160.000')">
+<span>Battle Pass</span><span>Rp 160.000</span></div>
+
+<div class="note">Genesis Crystal sementara maintenance</div>
+
+<button onclick="kirim()">Lanjut ke WhatsApp</button>
 </div>
 
 <script>
-function order(){
-  const uid=uid.value, nama=document.getElementById("nama").value, paket=document.getElementById("paket").value;
-  if(!uid||!nama||!paket){alert("Lengkapi data");return;}
-  const msg=`ORDER GENSHIN\nUID: ${uid}\nNama: ${nama}\nPaket: ${paket}`;
-  location.href="https://wa.me/62895327513269?text="+encodeURIComponent(msg);
+let produk="";
+function pilih(el,n){document.querySelectorAll('.box').forEach(b=>b.classList.remove('active'));
+el.classList.add('active');produk=n}
+function kirim(){
+let uid=document.getElementById('uid').value;
+let server=document.getElementById('server').value;
+let hp=document.getElementById('hp').value;
+if(!produk)return alert("Pilih produk");
+let text=`ORDER GENSHIN%0AUID: ${uid}%0AServer: ${server}%0AProduk: ${produk}%0AHP: ${hp}`;
+window.open(`https://wa.me/62895327513269?text=${text}`);
 }
 </script>
-
 </body>
 </html>
