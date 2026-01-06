@@ -2,194 +2,72 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Taufiq Shop - Top Up Game Termurah</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taufiq Shop - Tempat Topup Termurah</title>
 
-<!-- SEO -->
-<meta name="description" content="Taufiq Shop tempat top up game murah & aman. Free Fire, Mobile Legends, Roblox, Genshin Impact, 8 Ball Pool.">
-<meta name="keywords" content="taufiq shop, top up ff murah, top up ml, top up roblox">
-<meta name="robots" content="index, follow">
+<!-- SEO Meta Tags -->
+<meta name="description" content="Taufiq Shop - Tempat topup game termurah, Free Fire, Mobile Legends, Roblox, dan lain-lain. Cepat, aman, dan terpercaya.">
+<meta name="keywords" content="topup ff, topup mobile legends, taufiq shop, topup roblox, game termurah">
+<meta name="author" content="Taufiq Shop">
+<link rel="canonical" href="https://taufiqshop.my.id/">
+
+<!-- Favicon -->
+<link rel="icon" href="shop.jpg" type="image/jpg">
 
 <style>
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#f4f6fb;
-}
-
-/* HEADER */
-header{
-  background:linear-gradient(90deg,#d32f2f,#ffffff);
-  padding:15px;
-  font-size:24px;
-  font-weight:bold;
-  color:#b71c1c;
-  text-align:center;
-}
-
-/* NAV */
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:#fff;
-  padding:10px 15px;
-  box-shadow:0 2px 5px rgba(0,0,0,.1);
-}
-.menu{font-size:24px;cursor:pointer}
-.auth a{
-  margin-left:10px;
-  text-decoration:none;
-  font-weight:bold;
-  color:#d32f2f;
-}
-
-/* BANNER */
-.banner img{
-  width:100%;
-  display:block;
-}
-
-/* CONTENT */
-.container{padding:20px}
-.desc{text-align:center;color:#555;margin-bottom:20px}
-
-/* GRID GAME */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-}
-.card{
-  background:#fff;
-  border-radius:12px;
-  padding:10px;
-  text-align:center;
-  box-shadow:0 2px 5px rgba(0,0,0,.1);
-  cursor:pointer;
-}
-.card img{
-  width:100%;
-  border-radius:10px;
-}
-.card p{font-weight:bold}
-
-/* HIGHLIGHT */
-.highlight{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin:25px 0;
-}
-.highlight div{
-  background:#fff;
-  padding:15px;
-  border-radius:12px;
-  text-align:center;
-}
-
-/* TESTIMONI */
-.testi{
-  background:#fff;
-  padding:12px;
-  border-radius:10px;
-  margin-bottom:10px;
-}
-
-/* FOOTER */
-footer{
-  margin-top:40px;
-  text-align:center;
-  padding:15px;
-  background:#fff;
-  color:#777;
-  font-size:14px;
-}
-
-@media(max-width:768px){
-  .grid,.highlight{grid-template-columns:repeat(2,1fr)}
-}
+body{font-family:Arial;margin:0;background:linear-gradient(to bottom,#f87171,#fff)}
+header{display:flex;justify-content:space-between;align-items:center;padding:15px;background:#b91c1c;color:white}
+header .logo{display:flex;align-items:center;gap:10px}
+header .logo img{width:50px;border-radius:8px}
+header .menu{display:flex;align-items:center;gap:10px}
+header .menu button{background:none;border:none;color:white;font-size:24px;cursor:pointer}
+header .menu a{color:white;text-decoration:none;font-weight:bold}
+nav{display:flex;justify-content:center;gap:12px;margin:20px 0;flex-wrap:wrap}
+nav a{padding:12px 20px;background:#3b82f6;color:white;text-decoration:none;border-radius:10px;cursor:pointer}
+nav a:hover{background:#2563eb}
+.container{max-width:900px;margin:0 auto;text-align:center}
+h1{margin-top:20px;color:#b91c1c}
+.testimoni{background:rgba(0,0,0,0.05);padding:20px;margin:20px 0;border-radius:10px}
+footer{background:#b91c1c;color:white;text-align:center;padding:15px;margin-top:30px;border-top:3px solid #2563eb}
 </style>
 </head>
-
 <body>
 
-<header>Taufiq Shop</header>
-
-<nav>
-  <div class="menu">☰</div>
-  <div class="auth">
-    <a href="#">Login</a>
-    <a href="#">Register</a>
+<header>
+  <div class="logo">
+    <button onclick="alert('Menu ☰ clicked!')">&#9776;</button>
+    <img src="shop.jpg" alt="Taufiq Shop">
+    <span>Taufiq Shop</span>
   </div>
-</nav>
-
-<!-- BANNER -->
-<div class="banner">
-  <img src="banner.jpg" alt="Banner Taufiq Shop">
-</div>
+  <div class="menu">
+    <a href="login/login.html">Login/Register</a>
+  </div>
+</header>
 
 <div class="container">
-  <p class="desc">
-    Top up game cepat & aman.<br>
-    Tanpa login bisa top up (resiko data tidak terdeteksi admin 🚨)
-  </p>
+  <h1>Selamat Datang di Taufiq Shop</h1>
 
-  <!-- GAME -->
-  <div class="grid">
-    <div class="card" onclick="go('order/ff.html')">
-      <img src="ff.jpg"><p>Free Fire</p>
-    </div>
-    <div class="card">
-      <img src="ml.jpg"><p>Mobile Legends</p>
-    </div>
-    <div class="card">
-      <img src="roblox.jpg"><p>Roblox</p>
-    </div>
-    <div class="card">
-      <img src="genshin.jpg"><p>Genshin Impact</p>
-    </div>
-    <div class="card">
-      <img src="stumble.jpg"><p>Stumble Guys</p>
-    </div>
-    <div class="card">
-      <img src="8ball.jpg"><p>8 Ball Pool</p>
-    </div>
-  </div>
+  <nav>
+    <a href="order/ff.html">Free Fire</a>
+    <a href="order/ml.html">Mobile Legends</a>
+    <a href="order/roblox.html">Roblox</a>
+    <a href="order/genshin.html">Genshin Impact</a>
+    <a href="order/stumble.html">Stumble Guys</a>
+    <a href="order/8ball.html">8Ball Poll</a>
+  </nav>
 
-  <!-- HIGHLIGHT -->
-  <div class="highlight">
-    <div>⚡<br><b>Proses Cepat</b><br><small>Setelah bayar</small></div>
-    <div>🔒<br><b>Aman</b><br><small>Manual admin</small></div>
-    <div>💬<br><b>CS WhatsApp</b><br><small>Fast respon</small></div>
-  </div>
-
-  <!-- TESTIMONI -->
-  <h3 style="text-align:center">Testimoni</h3>
-  <div class="testi">⭐⭐⭐⭐⭐<br>Proses jelas & cepat</div>
-  <div class="testi">⭐⭐⭐⭐⭐<br>Admin ramah, aman</div>
-
-  <!-- CTA -->
-  <div style="text-align:center;margin-top:25px">
-    <a href="https://wa.me/62895327513269"
-       style="background:#25D366;color:white;
-       padding:14px 22px;border-radius:10px;
-       text-decoration:none;font-weight:bold;">
-       💬 Chat Admin WhatsApp
-    </a>
+  <!-- Testimoni -->
+  <div class="testimoni">
+    <h2>Testimoni Pelanggan</h2>
+    <p>"Topup cepat & aman! Recommended banget 👍" - Andi</p>
+    <p>"Harga termurah & admin ramah 😁" - Siti</p>
+    <p>"Taufiq Shop bikin topup jadi gampang banget!" - Budi</p>
   </div>
 </div>
 
 <footer>
-© copyright by Taufiq Shop 2026
+  © Taufiq Shop 2026
 </footer>
 
-<script>
-function go(url){
-  document.body.style.opacity="0.5";
-  setTimeout(()=>{window.location.href=url},700);
-}
-</script>
-
 </body>
-  </html>
+</html>
