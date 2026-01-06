@@ -3,189 +3,126 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Order Free Fire</title>
+<title>Order Free Fire - Taufiq Shop</title>
 
 <style>
-body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  background:linear-gradient(135deg,#0f172a,#1e1b4b);
-  color:white;
-}
-.container{
-  max-width:420px;
-  margin:30px auto;
-  padding:20px;
-  background:rgba(255,255,255,0.06);
-  border-radius:16px;
-}
-.title{text-align:center;margin-bottom:20px}
-.title img{width:60px;margin-bottom:10px}
-input{
-  width:100%;
-  padding:14px;
-  border-radius:12px;
-  border:none;
-  margin-bottom:14px;
-  outline:none;
-}
-h3{margin:18px 0 10px}
+body{font-family:Arial;background:#f4f6fb;margin:0}
+.container{max-width:520px;margin:20px auto;background:#fff;padding:20px;border-radius:14px}
+h2{text-align:center}
+label{font-weight:bold;margin-top:12px;display:block}
+input{width:100%;padding:12px;border-radius:8px;border:1px solid #ccc;margin-top:6px}
 
-/* DIAMOND CARD */
-.diamond-list{
+.grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:14px;
+  gap:10px;
+  margin-top:10px;
 }
-.d-card input{display:none}
-.d-box{
-  background:#fff;
-  color:#0f172a;
-  border:2px solid #bae6fd;
-  border-radius:14px;
-  padding:16px;
+.box{
+  border:2px solid #93c5fd;
+  padding:10px;
+  border-radius:10px;
   cursor:pointer;
-  transition:.2s;
-}
-.price{color:#0284c7;font-weight:700}
-.d-card input:checked + .d-box{
-  background:#e0f2fe;
-  border-color:#38bdf8;
-}
-
-/* BUTTON */
-button{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:12px;
-  font-weight:700;
-  cursor:pointer;
-  background:#38bdf8;
-  color:#0f172a;
-  margin-top:12px;
-}
-button:hover{background:#0ea5e9}
-
-/* PAYMENT */
-.payment{
-  margin-top:20px;
-}
-.payment button{
-  width:48%;
-  display:inline-block;
-  margin:4px 1%;
-  background:#9333ea;
-  color:white;
-}
-.payment button:hover{background:#7e22ce}
-
-/* LOADING */
-#loading{
-  display:none;
   text-align:center;
-  margin-top:20px;
 }
-.loader{
-  width:40px;height:40px;
-  border:4px solid #38bdf8;
-  border-top:4px solid transparent;
-  border-radius:50%;
-  animation:spin 1s linear infinite;
-  margin:auto;
+.box.active{
+  background:#bfdbfe;
+  border-color:#2563eb;
 }
-@keyframes spin{to{transform:rotate(360deg)}}
+.pay button{
+  width:100%;margin-top:10px;padding:12px;
+  border:none;border-radius:10px;
+  background:#3b82f6;color:white;font-weight:bold;cursor:pointer
+}
+.loading{
+  display:none;text-align:center;margin-top:15px;
+  color:#2563eb;font-weight:bold
+}
+footer{text-align:center;margin:25px 0;color:#777;font-size:13px}
 </style>
 </head>
 
 <body>
 <div class="container">
+  <img src="../ff.jpg" style="width:100%;border-radius:12px;margin-bottom:10px">
 
-  <div class="title">
-    <img src="ff.jpg" alt="Free Fire">
-    <h2>Order Free Fire</h2>
+  <h2>Order Free Fire</h2>
+
+  <label>ID & Server</label>
+  <input id="id" placeholder="12345678(1234)">
+
+  <label>Nickname</label>
+  <input id="nick" placeholder="Nama FF">
+
+  <label>Pilih Diamond / Paket</label>
+  <div class="grid" id="diamond">
+    <div class="box">5 Diamond<br>Rp 1.000</div>
+    <div class="box">12 Diamond<br>Rp 1.900</div>
+    <div class="box">20 Diamond<br>Rp 4.260</div>
+    <div class="box">55 Diamond<br>Rp 9.120</div>
+    <div class="box">70 Diamond<br>Rp 10.000</div>
+    <div class="box">80 Diamond<br>Rp 12.650</div>
+    <div class="box">100 Diamond<br>Rp 15.985</div>
+    <div class="box">120 Diamond<br>Rp 17.987</div>
+    <div class="box">130 Diamond<br>Rp 19.987</div>
+    <div class="box">145 Diamond<br>Rp 21.760</div>
+    <div class="box">150 Diamond<br>Rp 24.976</div>
+    <div class="box">200 Diamond<br>Rp 28.543</div>
+    <div class="box">355 Diamond<br>Rp 45.000</div>
+    <div class="box">500 Diamond<br>Rp 65.000</div>
+    <div class="box">720 Diamond<br>Rp 90.000</div>
+    <div class="box">1000 Diamond<br>Rp 125.000</div>
+    <div class="box">1080 Diamond<br>Rp 366.986</div>
+    <div class="box">2200 Diamond<br>Rp 370.866</div>
+    <div class="box">3640 Diamond<br>Rp 5.448.247</div>
+    <div class="box">Membership Mingguan<br>Rp 30.000</div>
+    <div class="box">Membership Bulanan<br>Rp 60.000</div>
   </div>
 
-  <input id="id" placeholder="ID Player">
-  <input id="nick" placeholder="Nickname">
-  <input id="phone" placeholder="Nomor HP Anda (contoh: 08123456789)">
-
-  <h3>Pilih Diamond / Paket</h3>
-  <div class="diamond-list">
-    <label class="d-card"><input type="radio" name="dm" value="5 Diamond - Rp 1.000"><div class="d-box">5 Diamond<br><span class="price">Rp 1.000</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="12 Diamond - Rp 1.900"><div class="d-box">12 Diamond<br><span class="price">Rp 1.900</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="20 Diamond - Rp 4.260"><div class="d-box">20 Diamond<br><span class="price">Rp 4.260</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="55 Diamond - Rp 9.120"><div class="d-box">55 Diamond<br><span class="price">Rp 9.120</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="70 Diamond - Rp 10.000"><div class="d-box">70 Diamond<br><span class="price">Rp 10.000</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="80 Diamond - Rp 12.650"><div class="d-box">80 Diamond<br><span class="price">Rp 12.650</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="100 Diamond - Rp 15.985"><div class="d-box">100 Diamond<br><span class="price">Rp 15.985</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="120 Diamond - Rp 17.987"><div class="d-box">120 Diamond<br><span class="price">Rp 17.987</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="130 Diamond - Rp 19.987"><div class="d-box">130 Diamond<br><span class="price">Rp 19.987</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="145 Diamond - Rp 21.760"><div class="d-box">145 Diamond<br><span class="price">Rp 21.760</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="150 Diamond - Rp 24.976"><div class="d-box">150 Diamond<br><span class="price">Rp 24.976</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="200 Diamond - Rp 28.543"><div class="d-box">200 Diamond<br><span class="price">Rp 28.543</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="355 Diamond - Rp 45.000"><div class="d-box">355 Diamond<br><span class="price">Rp 45.000</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="500 Diamond - Rp 65.000"><div class="d-box">500 Diamond<br><span class="price">Rp 65.000</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="720 Diamond - Rp 90.000"><div class="d-box">720 Diamond<br><span class="price">Rp 90.000</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="1000 Diamond - Rp 125.000"><div class="d-box">1000 Diamond<br><span class="price">Rp 125.000</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="1080 Diamond - Rp 366.986"><div class="d-box">1080 Diamond<br><span class="price">Rp 366.986</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="2200 Diamond - Rp 370.866"><div class="d-box">2200 Diamond<br><span class="price">Rp 370.866</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="3640 Diamond - Rp 5.448.247"><div class="d-box">3640 Diamond<br><span class="price">Rp 5.448.247</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="Membership Mingguan - Rp 30.000"><div class="d-box">Member Mingguan<br><span class="price">Rp 30.000</span></div></label>
-    <label class="d-card"><input type="radio" name="dm" value="Membership Bulanan - Rp 60.000"><div class="d-box">Member Bulanan<br><span class="price">Rp 60.000</span></div></label>
+  <label>Metode Pembayaran</label>
+  <div class="pay">
+    <button onclick="bayar('QRIS')">QRIS</button>
+    <button onclick="bayar('DANA')">DANA</button>
+    <button onclick="bayar('OVO')">OVO</button>
+    <button onclick="bayar('GOPAY')">GOPAY</button>
   </div>
 
-  <div class="payment">
-    <h3>Pilih Metode Pembayaran</h3>
-    <button onclick="pay('QRIS')">QRIS</button>
-    <button onclick="pay('OVO')">OVO</button>
-    <button onclick="pay('DANA')">DANA</button>
-    <button onclick="pay('GoPay')">GoPay</button>
+  <div class="loading" id="loading">
+    Proses dulu ya kak 😁<br>
+    admin sedang mengirim no dana atau QRIS....
   </div>
-
-  <button onclick="order()">Order Sekarang</button>
-
-  <div id="loading">
-    <div class="loader"></div>
-    <p>Memproses pesanan...</p>
-  </div>
-
 </div>
 
+<footer>© copyright by Taufiq Shop 2026</footer>
+
 <script>
-let selectedPayment = '';
+let pilihDiamond="";
 
-function pay(method){
-  selectedPayment = method;
-  alert('Metode pembayaran dipilih: '+method);
-}
-
-function order(){
-  const id = document.getElementById("id").value.trim();
-  const nick = document.getElementById("nick").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const dm = document.querySelector('input[name="dm"]:checked');
-
-  if(!id || !nick || !phone || !dm || !selectedPayment){
-    alert("Lengkapi semua data dan pilih metode pembayaran!");
-    return;
+document.querySelectorAll(".box").forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll(".box").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    pilihDiamond=b.innerText.replace("\n"," - ");
   }
+});
+
+function bayar(metode){
+  if(!pilihDiamond){alert("Pilih diamond dulu");return}
+  let id=document.getElementById("id").value;
+  let nick=document.getElementById("nick").value;
 
   document.getElementById("loading").style.display="block";
 
-  setTimeout(()=>{
-    let msg = `ORDER FREE FIRE
-ID: ${id}
-Nickname: ${nick}
-Item: ${dm.value}
-Nomor HP: ${phone}
-Bayar pakai: ${selectedPayment}`;
+  let pesan=`Halo min saya mau topup Free Fire%0A
+ID: ${id}%0A
+Nickname: ${nick}%0A
+Paket: ${pilihDiamond}%0A
+Metode: ${metode}`;
 
-    window.location.href =
-      "https://wa.me/62895327513269?text=" + encodeURIComponent(msg);
-  },1500);
+  setTimeout(()=>{
+    window.location.href="https://wa.me/62895327513269?text="+pesan;
+  },1800);
 }
 </script>
-
 </body>
-  </html>
+      </html>
