@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Genshin Impact</title>
+<style>
+body{margin:0;font-family:Arial;background:#0f172a;color:white}
+.box{max-width:420px;margin:30px auto;padding:20px;background:#1e293b;border-radius:16px}
+h2{text-align:center}
+img{width:80px;display:block;margin:0 auto 10px}
+input,select{width:100%;padding:14px;border:none;border-radius:10px;margin-bottom:12px}
+button{width:100%;padding:14px;border:none;border-radius:10px;background:#38bdf8;font-weight:bold;cursor:pointer}
+</style>
+</head>
+<body>
+
+<div class="box">
+<img src="../genshin.jpg">
+<h2>Order Genshin Impact</h2>
+
+<input id="uid" placeholder="UID">
+<input id="nama" placeholder="Nama Akun">
+
+<select id="paket">
+  <option value="">Pilih Paket</option>
+  <option>60 Genesis - Rp 15.000</option>
+  <option>300 Genesis - Rp 75.000</option>
+  <option>980 Genesis - Rp 230.000</option>
+</select>
+
+<button onclick="order()">Order via WhatsApp</button>
+</div>
+
+<script>
+function order(){
+  const uid=uid.value, nama=document.getElementById("nama").value, paket=document.getElementById("paket").value;
+  if(!uid||!nama||!paket){alert("Lengkapi data");return;}
+  const msg=`ORDER GENSHIN\nUID: ${uid}\nNama: ${nama}\nPaket: ${paket}`;
+  location.href="https://wa.me/62895327513269?text="+encodeURIComponent(msg);
+}
+</script>
+
+</body>
+</html>
