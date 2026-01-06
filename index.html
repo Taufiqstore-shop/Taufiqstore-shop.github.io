@@ -1,153 +1,142 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Taufiq Shop - Top Up Game</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Top up game murah & aman di Taufiq Shop. FF, ML, Roblox, Genshin Impact, 8 Ball Pool.">
-<meta name="keywords" content="topup ff termurah, topup ml, topup genshin, 8 ball pool, taufiq shop">
-<link rel="icon" href="favicon.jpg">
+  <!-- SEO GOOGLE -->
+  <title>Taufiq Shop – Tempat Top Up Termurah & Terpercaya</title>
+  <meta name="description" content="Taufiq Shop adalah tempat top up termurah, cepat dan aman. Top up Free Fire, Mobile Legends, Genshin Impact, 8 Ball Pool dan lainnya.">
+  <meta name="keywords" content="taufiq shop, tempat topup termurah, top up game murah, top up ff murah, top up ml murah">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Taufiq Shop">
 
-<style>
-body{margin:0;font-family:Arial;background:#f8fafc;color:#111827}
+  <!-- FAVICON -->
+  <link rel="icon" href="favicon.jpg" type="image/jpg">
 
-/* HEADER */
-header{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:14px 18px;background:#dc2626;color:white
-}
-.left{display:flex;align-items:center;gap:12px}
-.menu{font-size:26px;cursor:pointer}
-.logo{display:flex;align-items:center;gap:8px;font-weight:bold}
-.logo img{width:34px;height:34px;border-radius:50%}
-.auth a{color:white;text-decoration:none;margin-left:12px;font-weight:600}
-
-/* DROPDOWN */
-#dropdown{
-  display:none;position:absolute;top:60px;left:15px;
-  background:white;border-radius:12px;
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
-  overflow:hidden;z-index:99
-}
-#dropdown a{
-  display:block;padding:12px 18px;
-  text-decoration:none;color:#111;border-bottom:1px solid #eee
-}
-#dropdown a:hover{background:#f1f5f9}
-
-/* BANNER */
-.banner img{width:100%;max-height:220px;object-fit:cover}
-
-/* CONTENT */
-.container{padding:20px}
-h2{text-align:center;margin-bottom:20px}
-
-/* GAME GRID */
-.games{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px
-}
-.game{
-  background:white;border-radius:14px;
-  padding:12px;text-align:center;
-  cursor:pointer;
-  box-shadow:0 4px 14px rgba(0,0,0,.08);
-  transition:.2s
-}
-.game:hover{transform:translateY(-4px)}
-.game img{width:70px;margin-bottom:8px}
-.game p{margin:0;font-weight:600}
-
-/* WARNING */
-.warning{
-  margin-top:20px;padding:14px;
-  background:#fee2e2;
-  border-left:5px solid #dc2626;
-  border-radius:8px;font-size:14px
-}
-
-footer{
-  margin-top:40px;padding:20px;
-  text-align:center;color:#6b7280;font-size:14px
-}
-</style>
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:#f5f5f5;
+    }
+    header{
+      background:#fff;
+      padding:12px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    }
+    .left{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .menu{
+      font-size:26px;
+      cursor:pointer;
+    }
+    .logo img{
+      height:38px;
+      border-radius:6px;
+    }
+    .auth a{
+      text-decoration:none;
+      color:#333;
+      margin-left:8px;
+      font-size:14px;
+    }
+    h1{
+      text-align:center;
+      margin:20px 0 5px;
+    }
+    .desc{
+      text-align:center;
+      color:#555;
+      padding:0 15px;
+      font-size:14px;
+    }
+    .game-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      padding:20px;
+    }
+    .game{
+      background:#fff;
+      border-radius:10px;
+      padding:10px;
+      text-align:center;
+      text-decoration:none;
+      color:#000;
+      box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    }
+    .game img{
+      width:100%;
+      border-radius:8px;
+      margin-bottom:6px;
+    }
+    footer{
+      text-align:center;
+      padding:15px;
+      font-size:13px;
+      color:#777;
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
   <div class="left">
-    <div class="menu" onclick="toggleMenu()">☰</div>
+    <div class="menu">☰</div>
     <div class="logo">
-      <img src="shop.jpg">
-      <span>Taufiq Shop</span>
+      <img src="shop.jpg" alt="Taufiq Shop">
     </div>
   </div>
   <div class="auth">
-    <a href="login.html">Login</a>
+    <a href="login.html">Login</a> /
     <a href="register.html">Register</a>
   </div>
 </header>
 
-<div id="dropdown">
-  <a href="order/ff.html">Topup Free Fire</a>
-  <a href="order/ml.html">Topup Mobile Legends</a>
-  <a href="order/roblox.html">Topup Roblox</a>
-  <a href="order/genshin.html">Topup Genshin Impact</a>
-  <a href="order/8ball.html">Topup 8 Ball Pool</a>
-  <a href="#">Beli VPS</a>
-</div>
+<h1>Taufiq Shop</h1>
+<p class="desc">
+  Tempat top up termurah dan terpercaya untuk semua game online.  
+  Proses cepat, harga bersahabat, support WhatsApp aktif.
+</p>
 
-<div class="banner">
-  <img src="banner.jpg">
-</div>
+<div class="game-grid">
+  <a href="order/ff.html" class="game">
+    <img src="ff.jpg" alt="Free Fire">
+    Free Fire
+  </a>
 
-<div class="container">
-<h2>Pilih Game</h2>
+  <a href="order/ml.html" class="game">
+    <img src="ml.jpg" alt="Mobile Legends">
+    Mobile Legends
+  </a>
 
-<div class="games">
-  <div class="game" onclick="go('order/ff.html')">
-    <img src="ff.jpg"><p>Free Fire</p>
-  </div>
+  <a href="order/roblox.html" class="game">
+    <img src="roblox.jpg" alt="Roblox">
+    Roblox
+  </a>
 
-  <div class="game" onclick="go('order/ml.html')">
-    <img src="ml.jpg"><p>Mobile Legends</p>
-  </div>
+  <a href="order/genshin.html" class="game">
+    <img src="genshin.jpg" alt="Genshin Impact">
+    Genshin Impact
+  </a>
 
-  <div class="game" onclick="go('order/roblox.html')">
-    <img src="roblox.jpg"><p>Roblox</p>
-  </div>
-
-  <div class="game" onclick="go('order/genshin.html')">
-    <img src="genshin.jpg"><p>Genshin Impact</p>
-  </div>
-
-  <div class="game" onclick="go('order/8ball.html')">
-    <img src="8ball.jpg"><p>8 Ball Pool</p>
-  </div>
-</div>
-
-<div class="warning">
-⚠️ Top up tanpa login tetap bisa, namun admin mungkin sulit mengenali pesanan.
-</div>
+  <a href="order/8ball.html" class="game">
+    <img src="8ball.jpg" alt="8 Ball Pool">
+    8 Ball Pool
+  </a>
 </div>
 
 <footer>
-© Copyright by Taufiq Shop 2026
+  © Copyright by Taufiq Shop 2026
 </footer>
 
-<script>
-function toggleMenu(){
-  const d=document.getElementById("dropdown");
-  d.style.display=d.style.display==="block"?"none":"block";
-}
-function go(link){
-  document.body.style.opacity="0.6";
-  setTimeout(()=>location.href=link,400);
-}
-</script>
-
 </body>
-</html>
+  </html>
