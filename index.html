@@ -11,38 +11,37 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0 auto;
-            max-width: 1200px; /* web lebih lebar */
-            background-color: #000; /* hitam */
+            max-width: 1400px; /* web lebih lebar */
+            background-color: #000;
             color: #fff;
-            padding: 0 20px;
+            padding: 0 20px 50px 20px; /* padding bawah lebih lega */
         }
 
         /* Header */
         header {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end; /* kanan */
             align-items: center;
-            padding: 10px 0;
-            position: sticky;
+            padding: 10px 20px;
+            position: fixed; /* diam saat scroll */
             top: 0;
+            width: 100%;
+            background-color: #1e90ff;
             z-index: 1000;
-        }
-        .header-left img {
-            width: 120px;
         }
         .header-right {
             display: flex;
             align-items: center;
+            gap: 10px;
         }
         .header-right button {
             background-color: #fff;
             color: #1e90ff;
             border: none;
-            padding: 8px 15px;
+            padding: 6px 12px;
             border-radius: 5px;
-            cursor: pointer;
             font-weight: bold;
-            margin-left: 10px;
+            cursor: pointer;
         }
         .header-right button:hover {
             background-color: #e0e0e0;
@@ -50,8 +49,7 @@
         .header-right img {
             width: 50px;
             height: 50px;
-            border-radius: 50%; /* bulat */
-            margin-left: 15px;
+            border-radius: 50%;
         }
 
         /* Banner */
@@ -62,6 +60,7 @@
             background-size: cover;
             background-position: center;
             border-radius: 10px;
+            margin-top: 70px; /* space buat fixed header */
         }
 
         /* Text di atas game */
@@ -76,17 +75,18 @@
         /* Game grid */
         .game-list-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* max 3 kolom */
+            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
-            margin-bottom: 80px; /* space bottom nav */
+            margin-bottom: 100px; /* space bottom nav */
         }
         .game-card {
-            background-color: #fff; /* tombol game putih */
-            color: #000; /* teks hitam */
+            background-color: #fff;
+            color: #000;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
+            padding: 5px;
         }
         .game-card:hover {
             transform: scale(1.05);
@@ -94,13 +94,15 @@
         }
         .game-card img {
             width: 100%;
+            height: 100px;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
         }
         .game-card p {
-            margin: 10px 0;
+            margin: 5px 0;
             font-weight: bold;
             text-align: center;
+            font-size: 0.9em;
         }
 
         /* Bottom nav */
@@ -135,7 +137,9 @@
             background-color: #1e90ff;
             color: white;
             text-align: center;
-            padding: 20px 10px;
+            padding: 30px 10px 50px 10px; /* padding bawah lega */
+            margin-top: 50px;
+            border-radius: 10px;
         }
         .footer-top {
             display: flex;
@@ -175,12 +179,12 @@
         /* Responsive */
         @media (max-width: 900px) {
             .game-list-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 kolom tablet */
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         @media (max-width: 600px) {
             .game-list-grid {
-                grid-template-columns: 1fr; /* 1 kolom mobile */
+                grid-template-columns: 1fr;
             }
             .banner {
                 height: 180px;
@@ -195,9 +199,6 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="header-left">
-            <img src="shop.jpg" alt="TaufiqShop Store">
-        </div>
         <div class="header-right">
             <button onclick="location.href='login.html'">Login</button>
             <button onclick="location.href='register.html'">Register</button>
