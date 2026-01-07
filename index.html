@@ -3,276 +3,392 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaufiqShop TopUp</title>
-    <link rel="icon" href="favicon.jpg" type="image/jpeg">
-    <meta name="description" content="Top-up game mudah dan cepat: Free Fire, Mobile Legends, Roblox, Genshin Impact, 8Ball Pool, Stumble Guys, Blood Strike.">
-    <meta name="keywords" content="topup, free fire, mobile legends, roblox, genshin impact, 8ball pool, stumble guys, blood strike">
+    <title>TAUFIQSHOP - TOPUP GAME & PULSA</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="favicon.jpg">
+    <link rel="shortcut icon" type="image/jpeg" href="favicon.jpg">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0 auto;
-            max-width: 1400px; /* web lebih lebar */
-            background-color: #000;
-            color: #fff;
-            padding: 0 20px 50px 20px; /* padding bawah lega */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
-
+        body {
+            background-color: #ffffff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-bottom: 70px; /* Biar konten tidak tertutup bottom nav */
+        }
         /* Header */
         header {
             display: flex;
-            justify-content: flex-end; /* kanan */
             align-items: center;
-            padding: 10px 20px;
-            position: fixed; /* diam saat scroll */
-            top: 0;
-            width: 100%;
-            background-color: #1e90ff;
-            z-index: 1000;
-        }
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .header-right button {
+            padding: 15px 20px;
             background-color: #fff;
-            color: #1e90ff;
-            border: none;
-            padding: 5px 10px; /* tombol lebih kecil */
-            border-radius: 5px;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .menu-btn {
+            font-size: 1.5rem;
             font-weight: bold;
-            cursor: pointer;
+            color: #7a29e6;
+            margin-right: 20px;
         }
-        .header-right button:hover {
-            background-color: #e0e0e0;
-        }
-        .header-right img {
-            width: 50px;
+        .logo {
             height: 50px;
-            border-radius: 50%; /* bulat */
+            object-fit: contain;
+        }
+        .search-btn {
+            margin-left: auto;
+            font-size: 1.2rem;
+            color: #7a29e6;
         }
 
         /* Banner */
         .banner {
             width: 100%;
-            height: 250px;
-            background-image: url('banner.jpg');
-            background-size: cover;
-            background-position: center;
-            border-radius: 10px;
-            margin-top: 70px; /* space buat fixed header */
+            height: auto;
+            margin: 10px 0;
+            padding: 0 20px;
         }
-
-        /* Text di atas game */
-        .game-title-text {
-            text-align: center;
-            font-size: 14px;
-            color: #ccc;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        /* Game grid */
-        .game-list-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 100px; /* space bottom nav */
-        }
-        .game-card {
-            background-color: #fff;
-            color: #000;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            padding: 4px; /* kotak lebih kecil */
-        }
-        .game-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 10px rgba(0,0,0,0.3);
-        }
-        .game-card img {
+        .banner img {
             width: 100%;
-            height: 100px; /* dikit lebih kecil */
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            object-fit: cover; /* proporsional */
-        }
-        .game-card p {
-            margin: 4px 0; /* teks lebih kecil */
-            font-weight: bold;
-            text-align: center;
-            font-size: 0.85em;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
         }
 
-        /* Bottom nav */
+        /* Trending Section */
+        .trending-section {
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+        .trending-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .fire-icon {
+            color: #ff5722;
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        .trending-desc {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        .game-list {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        .game-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            min-width: 180px;
+            background-color: #fff;
+        }
+        .game-item.active {
+            border-color: #7a29e6;
+            background-color: #f8f5ff;
+        }
+        .game-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        .game-info h4 {
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+        .game-info p {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        .nav-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .nav-btn.arrow {
+            background-color: #7a29e6;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        .nav-btn.active {
+            background-color: #7a29e6;
+            color: #fff;
+        }
+        .nav-btn.inactive {
+            background-color: #eee;
+            color: #666;
+        }
+
+        /* Game Slider */
+        .game-slider {
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+        .slider-wrapper {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+        }
+        .slider-item {
+            min-width: 120px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .slider-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        /* Bottom Navigation */
         .bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
-            width: 100%;
-            background-color: #1e90ff;
+            right: 0;
+            background-color: #fff;
+            border-top: 2px solid #7a29e6;
             display: flex;
             justify-content: space-around;
+            align-items: center;
             padding: 10px 0;
-            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
-            z-index: 1000;
+            height: 70px;
+            z-index: 100;
         }
-        .bottom-nav button {
-            background-color: white;
-            color: #1e90ff;
-            border: none;
-            padding: 8px 12px; /* lebih kecil */
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.2s;
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.8rem;
         }
-        .bottom-nav button:hover {
-            background-color: #e0e0e0;
+        .nav-item.active {
+            color: #7a29e6;
+        }
+        .nav-icon {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
         }
 
-        /* Footer */
-        .site-footer {
-            background-color: #1e90ff;
-            color: white;
-            text-align: center;
-            padding: 30px 10px 50px 10px; /* padding bawah lega */
-            margin-top: 50px;
-            border-radius: 10px;
+        /* Footer Lengkap */
+        .main-footer {
+            background-color: #f8f5ff;
+            padding: 25px 20px;
+            border-bottom: 1px solid #eee;
+            margin-top: auto;
         }
-        .footer-top {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
+        .footer-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #7a29e6;
             margin-bottom: 15px;
         }
-        .footer-store {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        .footer-content p {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            color: #333;
         }
-        .footer-text {
+        .footer-contact a {
+            text-decoration: none;
+            color: #333;
+        }
+        .copyright-footer {
+            background-color: #7a29e6;
+            padding: 15px 0;
+            text-align: center;
+        }
+        .copyright-text {
+            font-size: 0.9rem;
             font-weight: bold;
-            margin: 0;
-        }
-        .footer-icons img {
-            width: 30px;
-            height: 30px;
-            margin: 0 5px;
-        }
-        .footer-bottom p {
-            margin: 5px 0;
-            font-size: 0.9em;
-        }
-        .footer-bottom a {
-            color: white;
-            text-decoration: underline;
-            margin: 0 5px;
-        }
-        .footer-bottom a:hover {
-            color: #ffd700;
+            color: #fff;
         }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .game-list-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            height: 6px;
         }
-        @media (max-width: 600px) {
-            .game-list-grid {
-                grid-template-columns: 1fr;
-            }
-            .banner {
-                height: 180px;
-            }
-            .header-right img {
-                width: 40px;
-                height: 40px;
-            }
+        ::-webkit-scrollbar-thumb {
+            background-color: #ddd;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #7a29e6;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="header-right">
-            <button onclick="location.href='login.html'">Login</button>
-            <button onclick="location.href='register.html'">Register</button>
-            <img src="shop.jpg" alt="TaufiqShop Store">
-        </div>
+        <div class="menu-btn">☰</div>
+        <img src="shop.jpg" alt="TaufiqShop Logo" class="logo">
+        <div class="search-btn">🔍</div>
     </header>
 
     <!-- Banner -->
-    <div class="banner"></div>
-
-    <!-- Text di atas game -->
-    <div class="game-title-text">
-        Game Apa yang mau di topup nih
+    <div class="banner">
+        <img src="banner.jpg" alt="Top Up All Games">
     </div>
 
-    <!-- Game Grid -->
-    <div class="game-list-grid">
-        <div class="game-card" onclick="location.href='ff.html'">
-            <img src="ff.jpg" alt="Free Fire">
-            <p>Free Fire</p>
+    <!-- Trending Section -->
+    <div class="trending-section">
+        <div class="trending-title">
+            <span class="fire-icon">🔥</span>
+            TRENDING
         </div>
-        <div class="game-card" onclick="location.href='ml.html'">
-            <img src="ml.jpg" alt="Mobile Legends">
-            <p>Mobile Legends</p>
+        <p class="trending-desc">Berikut adalah beberapa produk yang paling populer saat ini.</p>
+        <div class="game-list">
+            <div class="game-item">
+                <img src="ml-icon.jpg" alt="Mobile Legends">
+                <div class="game-info">
+                    <h4>Mobile Legends</h4>
+                    <p>Moonton</p>
+                </div>
+            </div>
+            <div class="game-item active">
+                <img src="ff-icon.jpg" alt="Free Fire">
+                <div class="game-info">
+                    <h4>Free Fire</h4>
+                    <p>Garena</p>
+                </div>
+            </div>
+            <div class="game-item">
+                <img src="roblox-icon.jpg" alt="Roblox">
+                <div class="game-info">
+                    <h4>Roblox</h4>
+                    <p>-</p>
+                </div>
+            </div>
+            <div class="game-item">
+                <img src="genshin-icon.jpg" alt="Genshin Impact">
+                <div class="game-info">
+                    <h4>Genshin Impact</h4>
+                    <p>miHoYo</p>
+                </div>
+            </div>
         </div>
-        <div class="game-card" onclick="location.href='roblox.html'">
-            <img src="roblox.jpg" alt="Roblox">
-            <p>Roblox</p>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tab-nav">
+        <button class="nav-btn arrow">&lt;</button>
+        <button class="nav-btn active">Game</button>
+        <button class="nav-btn inactive">Pulsa</button>
+        <button class="nav-btn inactive">Voucher</button>
+        <button class="nav-btn arrow">&gt;</button>
+    </div>
+
+    <!-- Game Slider -->
+    <div class="game-slider">
+        <div class="slider-wrapper">
+            <div class="slider-item">
+                <img src="ml-banner.jpg" alt="Mobile Legends">
+            </div>
+            <div class="slider-item">
+                <img src="8ball-banner.jpg" alt="8 Ball Pool">
+            </div>
+            <div class="slider-item">
+                <img src="aceracer-banner.jpg" alt="Ace Racer">
+            </div>
+            <div class="slider-item">
+                <img src="pubg-banner.jpg" alt="PUBG Mobile">
+            </div>
+            <div class="slider-item">
+                <img src="valorant-banner.jpg" alt="Valorant">
+            </div>
         </div>
-        <div class="game-card" onclick="location.href='genshin.html'">
-            <img src="genshin.jpg" alt="Genshin Impact">
-            <p>Genshin Impact</p>
+    </div>
+
+    <!-- Main Footer -->
+    <div class="main-footer">
+        <div class="footer-section">
+            <h3 class="footer-title">TENTANG TAUFIQSHOP</h3>
+            <div class="footer-content">
+                <p>TaufiqShop adalah platform topup game & pulsa online yang aman dan cepat.</p>
+                <p>Kami menyediakan layanan terbaik dengan harga terjangkau untuk semua pelanggan.</p>
+            </div>
         </div>
-        <div class="game-card" onclick="location.href='8ball.html'">
-            <img src="8ball.jpg" alt="8Ball Pool">
-            <p>8Ball Pool</p>
+        <div class="footer-section">
+            <h3 class="footer-title">INFORMASI</h3>
+            <div class="footer-content">
+                <p>• Syarat & Ketentuan</p>
+                <p>• Kebijakan Privasi</p>
+                <p>• Cara Pembelian</p>
+                <p>• Garansi Pengembalian Dana</p>
+            </div>
         </div>
-        <div class="game-card" onclick="location.href='stumble.html'">
-            <img src="stumble.jpg" alt="Stumble Guys">
-            <p>Stumble Guys</p>
+        <div class="footer-section">
+            <h3 class="footer-title">HUBUNGI KAMI</h3>
+            <div class="footer-content footer-contact">
+                <p>• WA: <a href="https://wa.me/62812XXXXXX">0812-XXXX-XXXX</a></p>
+                <p>• Email: taufiqshop@example.com</p>
+                <p>• Alamat: Jl. Contoh No.123, Tangerang, Banten</p>
+                <p>• Jam Operasional: 08.00 - 23.00 WIB</p>
+            </div>
         </div>
-        <div class="game-card" onclick="location.href='bloodstrike.html'">
-            <img src="bloodstrike.jpg" alt="Blood Strike">
-            <p>Blood Strike</p>
-        </div>
+    </div>
+
+    <!-- Copyright Footer -->
+    <div class="copyright-footer">
+        <p class="copyright-text">©TaufiqShop Hak cipta Dilindungi - 2024</p>
     </div>
 
     <!-- Bottom Navigation -->
     <div class="bottom-nav">
-        <button onclick="location.href='index.html'">Home</button>
-        <button onclick="location.href='content.html'">Content</button>
-        <button onclick="location.href='informasikan.html'">Informasikan</button>
-        <button onclick="location.href='login.html'">Login</button>
+        <a href="#" class="nav-item active">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">ℹ️</span>
+            <span>Informasi</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">📞</span>
+            <span>Hubungi</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">🔐</span>
+            <span>Login</span>
+        </a>
     </div>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-top">
-            <img src="shop.jpg" alt="TaufiqShop Store" class="footer-store">
-            <p class="footer-text">TaufiqShop TopUp Terpercaya</p>
-            <div class="footer-icons">
-                <img src="whatsapp.png" alt="WhatsApp">
-                <img src="qris.png" alt="QRIS">
-                <img src="ewallet.png" alt="E-Wallet">
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>©TaufiqShop Hak Cipta Di Lindungi</p>
-            <p>
-                <a href="privacy.html">Kebijakan Privasi</a> | 
-                <a href="terms.html">Syarat & Ketentuan</a>
-            </p>
-        </div>
-    </footer>
 </body>
 </html>
