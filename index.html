@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAUFIQSHOP - TOPUP GAME & PULSA</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="favicon.jpg">
-    <link rel="shortcut icon" type="image/jpeg" href="favicon.jpg">
+    <title>TaufiqShop - Topup Game & Pulsa</title>
+    <link rel="icon" type="image/jpeg" href="./favicon.jpg">
+    <link rel="shortcut icon" type="image/jpeg" href="./favicon.jpg">
     <style>
         * {
             margin: 0;
@@ -20,7 +19,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            padding-bottom: 70px; /* Biar konten tidak tertutup bottom nav */
+            padding-bottom: 70px;
         }
         /* Header */
         header {
@@ -99,6 +98,15 @@
             border-radius: 15px;
             min-width: 180px;
             background-color: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+        .game-item:hover {
+            border-color: #7a29e6;
+            background-color: #f8f5ff;
+            transform: translateY(-2px);
         }
         .game-item.active {
             border-color: #7a29e6;
@@ -170,11 +178,20 @@
             min-width: 120px;
             border-radius: 10px;
             overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .slider-item:hover {
+            transform: translateY(-3px);
         }
         .slider-item img {
             width: 100%;
             height: 150px;
             object-fit: cover;
+            transition: opacity 0.3s;
+        }
+        .slider-item:hover img {
+            opacity: 0.9;
         }
 
         /* Bottom Navigation */
@@ -229,6 +246,10 @@
         .footer-contact a {
             text-decoration: none;
             color: #333;
+            transition: color 0.3s;
+        }
+        .footer-contact a:hover {
+            color: #7a29e6;
         }
         .copyright-footer {
             background-color: #7a29e6;
@@ -244,6 +265,7 @@
         /* Scrollbar Styling */
         ::-webkit-scrollbar {
             height: 6px;
+            width: 6px;
         }
         ::-webkit-scrollbar-thumb {
             background-color: #ddd;
@@ -252,19 +274,33 @@
         ::-webkit-scrollbar-thumb:hover {
             background-color: #7a29e6;
         }
+
+        @media screen and (min-width: 768px) {
+            .main-footer {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+            .bottom-nav {
+                display: none;
+            }
+            body {
+                padding-bottom: 0;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="menu-btn">☰</div>
-        <img src="shop.jpg" alt="TaufiqShop Logo" class="logo">
+        <img src="./shop.jpg" alt="TaufiqShop Logo" class="logo">
         <div class="search-btn">🔍</div>
     </header>
 
     <!-- Banner -->
     <div class="banner">
-        <img src="banner.jpg" alt="Top Up All Games">
+        <img src="./banner.jpg" alt="Top Up All Games - TaufiqShop">
     </div>
 
     <!-- Trending Section -->
@@ -275,34 +311,38 @@
         </div>
         <p class="trending-desc">Berikut adalah beberapa produk yang paling populer saat ini.</p>
         <div class="game-list">
-            <div class="game-item">
-                <img src="ml-icon.jpg" alt="Mobile Legends">
+            <!-- Mobile Legends ke ml.html -->
+            <a href="./ml.html" class="game-item">
+                <img src="./ml-icon.jpg" alt="Mobile Legends">
                 <div class="game-info">
                     <h4>Mobile Legends</h4>
                     <p>Moonton</p>
                 </div>
-            </div>
-            <div class="game-item active">
-                <img src="ff-icon.jpg" alt="Free Fire">
+            </a>
+            <!-- Free Fire ke ff.html -->
+            <a href="./ff.html" class="game-item active">
+                <img src="./ff-icon.jpg" alt="Free Fire">
                 <div class="game-info">
                     <h4>Free Fire</h4>
                     <p>Garena</p>
                 </div>
-            </div>
-            <div class="game-item">
-                <img src="roblox-icon.jpg" alt="Roblox">
+            </a>
+            <!-- Roblox ke roblox.html -->
+            <a href="./roblox.html" class="game-item">
+                <img src="./roblox-icon.jpg" alt="Roblox">
                 <div class="game-info">
                     <h4>Roblox</h4>
                     <p>-</p>
                 </div>
-            </div>
-            <div class="game-item">
-                <img src="genshin-icon.jpg" alt="Genshin Impact">
+            </a>
+            <!-- Genshin Impact ke genshin.html -->
+            <a href="./genshin.html" class="game-item">
+                <img src="./genshin-icon.jpg" alt="Genshin Impact">
                 <div class="game-info">
                     <h4>Genshin Impact</h4>
                     <p>miHoYo</p>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 
@@ -318,20 +358,25 @@
     <!-- Game Slider -->
     <div class="game-slider">
         <div class="slider-wrapper">
+            <!-- Mobile Legends ke ml.html -->
+            <a href="./ml.html" class="slider-item">
+                <img src="./ml.jpg" alt="Mobile Legends">
+            </a>
+            <!-- 8 Ball Pool ke 8ball.html -->
+            <a href="./8ball.html" class="slider-item">
+                <img src="./8ball.jpg" alt="8 Ball Pool">
+            </a>
+            <!-- Ace Racer (bisa tambah file jika perlu) -->
             <div class="slider-item">
-                <img src="ml-banner.jpg" alt="Mobile Legends">
+                <img src="./aceracer-banner.jpg" alt="Ace Racer">
             </div>
+            <!-- PUBG Mobile (bisa tambah file jika perlu) -->
             <div class="slider-item">
-                <img src="8ball-banner.jpg" alt="8 Ball Pool">
+                <img src="./pubg-banner.jpg" alt="PUBG Mobile">
             </div>
+            <!-- Valorant (bisa tambah file jika perlu) -->
             <div class="slider-item">
-                <img src="aceracer-banner.jpg" alt="Ace Racer">
-            </div>
-            <div class="slider-item">
-                <img src="pubg-banner.jpg" alt="PUBG Mobile">
-            </div>
-            <div class="slider-item">
-                <img src="valorant-banner.jpg" alt="Valorant">
+                <img src="./valorant-banner.jpg" alt="Valorant">
             </div>
         </div>
     </div>
@@ -357,8 +402,8 @@
         <div class="footer-section">
             <h3 class="footer-title">HUBUNGI KAMI</h3>
             <div class="footer-content footer-contact">
-                <p>• WA: <a href="https://wa.me/62812XXXXXX">0812-XXXX-XXXX</a></p>
-                <p>• Email: taufiqshop@example.com</p>
+                <p>• WA: <a href="https://wa.me/62812XXXXXX" target="_blank" rel="noopener noreferrer">0812-XXXX-XXXX</a></p>
+                <p>• Email: <a href="mailto:taufiqshop@example.com">taufiqshop@example.com</a></p>
                 <p>• Alamat: Jl. Contoh No.123, Tangerang, Banten</p>
                 <p>• Jam Operasional: 08.00 - 23.00 WIB</p>
             </div>
@@ -372,19 +417,19 @@
 
     <!-- Bottom Navigation -->
     <div class="bottom-nav">
-        <a href="#" class="nav-item active">
+        <a href="./index.html" class="nav-item active">
             <span class="nav-icon">🏠</span>
             <span>Home</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="./informasi.html" class="nav-item">
             <span class="nav-icon">ℹ️</span>
             <span>Informasi</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="./hubungi.html" class="nav-item">
             <span class="nav-icon">📞</span>
             <span>Hubungi</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="./login.html" class="nav-item">
             <span class="nav-icon">🔐</span>
             <span>Login</span>
         </a>
