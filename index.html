@@ -47,12 +47,6 @@
         .header-right button:hover {
             background-color: #e0e0e0;
         }
-        .header-right img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-left: 15px;
-        }
 
         /* Banner */
         .banner {
@@ -61,13 +55,6 @@
             background-image: url('banner.jpg');
             background-size: cover;
             background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 2em;
-            font-weight: bold;
-            text-shadow: 2px 2px 5px black;
         }
 
         /* Text di atas game */
@@ -79,18 +66,29 @@
             margin-bottom: 10px;
         }
 
-        /* Game list */
-        .game-list {
+        /* Game horizontal */
+        .game-list-horizontal {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 0 10px 80px 10px; /* bottom space untuk nav */
+            overflow-x: auto;
+            padding: 10px;
+            gap: 10px;
+            margin-bottom: 80px; /* space buat bottom nav */
+        }
+        .game-list-horizontal::-webkit-scrollbar {
+            height: 6px;
+        }
+        .game-list-horizontal::-webkit-scrollbar-thumb {
+            background-color: #1e90ff;
+            border-radius: 3px;
+        }
+        .game-list-horizontal::-webkit-scrollbar-track {
+            background-color: #f0f2f5;
         }
         .game-card {
+            flex: 0 0 auto;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin: 10px;
             width: 160px;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
@@ -107,6 +105,7 @@
         .game-card p {
             margin: 10px 0;
             font-weight: bold;
+            text-align: center;
         }
 
         /* Bottom nav */
@@ -181,7 +180,7 @@
         /* Responsive */
         @media (max-width: 600px) {
             .game-card {
-                width: 45%;
+                width: 120px;
             }
             .footer-top {
                 flex-direction: column;
@@ -191,13 +190,12 @@
                 width: 25px;
                 height: 25px;
             }
-            .banner {
-                font-size: 1.5em;
-                height: 180px;
-            }
             .bottom-nav button{
                 padding: 8px 10px;
                 font-size: 0.9em;
+            }
+            .banner {
+                height: 180px;
             }
         }
     </style>
@@ -206,7 +204,7 @@
     <!-- Header -->
     <header>
         <div class="header-left">
-            <img src="store.jpg" alt="TaufiqShop Store">
+            <img src="shop.jpg" alt="TaufiqShop Store">
         </div>
         <div class="header-right">
             <button onclick="location.href='login.html'">Login</button>
@@ -215,18 +213,15 @@
     </header>
 
     <!-- Banner -->
-    <div class="banner">
-        
-    </div>
+    <div class="banner"></div>
 
     <!-- Text di atas game -->
     <div class="game-title-text">
         Game Apa yang mau di topup nih
     </div>
 
-    <!-- Game List -->
-    <div class="game-list">
-        <!-- Row 1 -->
+    <!-- Game Horizontal -->
+    <div class="game-list-horizontal">
         <div class="game-card" onclick="location.href='ff.html'">
             <img src="ff.jpg" alt="Free Fire">
             <p>Free Fire</p>
@@ -239,8 +234,6 @@
             <img src="roblox.jpg" alt="Roblox">
             <p>Roblox</p>
         </div>
-
-        <!-- Row 2 -->
         <div class="game-card" onclick="location.href='genshin.html'">
             <img src="genshin.jpg" alt="Genshin Impact">
             <p>Genshin Impact</p>
@@ -253,8 +246,6 @@
             <img src="stumble.jpg" alt="Stumble Guys">
             <p>Stumble Guys</p>
         </div>
-
-        <!-- Row 3 -->
         <div class="game-card" onclick="location.href='bloodstrike.html'">
             <img src="bloodstrike.jpg" alt="Blood Strike">
             <p>Blood Strike</p>
@@ -272,12 +263,12 @@
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-top">
-            <img src="store.jpg" alt="TaufiqShop Store" class="footer-store">
+            <img src="shop.jpg" alt="TaufiqShop Store" class="footer-store">
             <p class="footer-text">TaufiqShop TopUp Terpercaya</p>
             <div class="footer-icons">
-                <img src="whatsapp.jpg" alt="WhatsApp">
-                <img src="qris.jpg" alt="QRIS">
-                <img src="ewallet.jpg" alt="E-Wallet">
+                <img src="whatsapp.png" alt="WhatsApp">
+                <img src="qris.png" alt="QRIS">
+                <img src="ewallet.png" alt="E-Wallet">
             </div>
         </div>
         <div class="footer-bottom">
