@@ -10,9 +10,11 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f2f5;
+            margin: 0 auto;
+            max-width: 1200px; /* web lebih lebar */
+            background-color: #000; /* hitam */
+            color: #fff;
+            padding: 0 20px;
         }
 
         /* Header */
@@ -20,9 +22,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
-            background-color: #1e90ff;
-            color: white;
+            padding: 10px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -35,7 +35,7 @@
             align-items: center;
         }
         .header-right button {
-            background-color: white;
+            background-color: #fff;
             color: #1e90ff;
             border: none;
             padding: 8px 15px;
@@ -47,6 +47,12 @@
         .header-right button:hover {
             background-color: #e0e0e0;
         }
+        .header-right img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%; /* bulat */
+            margin-left: 15px;
+        }
 
         /* Banner */
         .banner {
@@ -55,47 +61,36 @@
             background-image: url('banner.jpg');
             background-size: cover;
             background-position: center;
+            border-radius: 10px;
         }
 
         /* Text di atas game */
         .game-title-text {
             text-align: center;
             font-size: 14px;
-            color: #333;
+            color: #ccc;
             margin-top: 20px;
             margin-bottom: 10px;
         }
 
-        /* Game horizontal */
-        .game-list-horizontal {
-            display: flex;
-            overflow-x: auto;
-            padding: 10px;
-            gap: 10px;
-            margin-bottom: 80px; /* space buat bottom nav */
-        }
-        .game-list-horizontal::-webkit-scrollbar {
-            height: 6px;
-        }
-        .game-list-horizontal::-webkit-scrollbar-thumb {
-            background-color: #1e90ff;
-            border-radius: 3px;
-        }
-        .game-list-horizontal::-webkit-scrollbar-track {
-            background-color: #f0f2f5;
+        /* Game grid */
+        .game-list-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* max 3 kolom */
+            gap: 15px;
+            margin-bottom: 80px; /* space bottom nav */
         }
         .game-card {
-            flex: 0 0 auto;
-            background-color: white;
+            background-color: #fff; /* tombol game putih */
+            color: #000; /* teks hitam */
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            width: 160px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .game-card:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.3);
         }
         .game-card img {
             width: 100%;
@@ -178,24 +173,21 @@
         }
 
         /* Responsive */
+        @media (max-width: 900px) {
+            .game-list-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 kolom tablet */
+            }
+        }
         @media (max-width: 600px) {
-            .game-card {
-                width: 120px;
-            }
-            .footer-top {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .footer-icons img {
-                width: 25px;
-                height: 25px;
-            }
-            .bottom-nav button{
-                padding: 8px 10px;
-                font-size: 0.9em;
+            .game-list-grid {
+                grid-template-columns: 1fr; /* 1 kolom mobile */
             }
             .banner {
                 height: 180px;
+            }
+            .header-right img {
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
@@ -209,6 +201,7 @@
         <div class="header-right">
             <button onclick="location.href='login.html'">Login</button>
             <button onclick="location.href='register.html'">Register</button>
+            <img src="shop.jpg" alt="TaufiqShop Store">
         </div>
     </header>
 
@@ -220,8 +213,8 @@
         Game Apa yang mau di topup nih
     </div>
 
-    <!-- Game Horizontal -->
-    <div class="game-list-horizontal">
+    <!-- Game Grid -->
+    <div class="game-list-grid">
         <div class="game-card" onclick="location.href='ff.html'">
             <img src="ff.jpg" alt="Free Fire">
             <p>Free Fire</p>
