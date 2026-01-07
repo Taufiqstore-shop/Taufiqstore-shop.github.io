@@ -1,12 +1,49 @@
-<script type="module">
-import { auth } from './firebase.js';
-import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Firebase + Cloudflare CAPTCHA</title>
+</head>
+<body>
+  <h2>Register</h2>
+  <form id="registerForm">
+    <input type="email" id="regEmail" placeholder="Email" required>
+    <input type="password" id="regPass" placeholder="Password" required>
+    
+    <!-- Cloudflare Turnstile -->
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAACLA6a9LLHqqXtVF"></div>
+    
+    <button type="submit">Register</button>
+  </form>
 
-document.getElementById("regBtn").onclick = () => {
-  const email = document.getElementById("regEmail").value;
-  const pass = document.getElementById("regPass").value;
-  createUserWithEmailAndPassword(auth, email, pass)
-    .then(res => alert("Register berhasil: " + res.user.email))
-    .catch(err => alert("Gagal register: " + err.message));
-};
-</script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script type="module">
+    import { auth } from './firebase.js';
+    import { createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+
+    const form = document.getElementById("registerForm");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Cek Turnstile token
+      const token = document.querySelector('.cf-turnstile iframe')?.contentWindow?.turnstileToken || null;
+      if(!token) {
+        alert("Harap centang CAPTCHA!");
+        return;
+      }
+
+      const email = document.getElementById("regEmail").value;
+      const pass = document.getElementById("regPass").value;
+
+      createUserWithEmailAndPassword(auth, email, pass)
+        .then(res => {
+          sendEmailVerification(res.user)
+            .then(() => alert("Register berhasil! Email verifikasi dikirim."))
+            .catch(err => alert(err.message));
+        })
+        .catch(err => alert("Gagal register: " + err.message));
+    });
+  </script>
+</body>
+</html>
