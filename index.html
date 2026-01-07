@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaufiqShop TopUp</title>
-    <meta name="description" content="Top-up game mudah dan cepat: Free Fire, Mobile Legends, Roblox, Genshin Impact, 8Ball Pool.">
-    <meta name="keywords" content="topup, free fire, mobile legends, roblox, genshin impact, 8ball pool">
     <link rel="icon" href="favicon.jpg" type="image/jpeg">
+    <meta name="description" content="Top-up game mudah dan cepat: Free Fire, Mobile Legends, Roblox, Genshin Impact, 8Ball Pool, Stumble Guys, Blood Strike.">
+    <meta name="keywords" content="topup, free fire, mobile legends, roblox, genshin impact, 8ball pool, stumble guys, blood strike">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,7 +27,14 @@
             top: 0;
             z-index: 1000;
         }
-        .header-left button {
+        .header-left img {
+            width: 120px;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+        .header-right button {
             background-color: white;
             color: #1e90ff;
             border: none;
@@ -35,15 +42,16 @@
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
-            margin-right: 10px;
+            margin-left: 10px;
         }
-        .header-left button:hover {
+        .header-right button:hover {
             background-color: #e0e0e0;
         }
         .header-right img {
             width: 40px;
             height: 40px;
             border-radius: 50%;
+            margin-left: 15px;
         }
 
         /* Banner */
@@ -62,19 +70,28 @@
             text-shadow: 2px 2px 5px black;
         }
 
+        /* Text di atas game */
+        .game-title-text {
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
         /* Game list */
         .game-list {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            margin: 20px;
+            margin: 0 10px 80px 10px; /* bottom space untuk nav */
         }
         .game-card {
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             margin: 10px;
-            width: 180px;
+            width: 160px;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
         }
@@ -92,13 +109,95 @@
             font-weight: bold;
         }
 
+        /* Bottom nav */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1e90ff;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        .bottom-nav button {
+            background-color: white;
+            color: #1e90ff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .bottom-nav button:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #1e90ff;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+        }
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .footer-store {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .footer-text {
+            font-weight: bold;
+            margin: 0;
+        }
+        .footer-icons img {
+            width: 30px;
+            height: 30px;
+            margin: 0 5px;
+        }
+        .footer-bottom p {
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+        .footer-bottom a {
+            color: white;
+            text-decoration: underline;
+            margin: 0 5px;
+        }
+        .footer-bottom a:hover {
+            color: #ffd700;
+        }
+
+        /* Responsive */
         @media (max-width: 600px) {
             .game-card {
                 width: 45%;
             }
+            .footer-top {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .footer-icons img {
+                width: 25px;
+                height: 25px;
+            }
             .banner {
                 font-size: 1.5em;
                 height: 180px;
+            }
+            .bottom-nav button{
+                padding: 8px 10px;
+                font-size: 0.9em;
             }
         }
     </style>
@@ -107,11 +206,11 @@
     <!-- Header -->
     <header>
         <div class="header-left">
-            <button onclick="location.href='login.html'">Login</button>
-            <button onclick="location.href='register.html'">Register</button>
+            <img src="store.jpg" alt="TaufiqShop Store">
         </div>
         <div class="header-right">
-            <img src="store.jpg" alt="TaufiqShop Store">
+            <button onclick="location.href='login.html'">Login</button>
+            <button onclick="location.href='register.html'">Register</button>
         </div>
     </header>
 
@@ -120,8 +219,14 @@
         TaufiqShop Top-Up Game Terpercaya
     </div>
 
+    <!-- Text di atas game -->
+    <div class="game-title-text">
+        Game Apa yang mau di topup nih
+    </div>
+
     <!-- Game List -->
     <div class="game-list">
+        <!-- Row 1 -->
         <div class="game-card" onclick="location.href='ff.html'">
             <img src="ff.jpg" alt="Free Fire">
             <p>Free Fire</p>
@@ -134,6 +239,8 @@
             <img src="roblox.jpg" alt="Roblox">
             <p>Roblox</p>
         </div>
+
+        <!-- Row 2 -->
         <div class="game-card" onclick="location.href='genshin.html'">
             <img src="genshin.jpg" alt="Genshin Impact">
             <p>Genshin Impact</p>
@@ -142,6 +249,44 @@
             <img src="8ball.jpg" alt="8Ball Pool">
             <p>8Ball Pool</p>
         </div>
+        <div class="game-card" onclick="location.href='stumble.html'">
+            <img src="stumble.jpg" alt="Stumble Guys">
+            <p>Stumble Guys</p>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="game-card" onclick="location.href='bloodstrike.html'">
+            <img src="bloodstrike.jpg" alt="Blood Strike">
+            <p>Blood Strike</p>
+        </div>
     </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <button onclick="location.href='index.html'">Home</button>
+        <button onclick="location.href='content.html'">Content</button>
+        <button onclick="location.href='informasikan.html'">Informasikan</button>
+        <button onclick="location.href='login.html'">Login</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <img src="store.jpg" alt="TaufiqShop Store" class="footer-store">
+            <p class="footer-text">TaufiqShop TopUp Terpercaya</p>
+            <div class="footer-icons">
+                <img src="whatsapp.jpg" alt="WhatsApp">
+                <img src="qris.jpg" alt="QRIS">
+                <img src="ewallet.jpg" alt="E-Wallet">
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>©TaufiqShop Hak Cipta Di Lindungi</p>
+            <p>
+                <a href="privacy.html">Kebijakan Privasi</a> | 
+                <a href="terms.html">Syarat & Ketentuan</a>
+            </p>
+        </div>
+    </footer>
 </body>
-  </html>
+    </html>
