@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #0b0b0b;
+  color: #fff;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+}
+
+.top-bar a {
+  color: white;
+  text-decoration: none;
+}
+
+.shop-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.search-box {
+  padding: 10px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+}
+
+.banner img {
+  width: 100%;
+  border-radius: 12px;
+  margin: 10px 0;
+}
+
+.section-title {
+  padding: 0 15px;
+}
+
+.section-sub {
+  padding: 0 15px;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 15px;
+}
+
+.game-card {
+  background: white;
+  color: black;
+  border-radius: 12px;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.game-card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+}
+
+.game-card span {
+  display: block;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+}
+
+.footer-logo {
+  width: 50px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  }
