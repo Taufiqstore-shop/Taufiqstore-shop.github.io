@@ -1,107 +1,108 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- SEO -->
-    <title>Taufiq Shop - Tempat Top Up Game Termurah Bebas Tempur</title>
-    <meta name="description" content="Taufiq Shop adalah tempat top up game murah dan terpercaya. Top up Free Fire, Mobile Legends, Roblox, Genshin Impact cepat & aman.">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="./favicon.jpg">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaufiqShop - Topup Game & Pulsa</title>
+  <link rel="icon" type="image/jpeg" href="./favicon.jpg">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-  <!-- TOP BAR -->
-  <div class="top-bar">
-    <a href="login.html">Login / Register</a>
-    <img src="shop.jpg" class="shop-logo" alt="Shop">
-  </div>
+  <!-- Header -->
+  <header>
+    <div class="menu-btn">☰</div>
+    <img src="./shop.jpg" alt="TaufiqShop Logo" class="logo">
+    <div class="search-btn">🔍</div>
+  </header>
 
-  <!-- SEARCH -->
-  <div class="search-box">
-    <input type="text" placeholder="Cari game favorit kamu...">
-  </div>
-
-  <!-- BANNER -->
+  <!-- Banner -->
   <div class="banner">
-    <img src="banner.jpg" alt="TaufiqShop Banner">
+    <img src="./banner.jpg" alt="Top Up All Games - TaufiqShop">
   </div>
 
-  <!-- TITLE -->
-  <h3 class="section-title">Game apa yang mau di topup nih?</h3>
-  <p class="section-sub">Pilih game favorit kamu di bawah ini</p>
+  <!-- Trending Section -->
+  <div class="trending-section">
+    <div class="trending-title">
+      <span class="fire-icon">🔥</span>
+      Game Apa yang mau di topup nih
+    </div>
+    <p class="trending-desc">Pilih game favoritmu dan langsung ke halaman topup!</p>
 
-  <!-- GAME GRID (SAMPING-SAMPING) -->
-  <div class="game-grid">
+    <!-- Game List Horizontal -->
+    <div class="game-list">
+      <!-- Free Fire -->
+      <div class="game-item" onclick="location.href='./order/ff.html'">
+        <img src="./ff.jpg" alt="Free Fire">
+        <div class="game-info">
+          <h4>Free Fire</h4>
+          <p>Garena</p>
+        </div>
+      </div>
 
-  <a href="order/ff.html" class="game-card">
-    <img src="ff.jpg" alt="Free Fire">
-    <span>Free Fire</span>
-  </a>
+      <!-- Mobile Legends -->
+      <div class="game-item" onclick="location.href='./order/ml.html'">
+        <img src="./ml.jpg" alt="Mobile Legends">
+        <div class="game-info">
+          <h4>Mobile Legends</h4>
+          <p>Moonton</p>
+        </div>
+      </div>
 
-  <a href="order/ml.html" class="game-card">
-    <img src="ml.jpg" alt="Mobile Legends">
-    <span>Mobile Legends</span>
-  </a>
+      <!-- Roblox -->
+      <div class="game-item" onclick="location.href='./order/roblox.html'">
+        <img src="./roblox.jpg" alt="Roblox">
+        <div class="game-info">
+          <h4>Roblox</h4>
+          <p>-</p>
+        </div>
+      </div>
 
-  <a href="order/genshin.html" class="game-card">
-    <img src="genshin.jpg" alt="Genshin Impact">
-    <span>Genshin Impact</span>
-  </a>
+      <!-- Genshin Impact -->
+      <div class="game-item" onclick="location.href='./order/genshin.html'">
+        <img src="./genshin-icon.jpg" alt="Genshin Impact">
+        <div class="game-info">
+          <h4>Genshin Impact</h4>
+          <p>miHoYo</p>
+        </div>
+      </div>
 
-  <a href="order/roblox.html" class="game-card">
-    <img src="roblox.jpg" alt="Roblox">
-    <span>Roblox</span>
-  </a>
+      <!-- Valorant -->
+      <div class="game-item" onclick="location.href='./order/valorant.html'">
+        <img src="./valorant.jpg" alt="Valorant">
+        <div class="game-info">
+          <h4>Valorant</h4>
+          <p>Riot</p>
+        </div>
+      </div>
 
-  <a href="order/valorant.html" class="game-card">
-    <img src="valorant.jpg" alt="Valorant">
-    <span>Valorant</span>
-  </a>
+      <!-- Honor of Kings -->
+      <div class="game-item" onclick="location.href='./order/hok.html'">
+        <img src="./hok.jpg" alt="Honor of Kings">
+        <div class="game-info">
+          <h4>Honor of Kings</h4>
+          <p>Tencent</p>
+        </div>
+      </div>
 
-  <a href="order/hok.html" class="game-card">
-    <img src="hok.jpg" alt="Honor of Kings">
-    <span>Honor of Kings</span>
-  </a>
+      <!-- PUBG Mobile -->
+      <div class="game-item" onclick="location.href='./order/pubg.html'">
+        <img src="./pubg.jpg" alt="PUBG Mobile">
+        <div class="game-info">
+          <h4>PUBG Mobile</h4>
+          <p>Tencent</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <a href="order/pubg.html" class="game-card">
-    <img src="pubg.jpg" alt="PUBG Mobile">
-    <span>PUBG Mobile</span>
-  </a>
-
-</div>
-
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
-    <img src="shop.jpg" class="footer-logo">
-    <p><b>TaufiqShop</b> Topup Game Terpercaya</p>
-    <p>WhatsApp • QRIS • E-Wallet</p>
-    <p>Alamat: Jl. Jakarta Selatan, PT TaufiqShop Karangna</p>
-    <p>© TaufiqShop Hak Cipta Dilindungi</p>
-    <p>Kebijakan Privasi | Syarat & Ketentuan</p>
+    <img src="./shop.jpg" alt="TaufiqShop Logo" class="footer-logo">
+    <p>TaufiqShop Topup Terpercaya</p>
+    <p>Alamat: Jl. Jakarta Selatan PT Taufiqshop Karangna</p>
+    <p>©TaufiqShop Hak Cipta Dilindungi</p>
   </footer>
 
-  <!-- BOTTOM NAV -->
-  <div class="bottom-nav">
-    <a href="index.html" class="nav-item active">
-      <span class="nav-icon">🏠</span>
-      <span>Home</span>
-    </a>
-    <a href="informasi.html" class="nav-item">
-      <span class="nav-icon">ℹ️</span>
-      <span>Info</span>
-    </a>
-    <a href="login.html" class="nav-item">
-      <span class="nav-icon">🔐</span>
-      <span>Login</span>
-    </a>
-  </div>
-
 </body>
-          </html>
+              </html>
