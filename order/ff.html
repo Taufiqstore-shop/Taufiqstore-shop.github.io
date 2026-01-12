@@ -1,128 +1,48 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Order Free Fire - Taufiq Shop</title>
-
-<style>
-body{font-family:Arial;background:#f4f6fb;margin:0}
-.container{max-width:520px;margin:20px auto;background:#fff;padding:20px;border-radius:14px}
-h2{text-align:center}
-label{font-weight:bold;margin-top:12px;display:block}
-input{width:100%;padding:12px;border-radius:8px;border:1px solid #ccc;margin-top:6px}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  margin-top:10px;
-}
-.box{
-  border:2px solid #93c5fd;
-  padding:10px;
-  border-radius:10px;
-  cursor:pointer;
-  text-align:center;
-}
-.box.active{
-  background:#bfdbfe;
-  border-color:#2563eb;
-}
-.pay button{
-  width:100%;margin-top:10px;padding:12px;
-  border:none;border-radius:10px;
-  background:#3b82f6;color:white;font-weight:bold;cursor:pointer
-}
-.loading{
-  display:none;text-align:center;margin-top:15px;
-  color:#2563eb;font-weight:bold
-}
-footer{text-align:center;margin:25px 0;color:#777;font-size:13px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire - TaufiqShop</title>
+    <link rel="icon" type="image/jpeg" href="../favicon.jpg">
+    <link rel="stylesheet" href="../style.css">
 </head>
-
 <body>
-<div class="container">
-  <img src="../ff.jpg" style="width:100%;border-radius:12px;margin-bottom:10px">
+    <!-- Header -->
+    <header>
+        <a href="../index.html"><img src="../shop.jpg" alt="TaufiqShop Logo" class="shop-logo"></a>
+        <a href="../login.html">Login/Register</a>
+    </header>
 
-  <h2>Order Free Fire</h2>
+    <!-- Banner -->
+    <div class="banner">
+        <img src="../banner.jpg" alt="Top Up Free Fire - TaufiqShop">
+    </div>
 
-  <label>ID & Server</label>
-  <input id="id" placeholder="12345678(1234)">
+    <!-- Section Diamond -->
+    <div class="section-title">Pilih Nominal Diamond</div>
+    <div class="section-sub">Klik nominal untuk lanjut ke pembayaran</div>
+    <div class="game-grid">
+        <a class="game-card" href="#">5 Diamonds | Rp 1.000</a>
+        <a class="game-card" href="#">12 Diamonds | Rp 2.000</a>
+        <a class="game-card" href="#">30 Diamonds | Rp 8.000</a>
+        <a class="game-card" href="#">70 Diamonds | Rp 2.180</a>
+        <a class="game-card" href="#">3000 Diamonds | Rp 19.878</a>
+        <a class="game-card" href="#">140 Diamonds | Rp 50.860</a>
+        <a class="game-card" href="#">100 Diamonds | Rp 16.990</a>
+        <a class="game-card" href="#">200 Diamonds | Rp 28.642</a>
+        <a class="game-card" href="#">365.850 Diamonds | Rp 2.200</a>
+        <a class="game-card" href="#">205.870 Diamonds | Rp 1.080</a>
+        <a class="game-card" href="#">1000 Diamonds | Rp 140.962</a>
+    </div>
 
-  <label>Nickname</label>
-  <input id="nick" placeholder="Nama FF">
-
-  <label>Pilih Diamond / Paket</label>
-  <div class="grid" id="diamond">
-    <div class="box">5 Diamond<br>Rp 1.000</div>
-    <div class="box">12 Diamond<br>Rp 1.900</div>
-    <div class="box">20 Diamond<br>Rp 4.260</div>
-    <div class="box">55 Diamond<br>Rp 9.120</div>
-    <div class="box">70 Diamond<br>Rp 10.000</div>
-    <div class="box">80 Diamond<br>Rp 12.650</div>
-    <div class="box">100 Diamond<br>Rp 15.985</div>
-    <div class="box">120 Diamond<br>Rp 17.987</div>
-    <div class="box">130 Diamond<br>Rp 19.987</div>
-    <div class="box">145 Diamond<br>Rp 21.760</div>
-    <div class="box">150 Diamond<br>Rp 24.976</div>
-    <div class="box">200 Diamond<br>Rp 28.543</div>
-    <div class="box">355 Diamond<br>Rp 45.000</div>
-    <div class="box">500 Diamond<br>Rp 65.000</div>
-    <div class="box">720 Diamond<br>Rp 90.000</div>
-    <div class="box">1000 Diamond<br>Rp 125.000</div>
-    <div class="box">1080 Diamond<br>Rp 366.986</div>
-    <div class="box">2200 Diamond<br>Rp 370.866</div>
-    <div class="box">3640 Diamond<br>Rp 5.448.247</div>
-    <div class="box">Membership Mingguan<br>Rp 30.000</div>
-    <div class="box">Membership Bulanan<br>Rp 60.000</div>
-  </div>
-
-  <label>Metode Pembayaran</label>
-  <div class="pay">
-    <button onclick="bayar('QRIS')">QRIS</button>
-    <button onclick="bayar('DANA')">DANA</button>
-    <button onclick="bayar('OVO')">OVO</button>
-    <button onclick="bayar('GOPAY')">GOPAY</button>
-  </div>
-
-  <div class="loading" id="loading">
-    Proses dulu ya kak 😁<br>
-    admin sedang mengirim no dana atau QRIS....
-  </div>
-</div>
-
-<footer>© copyright by Taufiq Shop 2026</footer>
-
-<script>
-let pilihDiamond="";
-
-document.querySelectorAll(".box").forEach(b=>{
-  b.onclick=()=>{
-    document.querySelectorAll(".box").forEach(x=>x.classList.remove("active"));
-    b.classList.add("active");
-    pilihDiamond=b.innerText.replace("\n"," - ");
-  }
-});
-
-function bayar(metode){
-  if(!pilihDiamond){alert("Pilih diamond dulu");return}
-  let id=document.getElementById("id").value;
-  let nick=document.getElementById("nick").value;
-
-  document.getElementById("loading").style.display="block";
-
-  let pesan=`Halo min saya mau topup Free Fire%0A
-ID: ${id}%0A
-Nickname: ${nick}%0A
-Paket: ${pilihDiamond}%0A
-Metode: ${metode}`;
-
-  setTimeout(()=>{
-    window.location.href="https://wa.me/62895327513269?text="+pesan;
-  },1800);
-}
-</script>
+    <!-- Footer -->
+    <footer>
+        <img src="../shop.jpg" alt="TaufiqShop Logo" class="footer-logo">
+        <div>TaufiqShop Topup Terpercaya</div>
+        <div>Alamat: Jl. Jakarta Selatan PT Taufiqshop Karangna</div>
+        <div>WA: +62 895327513269 | Email: taufiqshopcs@gmail.com</div>
+        <div>©TaufiqShop Hak Cipta Dilindungi</div>
+    </footer>
 </body>
-      </html>
+          </html>
