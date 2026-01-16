@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Pilih Pembayaran - TaufiqShop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+  padding: 20px;
+}
+.box {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: auto;
+}
+.method {
+  background: #38bdf8;
+  color: black;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+}
+.method:hover {
+  background: #0ea5e9;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Pilih Metode Pembayaran</h2>
+
+  <div class="method" onclick="goPay('dana')">DANA</div>
+  <div class="method" onclick="goPay('qris')">QRIS</div>
+  <div class="method" onclick="goPay('gopay')">GO-PAY</div>
+  <div class="method" onclick="goPay('shopee')">ShopeePay</div>
+</div>
+
+<script>
+function goPay(method){
+  window.location.href = "../payment/payment.html?pay=" + method;
+}
+</script>
+
+</body>
+    </html>
