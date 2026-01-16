@@ -1,98 +1,120 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TaufiqShop - Topup Game & Pulsa</title>
-  <link rel="icon" type="image/jpeg" href="./favicon.jpg">
-  <link rel="stylesheet" href="./style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taufiq Shop - Top Up Game Termurah</title>
+<meta name="description" content="Taufiq Shop top up game terpercaya Free Fire, Mobile Legends, Roblox, Genshin.">
+<link rel="icon" href="shop.jpg" type="image/jpg">
+
+<style>
+body{margin:0;font-family:Arial;background:#f8fafc}
+header{
+  background:linear-gradient(90deg,#dc2626,#ffffff);
+  padding:15px 20px;
+  display:flex;justify-content:space-between;align-items:center
+}
+header .left{display:flex;gap:10px;align-items:center}
+header img{width:45px;border-radius:8px}
+header a{text-decoration:none;margin-left:10px;color:black;font-weight:bold}
+
+.banner{margin:20px}
+.banner img{width:100%;border-radius:15px}
+
+.section{padding:20px}
+.section h2{margin-bottom:12px}
+
+.slider{
+  display:flex;gap:15px;overflow-x:auto;padding-bottom:10px
+}
+.slider::-webkit-scrollbar{display:none}
+.slide{
+  min-width:150px;background:#fff;border-radius:12px;
+  padding:10px;text-align:center;cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,.1)
+}
+.slide img{
+  width:100%;height:120px;object-fit:cover;border-radius:10px
+}
+.slide p{margin-top:8px;font-weight:bold}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:15px
+}
+.game{
+  background:#fff;border-radius:12px;padding:10px;
+  text-align:center;cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,.1)
+}
+.game img{
+  width:100%;height:120px;object-fit:cover;border-radius:10px
+}
+.game p{margin-top:8px;font-weight:bold}
+</style>
 </head>
+
 <body>
-  <!-- Header -->
-  <header>
-    <div class="menu-btn">☰</div>
-    <img src="./shop.jpg" alt="TaufiqShop Logo" class="logo">
-    <div class="search-btn">🔍</div>
-  </header>
 
-  <!-- Banner -->
-  <div class="banner">
-    <img src="./banner.jpg" alt="Top Up All Games - TaufiqShop">
+<header>
+  <div class="left">
+    <img src="shop.jpg">
+    <h2>Taufiq Shop</h2>
   </div>
+  <div>
+    <a href="login.html">Login</a>
+    <a href="register.html">Register</a>
+  </div>
+</header>
 
-  <!-- Trending / Scrollable -->
-  <h3 class="section-title">Game Apa yang mau di topup nih?</h3>
-  <p class="section-sub">Geser ke samping untuk pilih game</p>
-  <div class="game-list scrollable">
-    <div class="game-item" onclick="location.href='./order/ff.html'">
-      <img src="./ff.jpg" alt="Free Fire">
-      <div class="game-info">
-        <h4>Free Fire</h4>
-        <p>Garena</p>
-      </div>
+<div class="banner">
+  <img src="banner.jpg">
+</div>
+
+<div class="section">
+  <h2>🔥 Game Populer</h2>
+  <div class="slider">
+    <div class="slide" onclick="location.href='order/ff.html'">
+      <img src="ff.jpg"><p>Free Fire</p>
     </div>
-    <div class="game-item" onclick="location.href='./order/ml.html'">
-      <img src="./ml.jpg" alt="Mobile Legends">
-      <div class="game-info">
-        <h4>Mobile Legends</h4>
-        <p>Moonton</p>
-      </div>
+    <div class="slide" onclick="location.href='order/ml.html'">
+      <img src="ml.jpg"><p>Mobile Legends</p>
     </div>
-    <div class="game-item" onclick="location.href='./order/roblox.html'">
-      <img src="./roblox.jpg" alt="Roblox">
-      <div class="game-info">
-        <h4>Roblox</h4>
-        <p>-</p>
-      </div>
+    <div class="slide" onclick="location.href='order/roblox.html'">
+      <img src="roblox.jpg"><p>Roblox</p>
     </div>
-    <div class="game-item" onclick="location.href='./order/genshin.html'">
-      <img src="./genshin-icon.jpg" alt="Genshin Impact">
-      <div class="game-info">
-        <h4>Genshin Impact</h4>
-        <p>miHoYo</p>
-      </div>
-    </div>
-    <div class="game-item" onclick="location.href='./order/valorant.html'">
-      <img src="./valorant.jpg" alt="Valorant">
-      <div class="game-info">
-        <h4>Valorant</h4>
-        <p>Riot Games</p>
-      </div>
+    <div class="slide" onclick="location.href='order/genshin.html'">
+      <img src="genshin.jpg"><p>Genshin Impact</p>
     </div>
   </div>
+</div>
 
-  <!-- Fixed Grid Game -->
-  <h3 class="section-title">Game Populer</h3>
-  <p class="section-sub">Langsung pilih tanpa geser</p>
-  <div class="game-list fixed-grid">
-    <div class="game-item" onclick="location.href='./order/pubg.html'">
-      <img src="./pubg.jpg" alt="PUBG Mobile">
-      <div class="game-info">
-        <h4>PUBG Mobile</h4>
-        <p>Tencent</p>
-      </div>
+<div class="section">
+  <h2>🎮 Game Lainnya</h2>
+  <div class="grid">
+    <div class="game" onclick="location.href='order/8ball.html'">
+      <img src="8ball.jpg"><p>8 Ball Pool</p>
     </div>
-    <div class="game-item" onclick="location.href='./order/hok.html'">
-      <img src="./hok.jpg" alt="Honor of Kings">
-      <div class="game-info">
-        <h4>Honor of Kings</h4>
-        <p>Tencent</p>
-      </div>
-          <div class="game-item" onclick="location.href='./order/ff.html'">
-      <img src="./pubg.jpg" alt="freefire">
-      <div class="game-info">
-        <h4>PUBG Mobile</h4>
-        <p>Tencent</p>
+    <div class="game" onclick="location.href='order/stumble.html'">
+      <img src="stumble.jpg"><p>Stumble Guys</p>
     </div>
   </div>
+</div>
 
-  <!-- Footer -->
-  <footer>
-    <img src="./shop.jpg" alt="Logo" class="footer-logo">
-    <p>TaufiqShop Topup Terpercaya</p>
-    <p>Alamat: Jl. Jakarta Selatan PT TaufiqShop Karangna</p>
-    <p>©TaufiqShop Hak Cipta Dilindungi</p>
-  </footer>
+<!-- ===== FOOTER BARU ===== -->
+<footer style="background:#111;color:#fff;padding:30px 20px;">
+  <div style="max-width:900px;margin:auto;text-align:center;">
+    <img src="shop.jpg" style="width:70px;border-radius:12px;margin-bottom:10px;">
+    <h3 style="margin:10px 0 5px 0;">TaufiqShop Topup Terpercaya</h3>
+    <p style="margin:5px 0;font-size:14px;">
+      Alamat: Jl. Jakarta Selatan PT TaufiqShop Karangna
+    </p>
+    <p style="margin-top:15px;font-size:13px;opacity:.8;">
+      © TaufiqShop Hak Cipta Dilindungi
+    </p>
+  </div>
+</footer>
+
 </body>
-      </html>
+                                                </html>
