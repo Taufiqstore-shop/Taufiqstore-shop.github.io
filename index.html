@@ -1,120 +1,71 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Taufiq Shop - Top Up Game Termurah</title>
-<meta name="description" content="Taufiq Shop top up game terpercaya Free Fire, Mobile Legends, Roblox, Genshin.">
-<link rel="icon" href="shop.jpg" type="image/jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verifikasi Dulu Bro</title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0b0b;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
 
-<style>
-body{margin:0;font-family:Arial;background:#f8fafc}
-header{
-  background:linear-gradient(90deg,#dc2626,#ffffff);
-  padding:15px 20px;
-  display:flex;justify-content:space-between;align-items:center
-}
-header .left{display:flex;gap:10px;align-items:center}
-header img{width:45px;border-radius:8px}
-header a{text-decoration:none;margin-left:10px;color:black;font-weight:bold}
+    .box {
+      width: 95%;
+      max-width: 420px; /* biar gak lebar di desktop */
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
 
-.banner{margin:20px}
-.banner img{width:100%;border-radius:15px}
+    h2 {
+      font-size: 18px;
+      margin: 0 0 15px;
+    }
 
-.section{padding:20px}
-.section h2{margin-bottom:12px}
-
-.slider{
-  display:flex;gap:15px;overflow-x:auto;padding-bottom:10px
-}
-.slider::-webkit-scrollbar{display:none}
-.slide{
-  min-width:150px;background:#fff;border-radius:12px;
-  padding:10px;text-align:center;cursor:pointer;
-  box-shadow:0 4px 10px rgba(0,0,0,.1)
-}
-.slide img{
-  width:100%;height:120px;object-fit:cover;border-radius:10px
-}
-.slide p{margin-top:8px;font-weight:bold}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:15px
-}
-.game{
-  background:#fff;border-radius:12px;padding:10px;
-  text-align:center;cursor:pointer;
-  box-shadow:0 4px 10px rgba(0,0,0,.1)
-}
-.game img{
-  width:100%;height:120px;object-fit:cover;border-radius:10px
-}
-.game p{margin-top:8px;font-weight:bold}
-</style>
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #1a73e8;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
-
 <body>
+  <div class="box">
+    <h2>You need to verify first before accessing the page.
+This verification is safe for every website.</h2>
 
-<header>
-  <div class="left">
-    <img src="shop.jpg">
-    <h2>Taufiq Shop</h2>
+    <div class="g-recaptcha" data-sitekey="6Lf0aE0sAAAAAJsr1xnZCn-7JQUYrIt3BjQJnQL-"></div>
+
+    <button onclick="cekCaptcha()">Lanjut</button>
   </div>
-  <div>
-    <a href="login.html">Login</a>
-    <a href="register.html">Register</a>
-  </div>
-</header>
 
-<div class="banner">
-  <img src="banner.jpg">
-</div>
-
-<div class="section">
-  <h2>🔥 Game Populer</h2>
-  <div class="slider">
-    <div class="slide" onclick="location.href='order/ff.html'">
-      <img src="ff.jpg"><p>Free Fire</p>
-    </div>
-    <div class="slide" onclick="location.href='order/ml.html'">
-      <img src="ml.jpg"><p>Mobile Legends</p>
-    </div>
-    <div class="slide" onclick="location.href='order/roblox.html'">
-      <img src="roblox.jpg"><p>Roblox</p>
-    </div>
-    <div class="slide" onclick="location.href='order/genshin.html'">
-      <img src="genshin.jpg"><p>Genshin Impact</p>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <h2>🎮 Game Lainnya</h2>
-  <div class="grid">
-    <div class="game" onclick="location.href='order/8ball.html'">
-      <img src="8ball.jpg"><p>8 Ball Pool</p>
-    </div>
-    <div class="game" onclick="location.href='order/stumble.html'">
-      <img src="stumble.jpg"><p>Stumble Guys</p>
-    </div>
-  </div>
-</div>
-
-<!-- ===== FOOTER BARU ===== -->
-<footer style="background:#111;color:#fff;padding:30px 20px;">
-  <div style="max-width:900px;margin:auto;text-align:center;">
-    <img src="shop.jpg" style="width:70px;border-radius:12px;margin-bottom:10px;">
-    <h3 style="margin:10px 0 5px 0;">TaufiqShop Topup Terpercaya</h3>
-    <p style="margin:5px 0;font-size:14px;">
-      Alamat: Jl. Jakarta Selatan PT TaufiqShop Karangna
-    </p>
-    <p style="margin-top:15px;font-size:13px;opacity:.8;">
-      © TaufiqShop Hak Cipta Dilindungi
-    </p>
-  </div>
-</footer>
-
+  <script>
+    function cekCaptcha() {
+      var response = grecaptcha.getResponse();
+      if (response.length === 0) {
+        alert("Verifikasi dulu!");
+      } else {
+        window.location.href = "topup.html"; // ganti kalau halaman topup lu beda
+      }
+    }
+  </script>
 </body>
-                                                </html>
+</html>
