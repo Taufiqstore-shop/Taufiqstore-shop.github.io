@@ -1,51 +1,24 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verifikasi - Taufiq Shop</title>
+  <title>Verifikasi</title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
-<body style="font-family:Arial;text-align:center;margin-top:80px">
-
-  <h2>Verifikasi Anda</h2>
-  <p>Silakan verifikasi untuk masuk ke Taufiq Shop</p>
-
-  <form id="verify-form">
-    <div class="cf-turnstile"
-      data-sitekey="0x4AAAAAACKDx_k85U4mkOC4">
-    </div>
-    <br>
-    <button type="submit">Lanjutkan</button>
-  </form>
-
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<body>
+  <h2>You need to verify first before accessing the page.
+This verification is safe for every website. </h2>
+  <div class="g-recaptcha" data-sitekey="6Lf0aE0sAAAAAJsr1xnZCn-7JQUYrIt3BjQJnQL-"></div>
+  <button onclick="cekCaptcha()">Lanjut</button>
 
   <script>
-    document.getElementById("verify-form").addEventListener("submit", function(e){
-      e.preventDefault();
-      const token = document.querySelector(".cf-turnstile-response");
-      if(token && token.value){
-        window.location.href = "index.html"; // masuk ke web topup
+    function cekCaptcha() {
+      var response = grecaptcha.getResponse();
+      if (response.length === 0) {
+        alert("Verifikasi dulu!");
       } else {
-        alert("Silakan verifikasi dulu");
+        window.location.href = "index.html";
       }
-    });
+    }
   </script>
-
 </body>
 </html>
-<script>
-document.getElementById("verify-form").addEventListener("submit", function(e){
-  e.preventDefault(); // hentikan submit default
-  const token = document.querySelector(".cf-turnstile-response");
-  
-  if(token && token.value){
-    // Simpan status verifikasi di localStorage
-    localStorage.setItem("verified", "true"); 
-    // Redirect ke web utama
-    window.location.href = "index.html"; 
-  } else {
-    alert("Silakan verifikasi dulu!");
-  }
-});
-</script>
