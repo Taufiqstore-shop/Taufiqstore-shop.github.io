@@ -1,84 +1,88 @@
-/* HEADER */
-.top-header {
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #111;
+}
+
+.topbar {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  padding: 15px;
-  background: #000;
+  gap: 15px;
+  padding: 20px;
+  background: #fff;
 }
 
-.header-title {
-  font-size: 28px;
-  font-weight: bold;
-  color: red;
-}
-
-.header-logo {
-  position: absolute;
-  right: 20px;
+.logo {
   width: 50px;
+  height: 50px;
+  object-fit: cover;
   border-radius: 10px;
 }
 
-/* GAMES GRID */
-.games-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+.title {
+  color: #ff0000;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.content {
   padding: 20px;
 }
 
-.game-card {
+.section-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.game-grid {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: white;
-  background: rgba(0,0,0,0.4);
-  padding: 12px;
-  border-radius: 10px;
-  transition: transform 0.2s;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.game-slider {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.game-card {
+  width: 150px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  text-align: center;
+  background: #f9f9f9;
 }
 
 .game-card img {
   width: 100%;
-  height: 100px;
+  height: 120px;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 8px;
 }
 
-.game-card:hover {
-  transform: translateY(-3px);
+.game-card p {
+  margin: 10px 0;
+  font-weight: bold;
 }
 
-/* FOOTER */
 .footer {
   text-align: center;
   padding: 20px;
-  margin-top: 40px;
-  background: #111;
-  color: white;
+  background: #f2f2f2;
 }
 
-.footer-logo {
-  width: 120px;
-  border-radius: 10px;
-  margin-bottom: 10px;
+.footer-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 12px;
 }
 
-.footer-title {
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.footer-info {
+.footer-text {
+  margin-top: 10px;
   font-size: 14px;
-  margin-bottom: 10px;
 }
-
-.footer-bottom {
-  font-size: 13px;
-  opacity: 0.8;
-                        }
