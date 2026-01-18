@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Admin - Taufiq Shop</title>
+<style>
+body { font-family: Arial; background:#fff; margin:20px; }
+h1 { text-align:center; color:#8b5cf6; margin-bottom:30px; }
+.order-container { display:flex; justify-content:space-between; border:1px solid #ccc; padding:15px; margin-bottom:10px; border-radius:10px; }
+.order-info { flex:1; }
+.order-info p { margin:5px 0; }
+button { padding:8px 12px; margin:3px; border:none; color:white; cursor:pointer; border-radius:6px; }
+.gagal { background:#dc2626; }   /* merah */
+.sukses { background:#16a34a; }  /* hijau */
+.proses { background:#facc15; color:black; } /* kuning */
+.sistem-eror { background:#f97316; } /* oren */
+</style>
+</head>
+<body>
+
+<h1>Panel Admin</h1>
+<div id="ordersList"></div>
+
+<script>
+// Data order dummy (bisa ditambah manual dulu)
+let orders = JSON.parse(localStorage.getItem('orders') || '[]');
+
+function renderOrders(){
+    const container = document.getElementById('ordersList');
+    container.innerHTML = '';
+    orders.forEach((order,index)=>{
+        const div = document.createElement('div');
+        div.className = 'order-container';
+        div.innerHTML = `
+            <div class="order-info">
+                <p><strong>ID:</strong> ${order.id}</p>
+                <p><strong>Harga:</strong> ${order.price}</p>
+                <p><strong>Diamond:</strong> ${order.diamond}</p>
+                <p><strong>Status:</strong> <span id="status-${index}">${order.status}</span></p>
+            </div>
+            <div class="order-buttons">
+                <button class="gagal" onclick="setStatus(${index},'Gagal')">Gagal ☹</button>
+                <button class="sukses" onclick="setStatus(${index},'Sukses')">Sukses ✅</button>
+                <button class="proses" onclick="setStatus(${index},'Proses')">Proses ⏳</button>
+                <button class="sistem-eror" onclick="setStatus(${index},'Sistem Eror')">Sistem Eror ⚠</button>
+            </div>
+        `;
+        container.appendChild(div);
+    });
+}
+
+function setStatus(index,newStatus){
+    orders[index].status = newStatus;
+    document.getElementById(`status-${index}`).textContent = newStatus;
+    localStorage.setItem('orders', JSON.stringify(orders));
+}
+
+renderOrders();
+</script>
+</body>
+  </html>
