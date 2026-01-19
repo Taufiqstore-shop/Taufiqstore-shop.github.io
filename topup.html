@@ -1,463 +1,68 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taufiqshop - Topup Game & Pulsa</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        body {
-            background-color: #0A1A5E;
-            color: white;
-            overflow-x: hidden;
-            padding-bottom: 280px; /* Tambah jarak buat footer */
-        }
-        /* Header & Search */
-        .top-bar {
-            padding: 15px 15px 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .search-box {
-            width: 80%;
-            position: relative;
-        }
-        .search-box input {
-            width: 100%;
-            padding: 12px 20px 12px 40px;
-            border-radius: 25px;
-            border: none;
-            font-size: 14px;
-            background-color: #fff;
-            color: #333;
-        }
-        .search-box::before {
-            content: "🔍";
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 16px;
-        }
-        .settings-btn {
-            width: 45px;
-            height: 45px;
-            background-color: #FFC107;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #0A1A5E;
-            font-size: 20px;
-            cursor: pointer;
-        }
-        /* Banner */
-        .banner {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-        .banner img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        /* Section Styles */
-        .section-title {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            padding: 0 15px;
-        }
-        .section-title span {
-            font-size: 22px;
-            margin-right: 10px;
-        }
-        .section-title h2 {
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .section-subtitle {
-            font-size: 14px;
-            color: #ccc;
-            margin-bottom: 20px;
-            padding: 0 15px;
-        }
-        /* Top Categories Tabs */
-        .top-categories {
-            display: flex;
-            gap: 8px;
-            padding: 0 15px 15px;
-            overflow-x: auto;
-        }
-        .category-btn {
-            padding: 6px 12px;
-            border-radius: 15px;
-            border: none;
-            font-size: 12px;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-        .category-btn.active {
-            background-color: #FFC107;
-            color: #0A1A5E;
-        }
-        .category-btn.inactive {
-            background-color: #1E3A8A;
-            color: white;
-        }
-        /* Product Grid & Card */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 kolom kayak contoh */
-            gap: 10px;
-            margin-bottom: 20px;
-            padding: 0 15px;
-        }
-        .product-card {
-            background-color: #FFC107; /* Kuning kayak contoh */
-            border-radius: 10px;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #0A1A5E;
-            cursor: pointer;
-            border: none;
-            text-align: center;
-            transition: transform 0.2s;
-        }
-        .product-card:hover {
-            transform: scale(1.05);
-        }
-        .product-card img {
-            width: 50px;
-            height: 50px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            object-fit: cover;
-        }
-        .product-info h3 {
-            font-size: 11px;
-            font-weight: bold;
-            line-height: 1.2;
-        }
-        /* Load More Button */
-        .load-more {
-            display: block;
-            margin: 0 auto 30px;
-            padding: 8px 20px;
-            background-color: #1E3A8A;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        /* Tabs */
-        .tabs {
-            display: flex;
-            gap: 10px;
-            padding: 0 15px;
-            margin-bottom: 20px;
-        }
-        .tab-btn {
-            flex: 1;
-            padding: 10px;
-            border-radius: 20px;
-            border: none;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        .tab-btn.active {
-            background-color: #FFC107;
-            color: #0A1A5E;
-        }
-        .tab-btn.inactive {
-            background-color: #1E3A8A;
-            color: white;
-        }
-        .tab-btn:hover.inactive {
-            background-color: #2D4BA0;
-        }
-        /* Tab Content */
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        /* Pulsa & Tagihan Section */
-        .pulsa-section {
-            margin-top: 30px;
-            margin-bottom: 20px;
-        }
-        /* Footer */
-        footer {
-            background-color: #0A1A5E;
-            border-top: 3px solid #FFC107;
-            padding: 20px 15px;
-            position: relative;
-            width: 100%;
-            margin-top: 20px;
-        }
-        .footer-top {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-        .footer-logo img {
-            width: 80px;
-            height: auto;
-            margin-right: 15px;
-        }
-        .footer-desc p {
-            font-size: 12px;
-            line-height: 1.5;
-            color: #ccc;
-            max-width: 300px;
-        }
-        .social-icons {
-            margin-top: 10px;
-            display: flex;
-            gap: 15px;
-        }
-        .social-icons img {
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
-        }
-        .footer-bottom {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .footer-column h4 {
-            font-size: 14px;
-            color: #FFC107;
-            margin-bottom: 10px;
-        }
-        .footer-column ul {
-            list-style: none;
-        }
-        .footer-column ul li {
-            font-size: 12px;
-            margin-bottom: 5px;
-            color: #ccc;
-            cursor: pointer;
-        }
-        .footer-bottom-logo {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .footer-bottom-logo img {
-            width: 50px;
-            height: auto;
-        }
-        /* Bottom Nav */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: #0A1A5E;
-            border-top: 2px solid #FFC107;
-            padding: 10px 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-        }
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: white;
-            font-size: 12px;
-            cursor: pointer;
-        }
-        .nav-item img {
-            width: 30px;
-            height: 30px;
-            margin-bottom: 5px;
-        }
-        .nav-logo {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 15px;
-            transform: translateY(-10px);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaufiqShop - Top Up Game</title>
+<link rel="icon" type="image/jpg" href="favicon.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{background:#0b1c3d;color:#fff;padding-bottom:140px}
+header{padding:15px;font-size:18px;font-weight:600}
+.search-box{margin:15px}
+.search-box input{width:100%;padding:12px;border-radius:12px;border:none;outline:none}
+.banner-img{margin:15px;border-radius:16px;overflow:hidden}
+.banner-img img{width:100%;display:block}
+.trending{margin:15px}
+.trending h3{margin-bottom:10px}
+.trending-line{background:#122e6b;padding:12px;border-radius:14px;margin-bottom:8px;text-align:center;font-size:13px}
+.trending-line a{color:#fff;text-decoration:none}
+.section{margin:15px}
+.section h3{margin-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.game-card{background:#122e6b;border-radius:16px;overflow:hidden;text-decoration:none;color:#fff}
+.game-card img{width:100%;height:110px;object-fit:cover}
+.game-card div{padding:10px;text-align:center;font-size:14px;font-weight:600}
+footer{background:#071632;margin-top:30px;padding:25px 15px;text-align:center}
+footer img{width:90px;margin-bottom:12px}
+footer p{font-size:13px;line-height:1.6;opacity:.9}
+footer .mini{margin-top:10px;font-size:12px;opacity:.7}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#0b1c3d;display:flex;justify-content:space-around;padding:10px 0}
+.nav a{color:#fff;text-decoration:none;font-size:12px;text-align:center}
+</style>
 </head>
 <body>
-    <!-- Top Bar & Search -->
-    <div class="top-bar">
-        <div class="search-box">
-            <input type="text" placeholder="Search Game, Pulsa or Voucher">
-        </div>
-        <div class="settings-btn">⚙️</div>
-    </div>
-
-    <!-- Banner -->
-    <div class="banner">
-        <img src="banner.jpg" alt="Banner Taufiqshop">
-    </div>
-
-    <!-- Top Categories Tabs -->
-    <div class="top-categories">
-        <button class="category-btn active">New Release</button>
-        <button class="category-btn inactive">Direct Topup</button>
-        <button class="category-btn inactive">Via Login</button>
-        <button class="category-btn inactive">Entertainment</button>
-        <button class="category-btn inactive">Voucher</button>
-    </div>
-
-    <!-- Product Grid (Kayak Contoh) -->
-    <div class="product-grid">
-        <!-- Produk 1 -->
-        <button class="product-card" onclick="window.location.href='order/xena.html'">
-            <img src="images/xena.jpg" alt="Xena Live">
-            <div class="product-info">
-                <h3>Xena Live Group Voice Chat</h3>
-            </div>
-        </button>
-        <!-- Produk 2 -->
-        <button class="product-card" onclick="window.location.href='order/xclash.html'">
-            <img src="images/xclash.jpg" alt="X-Clash">
-            <div class="product-info">
-                <h3>X-Clash</h3>
-            </div>
-        </button>
-        <!-- Produk 3 -->
-        <button class="product-card" onclick="window.location.href='order/telegram.html'">
-            <img src="images/telegram.jpg" alt="Telegram Stars">
-            <div class="product-info">
-                <h3>Telegram Stars</h3>
-            </div>
-        </button>
-        <!-- Produk 4 -->
-        <button class="product-card" onclick="window.location.href='order/tears.html'">
-            <img src="images/tears.jpg" alt="Tears of Themis">
-            <div class="product-info">
-                <h3>Tears of Themis via Login</h3>
-            </div>
-        </button>
-        <!-- Produk 5 -->
-        <button class="product-card" onclick="window.location.href='order/twilight.html'">
-            <img src="images/twilight.jpg" alt="Twilight Chronicle">
-            <div class="product-info">
-                <h3>Twilight Chronicle: Idle RPG via Login</h3>
-            </div>
-        </button>
-        <!-- Produk 6 -->
-        <button class="product-card" onclick="window.location.href='order/ymir.html'">
-            <img src="images/ymir.jpg" alt="Legend of Ymir">
-            <div class="product-info">
-                <h3>Voucher Legend of Ymir</h3>
-            </div>
-        </button>
-        <!-- Produk 7 -->
-        <button class="product-card" onclick="window.location.href='order/fairytail.html'">
-            <img src="images/fairytail.jpg" alt="Fairy Tail">
-            <div class="product-info">
-                <h3>FAIRY TAIL Wizard Chronicle</h3>
-            </div>
-        </button>
-        <!-- Produk 8 -->
-        <button class="product-card" onclick="window.location.href='order/inkvasion.html'">
-            <img src="images/inkvasion.jpg" alt="Inkvasion">
-            <div class="product-info">
-                <h3>Inkvasion</h3>
-            </div>
-        </button>
-        <!-- Produk 9 -->
-        <button class="product-card" onclick="window.location.href='order/winds.html'">
-            <img src="images/winds.jpg" alt="Where Winds Meet">
-            <div class="product-info">
-                <h3>Where Winds Meet</h3>
-            </div>
-        </button>
-        <!-- Produk 10 -->
-        <button class="product-card" onclick="window.location.href='order/football.html'">
-            <img src="images/football.jpg" alt="Football Dream">
-            <div class="product-info">
-                <h3>Football Dream: Be A Pro</h3>
-            </div>
-        </button>
-        <!-- Produk 11 -->
-        <button class="product-card" onclick="window.location.href='order/bleach.html'">
-            <img src="images/bleach.jpg" alt="Bleach">
-            <div class="product-info">
-                <h3>BLEACH: Soul Resonance</h3>
-            </div>
-        </button>
-        <!-- Produk 12 -->
-        <button class="product-card" onclick="window.location.href='order/resonance.html'">
-            <img src="images/resonance.jpg" alt="Resonance Solstice">
-            <div class="product-info">
-                <h3>Resonance Solstice Via Login</h3>
-            </div>
-        </button>
-    </div>
-
-    <!-- Load More Button -->
-    <button class="load-more">Load More...</button>
-
-    <!-- Tabs dengan Fungsi Pergantian -->
-    <div class="tabs">
-        <button class="tab-btn active" onclick="switchTab('trending-tab')">Trending</button>
-        <button class="tab-btn inactive" onclick="switchTab('newrelease-tab')">New Release</button>
-        <button class="tab-btn inactive" onclick="switchTab('directtopup-tab')">Direct Topup</button>
-    </div>
-
-    <!-- Trending Section (Tab Content) -->
-    <div id="trending-tab" class="tab-content active">
-        <div class="section-title">
-            <span>🔥</span>
-            <h2>TRENDING</h2>
-        </div>
-        <p class="section-subtitle">Here are the most popular products today.</p>
-        
-        <div class="product-grid">
-            <!-- Free Fire -->
-            <button class="product-card" onclick="window.location.href='order/ff.html'">
-                <img src="images/ff.jpg" alt="Free Fire">
-                <div class="product-info">
-                    <h3>Free Fire</h3>
-                </div>
-            </button>
-            <!-- Mobile Legends -->
-            <button class="product-card" onclick="window.location.href='order/ml.html'">
-                <img src="images/ml.jpg" alt="Mobile Legends">
-                <div class="product-info">
-                    <h3>Mobile Legends</h3>
-                </div>
-            </button>
-            <!-- Honor of Kings -->
-            <button class="product-card" onclick="window.location.href='order/hok.html'">
-                <img src="images/hok.jpg" alt="Honor of Kings">
-                <div class="product-info">
-                    <h3>Honor of Kings</h3>
-                </div>
-            </button>
-            <!-- Steam Wallet -->
-            <button class="product-card" onclick="window.location.href='order/steam.html'">
-                <img src="images/steam.jpg" alt="Steam Wallet">
-                <div class="product-info">
-                    <h3>Steam Wallet</h3>
-                </div>
-            </button>
-        </div>
-    </div>
-
-    <!-- New Release Section (Tab Content) -->
-    <div id="newrelease-tab" class="tab-content">
-        <div class="section-title">
-            <span>✨</span>
+<header>🔥 TaufiqShop</header>
+<div class="search-box"><input type="text" placeholder="Cari game atau voucher..."></div>
+<div class="banner-img"><img src="banner.jpg" alt="Banner"></div>
+<div class="trending">
+<h3>🔥 Trending</h3>
+<div class="trending-line"><a href="order/ff.html">Free Fire</a> | <a href="order/ml.html">Mobile Legends</a></div>
+<div class="trending-line"><a href="order/hok.html">Honor of Kings</a> | <a href="order/pubg.html">PUBG Mobile</a></div>
+<div class="trending-line"><a href="order/roblox.html">Roblox</a> | <a href="order/steam.html">Steam</a> | <a href="order/valorant.html">Valorant</a></div>
+</div>
+<div class="section">
+<h3>🎮 Game Lainnya</h3>
+<div class="grid">
+<a class="game-card" href="order/ff.html"><img src="img/ff.jpg"><div>Free Fire</div></a>
+<a class="game-card" href="order/ml.html"><img src="img/ml.jpg"><div>Mobile Legends</div></a>
+<a class="game-card" href="order/hok.html"><img src="img/hok.jpg"><div>Honor of Kings</div></a>
+<a class="game-card" href="order/pubg.html"><img src="img/pubg.jpg"><div>PUBG Mobile</div></a>
+<a class="game-card" href="order/roblox.html"><img src="img/roblox.jpg"><div>Roblox</div></a>
+<a class="game-card" href="order/steam.html"><img src="img/steam.jpg"><div>Steam Wallet</div></a>
+<a class="game-card" href="order/valorant.html"><img src="img/valorant.jpg"><div>Valorant</div></a>
+</div>
+</div>
+<footer>
+<img src="shop.jpg" alt="TaufiqShop">
+<p>Alamat: Kota Jakarta Utara RT 03 RW 06<br>No: -<br>Email: taufiqshopcs@gmail.com</p>
+<p class="mini">Privasi • Keamanan<br>Hak cipta dilindungi undang-undang</p>
+</footer>
+<div class="nav">
+<a href="#">🏠<br>Home</a>
+<a href="#">🔥<br>Trending</a>
+<a href="#">📞<br>Admin</a>
+<a href="#">👤<br>Akun</a>
+</div>
+</body>
+                  </html>
