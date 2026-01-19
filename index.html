@@ -1,68 +1,24 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TaufiqShop - Top Up Game</title>
-<link rel="icon" type="image/jpg" href="favicon.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-body{background:#0b1c3d;color:#fff;padding-bottom:140px}
-header{padding:15px;font-size:18px;font-weight:600}
-.search-box{margin:15px}
-.search-box input{width:100%;padding:12px;border-radius:12px;border:none;outline:none}
-.banner-img{margin:15px;border-radius:16px;overflow:hidden}
-.banner-img img{width:100%;display:block}
-.trending{margin:15px}
-.trending h3{margin-bottom:10px}
-.trending-line{background:#122e6b;padding:12px;border-radius:14px;margin-bottom:8px;text-align:center;font-size:13px}
-.trending-line a{color:#fff;text-decoration:none}
-.section{margin:15px}
-.section h3{margin-bottom:10px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.game-card{background:#122e6b;border-radius:16px;overflow:hidden;text-decoration:none;color:#fff}
-.game-card img{width:100%;height:110px;object-fit:cover}
-.game-card div{padding:10px;text-align:center;font-size:14px;font-weight:600}
-footer{background:#071632;margin-top:30px;padding:25px 15px;text-align:center}
-footer img{width:90px;margin-bottom:12px}
-footer p{font-size:13px;line-height:1.6;opacity:.9}
-footer .mini{margin-top:10px;font-size:12px;opacity:.7}
-.nav{position:fixed;bottom:0;left:0;right:0;background:#0b1c3d;display:flex;justify-content:space-around;padding:10px 0}
-.nav a{color:#fff;text-decoration:none;font-size:12px;text-align:center}
-</style>
+  <title>Verifikasi</title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-<header>🔥 TaufiqShop</header>
-<div class="search-box"><input type="text" placeholder="Cari game atau voucher..."></div>
-<div class="banner-img"><img src="banner.jpg" alt="Banner"></div>
-<div class="trending">
-<h3>🔥 Trending</h3>
-<div class="trending-line"><a href="order/ff.html">Free Fire</a> | <a href="order/ml.html">Mobile Legends</a></div>
-<div class="trending-line"><a href="order/hok.html">Honor of Kings</a> | <a href="order/pubg.html">PUBG Mobile</a></div>
-<div class="trending-line"><a href="order/roblox.html">Roblox</a> | <a href="order/steam.html">Steam</a> | <a href="order/valorant.html">Valorant</a></div>
-</div>
-<div class="section">
-<h3>🎮 Game Lainnya</h3>
-<div class="grid">
-<a class="game-card" href="order/ff.html"><img src="img/ff.jpg"><div>Free Fire</div></a>
-<a class="game-card" href="order/ml.html"><img src="img/ml.jpg"><div>Mobile Legends</div></a>
-<a class="game-card" href="order/hok.html"><img src="img/hok.jpg"><div>Honor of Kings</div></a>
-<a class="game-card" href="order/pubg.html"><img src="img/pubg.jpg"><div>PUBG Mobile</div></a>
-<a class="game-card" href="order/roblox.html"><img src="img/roblox.jpg"><div>Roblox</div></a>
-<a class="game-card" href="order/steam.html"><img src="img/steam.jpg"><div>Steam Wallet</div></a>
-<a class="game-card" href="order/valorant.html"><img src="img/valorant.jpg"><div>Valorant</div></a>
-</div>
-</div>
-<footer>
-<img src="shop.jpg" alt="TaufiqShop">
-<p>Alamat: Kota Jakarta Utara RT 03 RW 06<br>No: -<br>Email: taufiqshopcs@gmail.com</p>
-<p class="mini">Privasi • Keamanan<br>Hak cipta dilindungi undang-undang</p>
-</footer>
-<div class="nav">
-<a href="#">🏠<br>Home</a>
-<a href="#">🔥<br>Trending</a>
-<a href="#">📞<br>Admin</a>
-<a href="#">👤<br>Akun</a>
-</div>
+  <h2>You need to verify first before accessing the page.
+This verification is safe for every website. </h2>
+  <div class="g-recaptcha" data-sitekey="6Lf0aE0sAAAAAJsr1xnZCn-7JQUYrIt3BjQJnQL-"></div>
+  <button onclick="cekCaptcha()">Lanjut</button>
+
+  <script>
+    function cekCaptcha() {
+      var response = grecaptcha.getResponse();
+      if (response.length === 0) {
+        alert("Verifikasi dulu!");
+      } else {
+        window.location.href = "index.html";
+      }
+    }
+  </script>
 </body>
-                                                                              </html>
+</html>
