@@ -1,24 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Verifikasi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verifikasi Dulu</title>
+  <link rel="stylesheet" href="style.css">
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-  <h2>You need to verify first before accessing the page.
-This verification is safe for every website. </h2>
-  <div class="g-recaptcha" data-sitekey="6Lf0aE0sAAAAAJsr1xnZCn-7JQUYrIt3BjQJnQL-"></div>
-  <button onclick="cekCaptcha()">Lanjut</button>
+  <div class="wrap">
+    <h2>Verifikasi dulu</h2>
+    <p>Baru bisa masuk ke TAUFIQSHOP</p>
+
+    <div class="captcha">
+      <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY" data-callback="enableButton"></div>
+    </div>
+
+    <button id="btn" class="btn" disabled>Masuk</button>
+  </div>
 
   <script>
-    function cekCaptcha() {
-      var response = grecaptcha.getResponse();
-      if (response.length === 0) {
-        alert("Verifikasi dulu!");
-      } else {
-        window.location.href = "index.html";
-      }
+    function enableButton() {
+      document.getElementById("btn").disabled = false;
     }
+
+    document.getElementById("btn").addEventListener("click", function () {
+      window.location.href = "index.html";
+    });
   </script>
 </body>
 </html>
