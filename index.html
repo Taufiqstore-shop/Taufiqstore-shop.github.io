@@ -1,32 +1,56 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verifikasi Dulu</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-</head>
-<body>
-  <div class="wrap">
-    <h2>Verifikasi dulu</h2>
-    <p>Baru bisa masuk ke TAUFIQSHOP</p>
+  <title>TOPUP MURAH SE INDONESIA GAS TOPUP DI TAUFIQSHOP</title>
 
-    <div class="captcha">
-      <div class="g-recaptcha" data-sitekey="6Lc2C08sAAAAAFAkTm_ALB_JxFlmMKyi42GhWhAw" data-callback="enableButton"></div>
-    </div>
+  <!-- Favicon JPG -->
+  <link rel="icon" href="favicon.jpg" type="image/jpeg">
 
-    <button id="btn" class="btn" disabled>Masuk</button>
-  </div>
-
-  <script>
-    function enableButton() {
-      document.getElementById("btn").disabled = false;
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff0000, #800080);
+      font-family: Arial, sans-serif;
     }
 
-    document.getElementById("btn").addEventListener("click", function () {
-      window.location.href = "index.html";
-    });
-  </script>
+    .box {
+      width: 350px;
+      padding: 25px;
+      background: white;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      margin: 0 0 15px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Verifikasi google reCAPTCHA:</h2>
+
+  <!-- reCAPTCHA -->
+  <div class="g-recaptcha" data-sitekey="6LfkrVAsAAAAAFywVLMDPEZYmFcJ9bKrYr7ZT4vi" data-callback="onSuccess"></div>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>
+  function onSuccess() {
+    // redirect ke halaman topup setelah verifikasi sukses
+    window.location.href = "https://taufiqshop.my.id/topup";
+  }
+</script>
+
 </body>
 </html>
