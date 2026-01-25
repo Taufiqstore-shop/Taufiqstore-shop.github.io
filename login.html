@@ -1,20 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | taufiqshop</title>
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color:#fff;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+    .box{
+      width: 320px;
+      padding: 25px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      text-align:center;
+      box-shadow: 0 0 15px rgba(0,255,255,0.2);
+    }
+    h2{
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+    .btn{
+      width:100%;
+      padding:10px;
+      margin:10px 0;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:14px;
+    }
+    .google{
+      background: #fff;
+      color:#000;
+    }
+    .login{
+      background: #0ff;
+      color:#000;
+    }
+    input{
+      width:100%;
+      padding:10px;
+      margin:8px 0;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+      color:#fff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Hallo Kamu mau Masuk taufiqshop? Login dulu yak</h2>
+
+  <button class="btn google" id="googleBtn">Login dengan Google</button>
+
+  <input id="email" type="email" placeholder="Email" />
+  <input id="pass" type="password" placeholder="Password" />
+
+  <button class="btn login" id="emailBtn">Login Email</button>
+</div>
+
 <script type="module">
-import { auth, provider } from './firebase.js';
-import { signInWithEmailAndPassword, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+  import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
 
-// Login email/password
-document.getElementById("logBtn").onclick = () => {
-  const email = document.getElementById("logEmail").value;
-  const pass = document.getElementById("logPass").value;
-  signInWithEmailAndPassword(auth, email, pass)
-    .then(res => alert("Login berhasil: " + res.user.email))
-    .catch(err => alert("Gagal login: " + err.message));
-};
+  const firebaseConfig = {
+    apiKey: "AIzaSyBMtfU6k05gy6ybnZCznH-rg22pDPEQsRo",
+    authDomain: "taufiqshop.firebaseapp.com",
+    projectId: "taufiqshop",
+    storageBucket: "taufiqshop.firebasestorage.app",
+    messagingSenderId: "210954154144",
+    appId: "1:210954154144:web:7f29c719c0cc44ce7d19c5",
+    measurementId: "G-Y20FENSG4L"
+  };
 
-// Login/Register Google
-document.getElementById("googleBtn").onclick = () => {
-  signInWithPopup(auth, provider)
-    .then(res => alert("Login Google berhasil: " + res.user.displayName))
-    .catch(err => alert("Gagal login Google: " + err.message));
-};
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  document.getElementById("googleBtn").addEventListener("click", () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then(() => window.location = "dashboard.html")
+      .catch(err => alert(err.message));
+  });
+
+  document.getElementById("emailBtn").addEventListener("click", () => {
+    const email = document.getElementById("email").value;
+    const pass = document.getElementById("pass").value;
+
+    signInWithEmailAndPassword(auth, email, pass)
+      .then(() => window.location = "dashboard.html")
+      .catch(err => alert(err.message));
+  });
 </script>
+
+</body>
+  </html>
