@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Taufiqshop - Topup Murah</title>
-
-<meta name="description" content="Topup murah se-Indonesia | TAUFIQSHOP ANDALAN. Topup cepat & aman untuk Free Fire, Mobile Legends, Valorant, Roblox, dan game lainnya.">
-
+<meta name="description" content="Topup murah se-Indonesia | TAUFIQSHOP ANDALAN.">
 <link rel="icon" href="favicon.jpg" type="image/jpg">
 </head>
 
@@ -17,9 +15,10 @@ background: radial-gradient(circle at top, #6f00ff 0%, #1a002b 35%, #000000 75%)
 color:white;
 ">
 
-<header style="display:flex; align-items:center; justify-content:space-between; padding:10px 15px; background:rgba(0,0,0,0.7); position:fixed; width:100%; top:0; z-index:10;">
-  <div style="display:flex; align-items:center; gap:10px;">
-    <img src="shop.jpg" style="width:45px; height:45px; border-radius:8px;">
+<!-- HEADER -->
+<header style="display:flex; justify-content:space-between; align-items:center; padding:10px 15px; background:rgba(0,0,0,0.7); position:fixed; width:100%; top:0; z-index:10;">
+  <div style="display:flex; gap:10px; align-items:center;">
+    <img src="shop.jpg" style="width:45px; border-radius:8px;">
     <h2 style="margin:0;">TAUFIQSHOP</h2>
   </div>
 
@@ -30,50 +29,93 @@ color:white;
     <button class="navBtn">Admin</button>
   </div>
 
-  <button class="navBtn" onclick="location.href='login.html'">Login Google</button>
+  <button id="loginBtn" class="navBtn" onclick="location.href='/login'">Login Google</button>
 </header>
 
 <main style="padding-top:90px;">
 
-<!-- PERINGATAN LOGIN -->
-<div style="margin:20px; padding:15px; border-radius:12px; background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.2); text-align:center;">
-  <p>
-    Disarankan untuk login terlebih dahulu. Jika tidak login, kamu tetap bisa topup,
-    tapi prosesnya akan lebih lama karena admin tidak bisa melihat order di panel.
-    Mohon login agar proses lebih cepat.
+<!-- BANNER (TETAP) -->
+<section style="text-align:center; padding:20px;">
+  <img src="banner.jpg" style="width:100%; max-width:900px; border-radius:12px;">
+</section>
+
+<!-- PERINGATAN (DIPERKECIL) -->
+<div id="alertLogin" style="
+max-width:520px;
+margin:10px auto 25px;
+padding:10px 12px;
+text-align:center;
+background:rgba(0,0,0,0.6);
+border-radius:10px;
+border:1px solid rgba(255,255,255,0.2);
+font-size:14px;
+">
+  <p style="margin:5px 0;">
+    Disarankan login terlebih dahulu. Tanpa login tetap bisa topup,
+    namun proses lebih lama karena admin tidak melihat order di panel.
   </p>
-  <p>
-    Mau login? <span style="color:#4da3ff; cursor:pointer;" onclick="location.href='login.html'">disini</span>
+  <p style="margin:6px 0;">
+    Mau login? <span style="color:#4da3ff; cursor:pointer;" onclick="location.href='/login'">disini</span>
   </p>
 </div>
-
-<!-- BANNER -->
-<section style="text-align:center; padding:20px;">
-  <img src="banner.jpg" style="width:100%; max-width:1000px; border-radius:12px;">
-</section>
 
 <!-- LIST GAME -->
 <section style="padding:20px;">
   <h2 style="text-align:center;">Game Topup</h2>
 
+<section style="padding:20px;">
+  <h2 style="text-align:center;">Game Topup</h2>
+
   <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:15px;">
 
-    <div class="gameCard"><img src="freefire.jpg"><p>Free Fire</p></div>
-    <div class="gameCard"><img src="ffmax.jpg"><p>Free Fire Max</p></div>
-    <div class="gameCard"><img src="ml.jpg"><p>Mobile Legends</p></div>
-    <div class="gameCard"><img src="roblox.jpg"><p>Roblox</p></div>
-    <div class="gameCard"><img src="pubg.jpg"><p>PUBG</p></div>
-    <div class="gameCard"><img src="genshin.jpg"><p>Genshin</p></div>
-    <div class="gameCard"><img src="steam.jpg"><p>Steam</p></div>
-    <div class="gameCard"><img src="tears.jpg"><p>Tears</p></div>
-    <div class="gameCard"><img src="thotown.jpg"><p>Thotown</p></div>
-    <div class="gameCard"><img src="duelnight.jpg"><p>Duel Night Abbyes</p></div>
-    <div class="gameCard"><img src="valorant.jpg"><p>Valorant</p></div>
+    <a href="/order/ff" class="gameCard">
+      <img src="ff.jpg"><p>Free Fire</p>
+    </a>
+
+    <a href="/order/ffmax" class="gameCard">
+      <img src="ffmax.jpg"><p>Free Fire Max</p>
+    </a>
+
+    <a href="/order/ml" class="gameCard">
+      <img src="ml.jpg"><p>Mobile Legends</p>
+    </a>
+
+    <a href="/order/roblox" class="gameCard">
+      <img src="roblox.jpg"><p>Roblox</p>
+    </a>
+
+    <a href="/order/pubg" class="gameCard">
+      <img src="pubg.jpg"><p>PUBG</p>
+    </a>
+
+    <a href="/order/genshin" class="gameCard">
+      <img src="genshin.jpg"><p>Genshin</p>
+    </a>
+
+    <a href="/order/steam" class="gameCard">
+      <img src="steam.jpg"><p>Steam</p>
+    </a>
+
+    <a href="/order/tears" class="gameCard">
+      <img src="tears.jpg"><p>Tears</p>
+    </a>
+
+    <a href="/order/thotown" class="gameCard">
+      <img src="thotown.jpg"><p>Thotown</p>
+    </a>
+
+    <a href="/order/duelnight" class="gameCard">
+      <img src="duelnight.jpg"><p>Duel Night Abbyes</p>
+    </a>
+
+    <a href="/order/valorant" class="gameCard">
+      <img src="valorant.jpg"><p>Valorant</p>
+    </a>
 
   </div>
-</section>
+    </section>
 
-<footer style="padding:20px; text-align:center; background:rgba(0,0,0,0.7);">
+<footer style="text-align:center; padding:20px; background:rgba(0,0,0,0.7);">
   <p>Nomer WA: +62 895327513269</p>
   <p>Email: cstaufiqshop@gmail.com</p>
   <p>Ketentuan • privasi</p>
@@ -91,7 +133,6 @@ color:white;
   border-radius:8px;
   cursor:pointer;
 }
-
 .gameCard{
   background:rgba(0,0,0,0.6);
   border-radius:12px;
@@ -99,7 +140,6 @@ color:white;
   text-align:center;
   box-shadow:0 0 12px rgba(111,0,255,0.6);
 }
-
 .gameCard img{
   width:100%;
   height:140px;
@@ -107,6 +147,15 @@ color:white;
   border-radius:10px;
 }
 </style>
+
+<!-- LOGIN CHECK -->
+<script>
+  const isLogin = localStorage.getItem("userLogin");
+  if(isLogin){
+    document.getElementById("alertLogin").style.display = "none";
+    document.getElementById("loginBtn").style.display = "none";
+  }
+</script>
 
 </body>
       </html>
