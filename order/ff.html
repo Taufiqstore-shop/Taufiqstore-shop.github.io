@@ -1,48 +1,144 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Fire - TaufiqShop</title>
-    <link rel="icon" type="image/jpeg" href="../favicon.jpg">
-    <link rel="stylesheet" href="../style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Free Fire - Taufiqshop</title>
+<link rel="icon" href="../favicon.jpg">
 </head>
-<body>
-    <!-- Header -->
-    <header>
-        <a href="../index.html"><img src="../shop.jpg" alt="TaufiqShop Logo" class="shop-logo"></a>
-        <a href="../login.html">Login/Register</a>
-    </header>
 
-    <!-- Banner -->
-    <div class="banner">
-        <img src="../banner.jpg" alt="Top Up Free Fire - TaufiqShop">
-    </div>
+<body style="
+margin:0;
+font-family:Arial;
+background: radial-gradient(circle at top, #6f00ff 0%, #1a002b 35%, #000000 75%);
+color:white;
+">
 
-    <!-- Section Diamond -->
-    <div class="section-title">Pilih Nominal Diamond</div>
-    <div class="section-sub">Klik nominal untuk lanjut ke pembayaran</div>
-    <div class="game-grid">
-        <a class="game-card" href="#">5 Diamonds | Rp 1.000</a>
-        <a class="game-card" href="#">12 Diamonds | Rp 2.000</a>
-        <a class="game-card" href="#">30 Diamonds | Rp 8.000</a>
-        <a class="game-card" href="#">70 Diamonds | Rp 2.180</a>
-        <a class="game-card" href="#">3000 Diamonds | Rp 19.878</a>
-        <a class="game-card" href="#">140 Diamonds | Rp 50.860</a>
-        <a class="game-card" href="#">100 Diamonds | Rp 16.990</a>
-        <a class="game-card" href="#">200 Diamonds | Rp 28.642</a>
-        <a class="game-card" href="#">365.850 Diamonds | Rp 2.200</a>
-        <a class="game-card" href="#">205.870 Diamonds | Rp 1.080</a>
-        <a class="game-card" href="#">1000 Diamonds | Rp 140.962</a>
-    </div>
+<h2 style="text-align:center; margin:20px 0;">Order Free Fire</h2>
 
-    <!-- Footer -->
-    <footer>
-        <img src="../shop.jpg" alt="TaufiqShop Logo" class="footer-logo">
-        <div>TaufiqShop Topup Terpercaya</div>
-        <div>Alamat: Jl. Jakarta Selatan PT Taufiqshop Karangna</div>
-        <div>WA: +62 895327513269 | Email: taufiqshopcs@gmail.com</div>
-        <div>©TaufiqShop Hak Cipta Dilindungi</div>
-    </footer>
+<!-- DATA USER -->
+<div class="box">
+  <p>ID Player</p>
+  <input id="playerId" placeholder="Masukkan ID Free Fire">
+
+  <p>Nomor WhatsApp</p>
+  <input id="wa" placeholder="08xxxxxxxxxx">
+
+  <p>Email</p>
+  <input id="email" placeholder="email@gmail.com">
+</div>
+
+<!-- DATA GAME -->
+<div class="box">
+  <p>Nickname</p>
+  <input id="nickname" placeholder="Nickname Free Fire">
+</div>
+
+<!-- MEMBERSHIP -->
+<div class="box">
+  <h3>Membership</h3>
+  <div class="grid">
+    <button onclick="pilih('Membership Bulanan',80862)">Bulanan<br>Rp 80.862</button>
+    <button onclick="pilih('Membership Mingguan',19292)">Mingguan<br>Rp 19.292</button>
+    <button onclick="pilih('Booyah Pass',40928)">Booyah Pass<br>Rp 40.928</button>
+  </div>
+</div>
+
+<!-- DIAMOND -->
+<div class="box">
+  <h3>Pilih Nominal Diamond</h3>
+  <div class="grid">
+    <button onclick="pilih('5 Diamonds',1000)">5 💎<br>Rp 1.000</button>
+    <button onclick="pilih('12 Diamonds',2000)">12 💎<br>Rp 2.000</button>
+    <button onclick="pilih('30 Diamonds',8000)">30 💎<br>Rp 8.000</button>
+    <button onclick="pilih('70 Diamonds',2180)">70 💎<br>Rp 2.180</button>
+    <button onclick="pilih('100 Diamonds',16990)">100 💎<br>Rp 16.990</button>
+    <button onclick="pilih('140 Diamonds',50860)">140 💎<br>Rp 50.860</button>
+    <button onclick="pilih('200 Diamonds',28642)">200 💎<br>Rp 28.642</button>
+    <button onclick="pilih('1000 Diamonds',140960)">1000 💎<br>Rp 140.960</button>
+  </div>
+</div>
+
+<!-- RINGKASAN -->
+<div class="box">
+  <h3>Ringkasan</h3>
+  <p id="ringkasan">Belum ada pilihan</p>
+  <button class="submit" onclick="kirimOrder()">Kirim Order</button>
+</div>
+
+<style>
+.box{
+  max-width:420px;
+  margin:15px auto;
+  padding:15px;
+  background:rgba(0,0,0,0.6);
+  border-radius:12px;
+}
+input{
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  border:none;
+  margin-bottom:10px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+button{
+  padding:10px;
+  border-radius:10px;
+  background:#111;
+  color:white;
+  border:1px solid #6f00ff;
+  cursor:pointer;
+}
+.submit{
+  width:100%;
+  margin-top:10px;
+  background:#6f00ff;
+  border:none;
+  font-size:16px;
+}
+</style>
+
+<script>
+let pilihan = null;
+
+function pilih(item, harga){
+  pilihan = { item, harga };
+  document.getElementById("ringkasan").innerHTML =
+    `Game: Free Fire<br>Item: ${item}<br>Harga: Rp ${harga}`;
+}
+
+function kirimOrder(){
+  const data = {
+    game: "Free Fire",
+    playerId: playerId.value,
+    nickname: nickname.value,
+    whatsapp: wa.value,
+    email: email.value,
+    item: pilihan?.item,
+    harga: pilihan?.harga,
+    status: "MENUNGGU",
+    waktu: new Date().toLocaleString()
+  };
+
+  if(!data.playerId || !data.whatsapp || !data.email || !data.nickname || !data.item){
+    alert("Lengkapi semua data dulu");
+    return;
+  }
+
+  // simpan LIST order (biar nambah, bukan ketimpa)
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+  orders.push(data);
+  localStorage.setItem("orders", JSON.stringify(orders));
+
+  // langsung ke panel admin
+  window.location.href = "/admin";
+}
+</script>
+
 </body>
-          </html>
+        </html>
