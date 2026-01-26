@@ -1,70 +1,112 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TaufiqShop - Top Up Game</title>
-<link rel="icon" type="image/jpg" href="favicon.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-body{background:#0b1c3d;color:#fff;padding-bottom:140px}
-header{padding:15px;font-size:18px;font-weight:600}
-.search-box{margin:15px}
-.search-box input{width:100%;padding:12px;border-radius:12px;border:none;outline:none}
-.banner-img{margin:15px;border-radius:16px;overflow:hidden}
-.banner-img img{width:100%;display:block}
-.trending{margin:15px}
-.trending h3{margin-bottom:10px}
-.trending-line{background:#122e6b;padding:12px;border-radius:14px;margin-bottom:8px;text-align:center;font-size:13px}
-.trending-line a{color:#fff;text-decoration:none}
-.section{margin:15px}
-.section h3{margin-bottom:10px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.game-card{background:#122e6b;border-radius:16px;overflow:hidden;text-decoration:none;color:#fff}
-.game-card img{width:100%;height:110px;object-fit:cover}
-.game-card div{padding:10px;text-align:center;font-size:14px;font-weight:600}
-footer{background:#071632;margin-top:30px;padding:25px 15px;text-align:center}
-footer img{width:90px;margin-bottom:12px}
-footer p{font-size:13px;line-height:1.6;opacity:.9}
-footer .mini{margin-top:10px;font-size:12px;opacity:.7}
-.nav{position:fixed;bottom:0;left:0;right:0;background:#0b1c3d;display:flex;justify-content:space-around;padding:10px 0}
-.nav a{color:#fff;text-decoration:none;font-size:12px;text-align:center}
-</style>
+<title>Taufiqshop - Topup Murah</title>
+
+<meta name="description" content="Topup murah se-Indonesia | TAUFIQSHOP ANDALAN. Topup cepat & aman untuk Free Fire, Mobile Legends, Valorant, Roblox, dan game lainnya.">
+
+<link rel="icon" href="favicon.jpg" type="image/jpg">
 </head>
-<header>
-  <img src="shop.jpg" width="22" height="22" style="border-radius:50%; object-fit:cover;" alt="logo">
-  TaufiqShop
+
+<body style="
+margin:0;
+font-family:Arial;
+background: radial-gradient(circle at top, #6f00ff 0%, #1a002b 35%, #000000 75%);
+color:white;
+">
+
+<header style="display:flex; align-items:center; justify-content:space-between; padding:10px 15px; background:rgba(0,0,0,0.7); position:fixed; width:100%; top:0; z-index:10;">
+  <div style="display:flex; align-items:center; gap:10px;">
+    <img src="shop.jpg" style="width:45px; height:45px; border-radius:8px;">
+    <h2 style="margin:0;">TAUFIQSHOP</h2>
+  </div>
+
+  <div style="display:flex; gap:10px;">
+    <button class="navBtn">Home</button>
+    <button class="navBtn">Order</button>
+    <button class="navBtn">Invoice</button>
+    <button class="navBtn">Admin</button>
+  </div>
+
+  <button class="navBtn" onclick="location.href='login.html'">Login Google</button>
 </header>
-<div class="search-box"><input type="text" placeholder="Cari game atau voucher..."></div>
-<div class="banner-img"><img src="banner.jpg" alt="Banner"></div>
-<div class="trending">
-<h3>🔥 Trending</h3>
-<div class="trending-line"><a href="order/ff.html">Free Fire</a> | <a href="order/ml.html">Mobile Legends</a></div>
-<div class="trending-line"><a href="order/hok.html">Honor of Kings</a> | <a href="order/pubg.html">PUBG Mobile</a></div>
-<div class="trending-line"><a href="order/roblox.html">Roblox</a> | <a href="order/steam.html">Steam</a> | <a href="order/valorant.html">Valorant</a></div>
+
+<main style="padding-top:90px;">
+
+<!-- PERINGATAN LOGIN -->
+<div style="margin:20px; padding:15px; border-radius:12px; background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.2); text-align:center;">
+  <p>
+    Disarankan untuk login terlebih dahulu. Jika tidak login, kamu tetap bisa topup,
+    tapi prosesnya akan lebih lama karena admin tidak bisa melihat order di panel.
+    Mohon login agar proses lebih cepat.
+  </p>
+  <p>
+    Mau login? <span style="color:#4da3ff; cursor:pointer;" onclick="location.href='login.html'">disini</span>
+  </p>
 </div>
-<div class="section">
-<h3>🎮 Game Lainnya</h3>
-<div class="grid">
-<a class="game-card" href="order/ff.html"><img src="ff.jpg"><div>Free Fire</div></a>
-<a class="game-card" href="order/ml.html"><img src="ml.jpg"><div>Mobile Legends</div></a>
-<a class="game-card" href="order/hok.html"><img src="hok.jpg"><div>Honor of Kings</div></a>
-<a class="game-card" href="order/pubg.html"><img src="pubg.jpg"><div>PUBG Mobile</div></a>
-<a class="game-card" href="order/roblox.html"><img src="roblox.jpg"><div>Roblox</div></a>
-<a class="game-card" href="order/steam.html"><img src="steam.jpg"><div>Steam Wallet</div></a>
-<a class="game-card" href="order/valorant.html"><img src="valorant.jpg"><div>Valorant</div></a>
-</div>
-</div>
-<footer>
-<img src="shop.jpg" alt="TaufiqShop">
-<p>Alamat: Kota Jakarta Utara RT 03 RW 06<br>No: -<br>Email: taufiqshopcs@gmail.com</p>
-<p class="mini">Privasi • Keamanan<br>Hak cipta dilindungi undang-undang</p>
+
+<!-- BANNER -->
+<section style="text-align:center; padding:20px;">
+  <img src="banner.jpg" style="width:100%; max-width:1000px; border-radius:12px;">
+</section>
+
+<!-- LIST GAME -->
+<section style="padding:20px;">
+  <h2 style="text-align:center;">Game Topup</h2>
+
+  <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:15px;">
+
+    <div class="gameCard"><img src="freefire.jpg"><p>Free Fire</p></div>
+    <div class="gameCard"><img src="ffmax.jpg"><p>Free Fire Max</p></div>
+    <div class="gameCard"><img src="ml.jpg"><p>Mobile Legends</p></div>
+    <div class="gameCard"><img src="roblox.jpg"><p>Roblox</p></div>
+    <div class="gameCard"><img src="pubg.jpg"><p>PUBG</p></div>
+    <div class="gameCard"><img src="genshin.jpg"><p>Genshin</p></div>
+    <div class="gameCard"><img src="steam.jpg"><p>Steam</p></div>
+    <div class="gameCard"><img src="tears.jpg"><p>Tears</p></div>
+    <div class="gameCard"><img src="thotown.jpg"><p>Thotown</p></div>
+    <div class="gameCard"><img src="duelnight.jpg"><p>Duel Night Abbyes</p></div>
+    <div class="gameCard"><img src="valorant.jpg"><p>Valorant</p></div>
+
+  </div>
+</section>
+
+<footer style="padding:20px; text-align:center; background:rgba(0,0,0,0.7);">
+  <p>Nomer WA: +62 895327513269</p>
+  <p>Email: cstaufiqshop@gmail.com</p>
+  <p>Ketentuan • privasi</p>
+  <p>Hak cipta di lindungi undang undang</p>
 </footer>
-<div class="nav">
-<a href="#">🏠<br>Home</a>
-<a href="#">🔥<br>Trending</a>
-<a href="#">📞<br>Admin</a>
-<a href="#">👤<br>Akun</a>
-</div>
+
+</main>
+
+<style>
+.navBtn{
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);
+  color:white;
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.gameCard{
+  background:rgba(0,0,0,0.6);
+  border-radius:12px;
+  padding:10px;
+  text-align:center;
+  box-shadow:0 0 12px rgba(111,0,255,0.6);
+}
+
+.gameCard img{
+  width:100%;
+  height:140px;
+  object-fit:cover;
+  border-radius:10px;
+}
+</style>
+
 </body>
-                  </html>
+      </html>
