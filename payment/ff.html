@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Free Fire - Taufiqshop</title>
+<link rel="icon" href="../favicon.jpg">
+</head>
+
+<body style="
+margin:0;
+font-family:Arial;
+background: radial-gradient(circle at top, #00ff9c 0%, #00331f 40%, #000000 80%);
+color:white;
+text-align:center;
+">
+
+<h2 style="margin-top:20px;">PAYMENT TAUFIQSHOP</h2>
+<p style="opacity:0.8;">Cek data sebelum melakukan pembayaran</p>
+
+<!-- DATA ORDER -->
+<div style="
+max-width:420px;
+margin:20px auto;
+padding:15px;
+background:rgba(0,0,0,0.65);
+border-radius:12px;
+box-shadow:0 0 15px rgba(0,255,156,0.4);
+text-align:left;
+">
+
+  <h3 style="text-align:center;">Detail Order</h3>
+  <p><b>Game:</b> <span id="game"></span></p>
+  <p><b>ID Player:</b> <span id="playerId"></span></p>
+  <p><b>Nickname:</b> <span id="nickname"></span></p>
+  <p><b>Item:</b> <span id="item"></span></p>
+  <p><b>Harga:</b> Rp <span id="harga"></span></p>
+
+</div>
+
+<!-- STATUS -->
+<h3 id="statusBox" style="color:#00ff9c;">⏳ Waiting Payment</h3>
+<p>Scan QRIS di bawah</p>
+
+<!-- QRIS -->
+<div style="
+margin:20px auto;
+padding:15px;
+width:260px;
+background:white;
+border-radius:12px;
+">
+  <img src="../qris.png" style="width:100%;">
+</div>
+
+<p style="font-size:13px; opacity:0.7;">
+Status akan berubah otomatis setelah admin cek pembayaran
+</p>
+
+<script>
+const orders = JSON.parse(localStorage.getItem("orders")) || [];
+const orderId = localStorage.getItem("lastOrderId");
+const statusBox = document.getElementById("statusBox");
+
+let order = orders.find(o => o.orderId == orderId);
+
+if(!order){
+  alert("Order tidak ditemukan");
+}else{
+  document.getElementById("game").innerText = order.game;
+  document.getElementById("playerId").innerText = order.playerId;
+  document.getElementById("nickname").innerText = order.nickname;
+  document.getElementById("item").innerText = order.item;
+  document.getElementById("harga").innerText = order.harga;
+  updateStatus(order.status);
+}
+
+// auto cek status tiap 2 detik
+setInterval(()=>{
+  const updated = JSON.parse(localStorage.getItem("orders")) || [];
+  const updatedOrder = updated.find(o => o.orderId == orderId);
+  if(updatedOrder){
+    updateStatus(updatedOrder.status);
+  }
+},2000);
+
+function updateStatus(status){
+  if(status === "MENUNGGU"){
+    statusBox.innerHTML = "⏳ Waiting Payment";
+    statusBox.style.color = "#00ff9c";
+  }
+  if(status === "PROSES"){
+    statusBox.innerHTML = "🔄 Pembayaran sedang dicek admin";
+    statusBox.style.color = "#ffaa00";
+  }
+  if(status === "SUKSES"){
+    statusBox.innerHTML = "✅ PEMBAYARAN BERHASIL<br>Diamond sedang dikirim";
+    statusBox.style.color = "#00ff9c";
+  }
+  if(status === "GAGAL"){
+    statusBox.innerHTML = "❌ PEMBAYARAN GAGAL<br>Hubungi admin";
+    statusBox.style.color = "#ff4d4d";
+  }
+}
+</script>
+
+</body>
+</html>
