@@ -89,7 +89,7 @@
   document.getElementById("googleBtn").addEventListener("click", () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-      .then(() => window.location = "dashboard.html")
+      .then(() => window.location = "topup")
       .catch(err => alert(err.message));
   });
 
@@ -98,7 +98,7 @@
     const pass = document.getElementById("pass").value;
 
     signInWithEmailAndPassword(auth, email, pass)
-      .then(() => window.location = "dashboard.html")
+      .then(() => window.location = "topup")
       .catch(err => alert(err.message));
   });
 </script>
