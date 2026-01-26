@@ -10,11 +10,21 @@
 <body style="
 margin:0;
 font-family:Arial;
-background: radial-gradient(circle at top, #6f00ff 0%, #1a002b 35%, #000000 75%);
+background: radial-gradient(circle at top, #00ff9c 0%, #00331f 40%, #000000 75%);
 color:white;
 ">
 
-<h2 style="text-align:center; margin:20px 0;">Order Free Fire</h2>
+<!-- BANNER -->
+<div style="text-align:center; padding:15px;">
+  <img src="../banner.jpg" style="
+    width:100%;
+    max-width:900px;
+    border-radius:14px;
+    box-shadow:0 0 20px rgba(0,255,156,0.7);
+  ">
+</div>
+
+<h2 style="text-align:center; margin:10px 0;">Order Free Fire</h2>
 
 <!-- DATA USER -->
 <div class="box">
@@ -71,8 +81,9 @@ color:white;
   max-width:420px;
   margin:15px auto;
   padding:15px;
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,0.65);
   border-radius:12px;
+  box-shadow:0 0 15px rgba(0,255,156,0.4);
 }
 input{
   width:100%;
@@ -89,17 +100,19 @@ input{
 button{
   padding:10px;
   border-radius:10px;
-  background:#111;
+  background:#021f14;
   color:white;
-  border:1px solid #6f00ff;
+  border:1px solid #00ff9c;
   cursor:pointer;
 }
 .submit{
   width:100%;
   margin-top:10px;
-  background:#6f00ff;
+  background:#00ff9c;
   border:none;
+  color:black;
   font-size:16px;
+  font-weight:bold;
 }
 </style>
 
@@ -130,15 +143,13 @@ function kirimOrder(){
     return;
   }
 
-  // simpan LIST order (biar nambah, bukan ketimpa)
   let orders = JSON.parse(localStorage.getItem("orders")) || [];
   orders.push(data);
   localStorage.setItem("orders", JSON.stringify(orders));
 
-  // langsung ke panel admin
-  window.location.href = "/admin";
+  window.location.href = "panel-admin";
 }
 </script>
 
 </body>
-        </html>
+                 </html>
