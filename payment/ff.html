@@ -2,140 +2,236 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Payment Free Fire - Taufiqshop</title>
-<link rel="icon" href="../favicon.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Payment FF</title>
+
+<style>
+*{box-sizing:border-box;font-family:Segoe UI,Arial}
+body{margin:0;background:#050612;color:#fff}
+.app{
+  max-width:430px;margin:auto;min-height:100vh;
+  background:radial-gradient(circle at top,#111a55,#050612);
+}
+
+/* STEPS */
+.steps{display:flex;justify-content:space-between;padding:14px;font-size:12px}
+.step{flex:1;text-align:center;opacity:.25}
+.step.active{opacity:1;color:#ffd86b;text-shadow:0 0 8px #ffd86b}
+
+/* CARD */
+.card{
+  margin:12px;padding:14px;border-radius:14px;
+  background:rgba(255,255,255,.05);
+  border:1px solid #ffd86b33;
+  box-shadow:0 0 18px #ffd86b22;
+}
+.title{text-align:center;font-weight:700;color:#00fff0}
+.sub{text-align:center;opacity:.8;font-size:13px;margin-top:4px}
+.row{display:flex;justify-content:space-between;margin:6px 0;font-size:13px}
+
+/* TIMER */
+.timer{text-align:center;color:#ffd86b;font-weight:700;letter-spacing:2px}
+
+/* QR */
+.qr-box{
+  margin:12px;background:#fff;border-radius:14px;padding:14px;
+  box-shadow:0 0 25px #ffd86b88
+}
+.qr-box img{width:100%;border-radius:10px}
+
+/* ===== ANIMASI QRIS ===== */
+.qris-anim{
+  height:150px;
+  position:relative;
+  margin:10px auto 0;
+}
+.scanner{
+  width:140px;
+  height:80px;
+  margin:0 auto;
+  border-radius:16px;
+  background:linear-gradient(135deg,#00fff0,#00b3ff);
+  color:#000;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 0 25px #00fff0;
+}
+.scan-line{
+  position:absolute;
+  top:-10px;
+  left:0;
+  width:100%;
+  height:8px;
+  background:rgba(255,255,255,0.9);
+  animation:scan 2.5s infinite;
+}
+@keyframes scan{
+  0%{top:-10px}
+  50%{top:90px}
+  100%{top:-10px}
+}
+.receipt{
+  width:100px;
+  height:0;
+  background:#fff;
+  border-radius:10px;
+  margin:0 auto;
+  position:absolute;
+  left:0;right:0;
+  top:90px;
+  animation:print 2.5s infinite;
+  box-shadow:0 0 14px #ffffffaa;
+}
+@keyframes print{
+  0%{height:0;opacity:0}
+  25%{height:30px;opacity:1}
+  55%{height:60px}
+  80%{opacity:1}
+  100%{height:0;opacity:0}
+}
+
+/* ANIMASI STATUS */
+.loader{
+  width:48px;height:48px;border:4px solid #ffffff22;
+  border-top:4px solid #ffd86b;border-radius:50%;
+  animation:spin 1s linear infinite;margin:18px auto;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.check{
+  width:70px;height:70px;border-radius:50%;
+  background:linear-gradient(135deg,#2ecc71,#00ffb3);
+  margin:18px auto;position:relative;
+}
+.check:after{
+  content:"";position:absolute;width:18px;height:34px;
+  border:6px solid #fff;border-top:0;border-left:0;
+  transform:rotate(45deg);left:26px;top:14px
+}
+.fail{
+  width:70px;height:70px;border-radius:50%;
+  background:#ff3b3b;margin:18px auto;position:relative;
+}
+.fail:before,.fail:after{
+  content:"";position:absolute;width:42px;height:6px;background:#fff;
+  top:32px;left:14px
+}
+.fail:before{transform:rotate(45deg)}
+.fail:after{transform:rotate(-45deg)}
+</style>
 </head>
 
-<body style="
-margin:0;
-font-family:Arial;
-background: radial-gradient(circle at top, #00ff9c 0%, #00331f 40%, #000000 80%);
-color:white;
-text-align:center;
-">
+<body>
+<div class="app">
 
-<h2 style="margin-top:20px;">PAYMENT TAUFIQSHOP</h2>
-<p style="opacity:0.8;">Cek data sebelum pembayaran</p>
+<!-- STEP -->
+<div class="steps">
+  <div class="step active">Order</div>
+  <div class="step active">Payment</div>
+  <div class="step" id="sProcess">Process</div>
+  <div class="step" id="sDone">Done</div>
+</div>
+
+<!-- 🔥 ANIMASI QRIS (TAMBAHAN SAJA) -->
+<div class="qris-anim">
+  <div class="scanner">
+    <div class="scan-line"></div>
+    QRIS
+  </div>
+  <div class="receipt"></div>
+</div>
+
+<!-- HEADER -->
+<div class="card">
+  <div class="title">Waiting Payment</div>
+  <div class="sub">Scan QRIS lalu kembali ke halaman ini</div>
+</div>
 
 <!-- DETAIL ORDER -->
-<div style="
-max-width:420px;
-margin:20px auto;
-padding:15px;
-background:rgba(0,0,0,0.65);
-border-radius:12px;
-text-align:left;
-">
-<h3 style="text-align:center;">Detail Order</h3>
-<p><b>Game:</b> <span id="game"></span></p>
-<p><b>ID Player:</b> <span id="playerId"></span></p>
-<p><b>Nickname:</b> <span id="nickname"></span></p>
-<p><b>Item:</b> <span id="item"></span></p>
-<p><b>Harga:</b> Rp <span id="harga"></span></p>
+<div class="card">
+  <div class="row"><b>Game</b><span id="game"></span></div>
+  <div class="row"><b>ID</b><span id="playerId"></span></div>
+  <div class="row"><b>Item</b><span id="item"></span></div>
+  <div class="row"><b>Harga</b><span id="price"></span></div>
 </div>
 
-<!-- STATUS -->
-<h3 id="statusBox" style="color:#00ff9c;">⏳ Waiting Payment</h3>
+<div class="timer">00 : 28 : 33</div>
 
-<!-- PESAN ANTRIAN ADMIN -->
-<div style="
-max-width:420px;
-margin:15px auto;
-padding:12px;
-background:rgba(0,0,0,0.6);
-border-radius:10px;
-font-size:14px;
-line-height:1.5;
-">
-Pesanan kamu sedang ditambahkan ke antrian admin.<br>
-Mohon bersabar, pesanan akan segera diproses oleh admin.<br>
-Jika membutuhkan bantuan, silakan hubungi admin via
-<b>Telegram</b> atau <b>WhatsApp</b>.
+<!-- QR -->
+<div class="qr-box" id="qrBox">
+  <img src="qris.png" alt="QRIS">
 </div>
 
-<!-- QRIS -->
-<div id="qrisBox" style="
-margin:20px auto;
-padding:15px;
-width:260px;
-background:white;
-border-radius:12px;
-">
-  <img src="../qris.jpg" style="width:100%;">
+<!-- PROCESS -->
+<div class="card" id="processBox" style="display:none">
+  <div class="loader"></div>
+  <div class="sub">Pesanan sedang diproses admin</div>
 </div>
 
-<p style="font-size:13px; opacity:0.7;">
-Scan QRIS di atas untuk melakukan pembayaran
-</p>
+<!-- SUCCESS -->
+<div class="card" id="successBox" style="display:none">
+  <div class="check"></div>
+  <div class="sub">Pembayaran berhasil</div>
+</div>
+
+<!-- FAIL -->
+<div class="card" id="failBox" style="display:none">
+  <div class="fail"></div>
+  <div class="sub">Pembayaran gagal</div>
+</div>
+
+</div>
 
 <script>
-const statusBox = document.getElementById("statusBox");
-const qrisBox = document.getElementById("qrisBox");
-
-const orderId = localStorage.getItem("lastOrderId");
-let orders = JSON.parse(localStorage.getItem("orders")) || [];
-let order = orders.find(o => o.orderId == orderId);
-
-if(!order){
-  alert("Order tidak ditemukan");
-}else{
-  document.getElementById("game").innerText = order.game;
-  document.getElementById("playerId").innerText = order.playerId;
-  document.getElementById("nickname").innerText = order.nickname;
-  document.getElementById("item").innerText = order.item;
-  document.getElementById("harga").innerText = order.harga;
-  updateStatus(order.status);
+/* DATA ORDER DEMO */
+if(!localStorage.getItem("order")){
+  localStorage.setItem("order",JSON.stringify({
+    game:"Free Fire",
+    playerId:"123456789",
+    item:"140 Diamonds",
+    price:"Rp 21.800"
+  }));
 }
+const o=JSON.parse(localStorage.getItem("order"));
+game.innerText=o.game;
+playerId.innerText=o.playerId;
+item.innerText=o.item;
+price.innerText=o.price;
 
-/* CEK STATUS REALTIME */
-setInterval(()=>{
-  orders = JSON.parse(localStorage.getItem("orders")) || [];
-  order = orders.find(o => o.orderId == orderId);
-  if(order){
-    updateStatus(order.status);
-  }
-},2000);
+/* STATE */
+let state=localStorage.getItem("pay_state")||"waiting";
+localStorage.setItem("pay_state",state);
 
-/* UPDATE STATUS */
-function updateStatus(status){
-  if(status === "MENUNGGU"){
-    statusBox.innerHTML = "⏳ Waiting Payment";
-    statusBox.style.color = "#00ff9c";
-    qrisBox.style.display = "block";
-  }
-
-  if(status === "PROSES"){
-    statusBox.innerHTML = "🔄 Pembayaran sedang dicek admin";
-    statusBox.style.color = "#ffaa00";
-    qrisBox.style.display = "block";
-  }
-
-  if(status === "SUKSES"){
-    statusBox.innerHTML = "✅ PEMBAYARAN BERHASIL<br>Diamond sedang dikirim";
-    statusBox.style.color = "#00ff9c";
-    qrisBox.style.display = "none";
-  }
-
-  if(status === "GAGAL"){
-    statusBox.innerHTML = "❌ PEMBAYARAN GAGAL<br>Hubungi admin";
-    statusBox.style.color = "#ff4d4d";
-    qrisBox.style.display = "block";
-  }
+function hideAll(){
+  qrBox.style.display="none";
+  processBox.style.display="none";
+  successBox.style.display="none";
+  failBox.style.display="none";
 }
+function render(){
+  hideAll();
+  if(state==="waiting") qrBox.style.display="block";
+  if(state==="process"){processBox.style.display="block";sProcess.classList.add("active")}
+  if(state==="success"){successBox.style.display="block";sDone.classList.add("active")}
+  if(state==="fail") failBox.style.display="block";
+}
+render();
 
-/* 🔥 ILUSI: BALIK DARI E-WALLET */
-document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "visible") {
-    let orders = JSON.parse(localStorage.getItem("orders")) || [];
-    let index = orders.findIndex(o => o.orderId == orderId);
-    if(index !== -1 && orders[index].status === "MENUNGGU"){
-      orders[index].status = "PROSES";
-      localStorage.setItem("orders", JSON.stringify(orders));
+/* ILUSI KELUAR → BALIK */
+document.addEventListener("visibilitychange",()=>{
+  if(document.hidden){
+    localStorage.setItem("left_payment","yes");
+  }else{
+    if(localStorage.getItem("left_payment")==="yes" && state==="waiting"){
+      localStorage.setItem("pay_state","process");
+      location.reload();
     }
   }
 });
 </script>
 
 </body>
-</html>
+  </html>
