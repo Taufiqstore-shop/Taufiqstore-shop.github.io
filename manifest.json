@@ -1,0 +1,26 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "taufiqshop",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "taufiqshop",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "https://taufiqshop.my.id/favicon.jpg",
+      "type": "image/jpeg",
+      "sizes": "1280x1280",
+      "isSquare": true,
+      "isPng": false,
+      "isWebp": false,
+      "isJpg": true,
+      "width": 1280,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    }
+  ]
+}
