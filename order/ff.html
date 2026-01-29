@@ -62,17 +62,18 @@ color:white;
     <button onclick="pilih('12 Diamonds',2000)">12 💎<br>Rp 2.000</button>
     <button onclick="pilih('30 Diamonds',8000)">30 💎<br>Rp 8.000</button>
     <button onclick="pilih('70 Diamonds',2180)">70 💎<br>Rp 2.180</button>
-    <button onclick="pilih('100 Diamonds',16990)">100 💎<br>Rp 16.990</button>
-    <button onclick="pilih('140 Diamonds',50860)">140 💎<br>Rp 50.860</button>
+    <button onclick="pilih('100 Diamonds',16990)">100 💎<br>Rp 15.990</button>
+    <button onclick="pilih('140 Diamonds',50860)">140 💎<br>Rp 17.860</button>
     <button onclick="pilih('200 Diamonds',28642)">200 💎<br>Rp 28.642</button>
     <button onclick="pilih('1000 Diamonds',140960)">1000 💎<br>Rp 140.960</button>
-  </div>
-</div>
+    <button onclickclick="pilih('300 Diamonds'',40.861)">💎300 <br>Rp 40.861</button>
+    <button onclick="pilih('200 Diamonds',28642)">200 💎<br>Rp 28.642</button
+  </didiv</div>
 
 <!-- RINGKASAN -->
 <div class="box">
   <h3>Ringkasan</h3>
-  <p id="ringkasan">Belum ada pilihan</p>
+  <p id="ringkasan">cba cek lagi/p>
   <button class="submit" onclick="kirimOrder()">Kirim Order</button>
 </div>
 
@@ -147,7 +148,7 @@ function kirimOrder(){
   orders.push(data);
   localStorage.setItem("orders", JSON.stringify(orders));
 
-  window.location.href = "panel-admin";
+  window.location.href = "payment/ff.html";
 }
 </script>
 
