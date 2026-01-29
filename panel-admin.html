@@ -3,60 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Panel Admin - Taufiq Shop</title>
+<title>Panel Admin Game</title>
 <style>
-body { font-family: Arial; background:#fff; margin:20px; }
-h1 { text-align:center; color:#8b5cf6; margin-bottom:30px; }
-.order-container { display:flex; justify-content:space-between; border:1px solid #ccc; padding:15px; margin-bottom:10px; border-radius:10px; }
-.order-info { flex:1; }
-.order-info p { margin:5px 0; }
-button { padding:8px 12px; margin:3px; border:none; color:white; cursor:pointer; border-radius:6px; }
-.gagal { background:#dc2626; }   /* merah */
-.sukses { background:#16a34a; }  /* hijau */
-.proses { background:#facc15; color:black; } /* kuning */
-.sistem-eror { background:#f97316; } /* oren */
+body{margin:0;font-family:Arial,sans-serif;background:#f0f0f0;color:#000;}
+.container{max-width:900px;margin:auto;padding:20px;}
+h2{text-align:center;margin-bottom:20px;}
+.order-card{background:#fff;border-radius:8px;padding:15px;margin-bottom:15px;box-shadow:0 0 5px #aaa;transition:0.3s;}
+.order-card:hover{box-shadow:0 0 12px #888;}
+.order-header{font-weight:700;margin-bottom:5px;}
+.order-row{display:flex;justify-content:space-between;margin:5px 0;}
+button{padding:8px 12px;border:none;border-radius:5px;cursor:pointer;margin-right:5px;transition:0.2s;font-weight:600;}
+.process{background:#f1c40f;color:#fff;}
+.success{background:#2ecc71;color:#fff;}
+.fail{background:#e74c3c;color:#fff;}
+.status{font-weight:700;}
+.status.PROCESS{color:#f1c40f;}
+.status.LUNAS{color:#2ecc71;}
+.status.GAGAL{color:#e74c3c;}
 </style>
+
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
+
+// Config Firebase lo
+const firebaseConfig = {
+    apiKey: "AIzaSyCmnfh6p5yG5TU98Wmv3ktrnL0NxCaSZZQ",
+    authDomain: "databse-c8850.firebaseapp.com",
+    projectId: "databse-c8850",
+    storageBucket: "databse-c8850.firebasestorage.app",
+    messagingSenderId: "768418021481",
+    appId: "1:768418021481:web:2d9c93d26cbc518cc962f8",
+    measurementId: "G-KPKNC016NK",
+    databaseURL: "https://databse-c8850-default-rtdb.firebaseio.com/"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const ordersRef = ref(db, "orders");
+const container = document.querySelector(".container");
+
+// Render tiap order
+function renderOrder(key, data){
+    let div = document.getElementById(key);
+    if(!div){
+        div = document.createElement("div");
+        div.className = "order-card";
+        div.id = key;
+        container.appendChild(div);
+    }
+
+    div.innerHTML = `
+        <div class="order-header">Order: ${key}</div>
+        <div class="order-row"><span>Game:</span><span>${data.game}</span></div>
+        <div class="order-row"><span>ID:</span><span>${data.playerId}</span></div>
+        <div class="order-row"><span>WhatsApp:</span><span>${data.whatsapp}</span></div>
+        <div class="order-row"><span>Email:</span><span>${data.email}</span></div>
+        <div class="order-row"><span>Diamonds:</span><span>${data.diamonds}</span></div>
+        <div class="order-row"><span>Harga:</span><span>${data.price}</span></div>
+        <div class="order-row"><span>Status:</span><span class="status ${data.status}">${data.status}</span></div>
+        <div style="margin-top:10px;">
+            <button class="process">Process</button>
+            <button class="success">Success</button>
+            <button class="fail">Fail</button>
+        </div>
+    `;
+
+    // Tombol action realtime
+    div.querySelector(".process").onclick = ()=>{
+        update(ref(db, "orders/"+key), {status:"PROCESS"});
+    };
+    div.querySelector(".success").onclick = ()=>{
+        update(ref(db, "orders/"+key), {status:"LUNAS"});
+    };
+    div.querySelector(".fail").onclick = ()=>{
+        update(ref(db, "orders/"+key), {status:"GAGAL"});
+    };
+}
+
+// Listen realtime
+onValue(ordersRef, snapshot=>{
+    const val = snapshot.val();
+    container.innerHTML="<h2 style='text-align:center;'>Panel Admin Game</h2><p style='text-align:center;'>Realtime order user muncul di sini. Klik tombol untuk ubah status.</p>";
+    if(val){
+        Object.keys(val).forEach(key=>{
+            renderOrder(key,val[key]);
+        });
+    }else{
+        container.innerHTML+="<p style='text-align:center'>Tidak ada order</p>";
+    }
+});
+</script>
 </head>
 <body>
-
-<h1>Panel Admin</h1>
-<div id="ordersList"></div>
-
-<script>
-// Data order dummy (bisa ditambah manual dulu)
-let orders = JSON.parse(localStorage.getItem('orders') || '[]');
-
-function renderOrders(){
-    const container = document.getElementById('ordersList');
-    container.innerHTML = '';
-    orders.forEach((order,index)=>{
-        const div = document.createElement('div');
-        div.className = 'order-container';
-        div.innerHTML = `
-            <div class="order-info">
-                <p><strong>ID:</strong> ${order.id}</p>
-                <p><strong>Harga:</strong> ${order.price}</p>
-                <p><strong>Diamond:</strong> ${order.diamond}</p>
-                <p><strong>Status:</strong> <span id="status-${index}">${order.status}</span></p>
-            </div>
-            <div class="order-buttons">
-                <button class="gagal" onclick="setStatus(${index},'Gagal')">Gagal ☹</button>
-                <button class="sukses" onclick="setStatus(${index},'Sukses')">Sukses ✅</button>
-                <button class="proses" onclick="setStatus(${index},'Proses')">Proses ⏳</button>
-                <button class="sistem-eror" onclick="setStatus(${index},'Sistem Eror')">Sistem Eror ⚠</button>
-            </div>
-        `;
-        container.appendChild(div);
-    });
-}
-
-function setStatus(index,newStatus){
-    orders[index].status = newStatus;
-    document.getElementById(`status-${index}`).textContent = newStatus;
-    localStorage.setItem('orders', JSON.stringify(orders));
-}
-
-renderOrders();
-</script>
+<div class="container"></div>
 </body>
-  </html>
+</html>
