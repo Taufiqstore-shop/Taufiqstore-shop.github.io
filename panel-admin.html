@@ -1,102 +1,91 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Panel Admin Game</title>
-<style>
-body{margin:0;font-family:Arial,sans-serif;background:#f0f0f0;color:#000;}
-.container{max-width:900px;margin:auto;padding:20px;}
-h2{text-align:center;margin-bottom:20px;}
-.order-card{background:#fff;border-radius:8px;padding:15px;margin-bottom:15px;box-shadow:0 0 5px #aaa;transition:0.3s;}
-.order-card:hover{box-shadow:0 0 12px #888;}
-.order-header{font-weight:700;margin-bottom:5px;}
-.order-row{display:flex;justify-content:space-between;margin:5px 0;}
-button{padding:8px 12px;border:none;border-radius:5px;cursor:pointer;margin-right:5px;transition:0.2s;font-weight:600;}
-.process{background:#f1c40f;color:#fff;}
-.success{background:#2ecc71;color:#fff;}
-.fail{background:#e74c3c;color:#fff;}
-.status{font-weight:700;}
-.status.PROCESS{color:#f1c40f;}
-.status.LUNAS{color:#2ecc71;}
-.status.GAGAL{color:#e74c3c;}
-</style>
+  <meta charset="UTF-8">
+  <title>Panel Admin - TaufiqShop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
-<!-- Firebase SDK -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
-import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
-
-// Config Firebase lo
-const firebaseConfig = {
-    apiKey: "AIzaSyCmnfh6p5yG5TU98Wmv3ktrnL0NxCaSZZQ",
-    authDomain: "databse-c8850.firebaseapp.com",
-    projectId: "databse-c8850",
-    storageBucket: "databse-c8850.firebasestorage.app",
-    messagingSenderId: "768418021481",
-    appId: "1:768418021481:web:2d9c93d26cbc518cc962f8",
-    measurementId: "G-KPKNC016NK",
-    databaseURL: "https://databse-c8850-default-rtdb.firebaseio.com/"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const ordersRef = ref(db, "orders");
-const container = document.querySelector(".container");
-
-// Render tiap order
-function renderOrder(key, data){
-    let div = document.getElementById(key);
-    if(!div){
-        div = document.createElement("div");
-        div.className = "order-card";
-        div.id = key;
-        container.appendChild(div);
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f0f0f;
+      color: #fff;
     }
 
-    div.innerHTML = `
-        <div class="order-header">Order: ${key}</div>
-        <div class="order-row"><span>Game:</span><span>${data.game}</span></div>
-        <div class="order-row"><span>ID:</span><span>${data.playerId}</span></div>
-        <div class="order-row"><span>WhatsApp:</span><span>${data.whatsapp}</span></div>
-        <div class="order-row"><span>Email:</span><span>${data.email}</span></div>
-        <div class="order-row"><span>Diamonds:</span><span>${data.diamonds}</span></div>
-        <div class="order-row"><span>Harga:</span><span>${data.price}</span></div>
-        <div class="order-row"><span>Status:</span><span class="status ${data.status}">${data.status}</span></div>
-        <div style="margin-top:10px;">
-            <button class="process">Process</button>
-            <button class="success">Success</button>
-            <button class="fail">Fail</button>
-        </div>
-    `;
-
-    // Tombol action realtime
-    div.querySelector(".process").onclick = ()=>{
-        update(ref(db, "orders/"+key), {status:"PROCESS"});
-    };
-    div.querySelector(".success").onclick = ()=>{
-        update(ref(db, "orders/"+key), {status:"LUNAS"});
-    };
-    div.querySelector(".fail").onclick = ()=>{
-        update(ref(db, "orders/"+key), {status:"GAGAL"});
-    };
-}
-
-// Listen realtime
-onValue(ordersRef, snapshot=>{
-    const val = snapshot.val();
-    container.innerHTML="<h2 style='text-align:center;'>Panel Admin Game</h2><p style='text-align:center;'>Realtime order user muncul di sini. Klik tombol untuk ubah status.</p>";
-    if(val){
-        Object.keys(val).forEach(key=>{
-            renderOrder(key,val[key]);
-        });
-    }else{
-        container.innerHTML+="<p style='text-align:center'>Tidak ada order</p>";
+    .header {
+      padding: 15px;
+      background: #111;
+      border-bottom: 1px solid #222;
     }
-});
-</script>
+
+    .server-info, .orders {
+      padding: 15px;
+    }
+
+    .box {
+      background: #161616;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .order {
+      border: 1px solid #222;
+    }
+
+    .btn {
+      padding: 6px 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-right: 5px;
+      font-size: 13px;
+    }
+
+    .success { background: #16a34a; color: #fff; }
+    .fail { background: #dc2626; color: #fff; }
+    .process { background: #ca8a04; color: #000; }
+
+    .status {
+      font-weight: bold;
+    }
+
+    .green { color: #22c55e; }
+    .red { color: #ef4444; }
+    .yellow { color: #facc15; }
+  </style>
 </head>
 <body>
-<div class="container"></div>
+
+<div class="header">
+  <h2>🛠 Panel Admin</h2>
+</div>
+
+<!-- INFO SERVER -->
+<div class="server-info">
+  <div class="box">
+    <h3>🖥 Informasi Server</h3>
+    <p>CPU: <span id="cpu">Loading...</span></p>
+    <p>RAM: <span id="ram">Loading...</span> / 17 GB</p>
+    <p>Server: Cloudflare</p>
+    <p>Region: Asia</p>
+    <p>Speed: <span id="speed">Normal</span></p>
+    <p>Bot Time: <span id="time"></span></p>
+    <p>Model: AMD Ryzen VPS</p>
+  </div>
+</div>
+
+<!-- ORDER -->
+<div class="orders">
+  <h3>📦 Order Masuk</h3>
+  <div id="orderList"></div>
+</div>
+
+<script src="admin.js"></script>
 </body>
 </html>
