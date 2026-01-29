@@ -1,156 +1,149 @@
-l<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Order Free Fire - Taufiqshop</title>
-<link rel="icon" href="../favicon.jpg">
-</head>
-
-<body style="
-margin:0;
-font-family:Arial;
-background: radial-gradient(circle at top, #00ff9c 0%, #00331f 4%, #000000 75%);
-color:white;
-">
-
-<!-- BANNER -->
-<div style="text-align:center; padding:15px;">
-  <img src="../banner.jpg" style="
-    width:100%;
-    max-width:900px;
-    border-radius:14px;
-    box-shadow:0 0 20px rgba(0,255,156,0.7);
-  ">
-</div>
-
-<h2 style="text-align:center; margin:10px 0;">Order Free Fire</h2>
-
-<!-- DATA USER -->
-<div class="box">
-  <p>ID Player</p>
-  <input id="playerId" placeholder="Masukkan ID Free Fire">
-
-  <p>Nomor WhatsApp</p>
-  <input id="wa" placeholder="08xxxxxxxxxx">
-
-  <p>Email</p>
-  <input id="email" placeholder="email@gmail.com">
-</div>
-
-<!-- DATA GAME -->
-<div class="box">
-  <p>Nickname</p>
-  <input id="nickname" placeholder="Nickname Free Fire">
-</div>
-
-<!-- MEMBERSHIP -->
-<div class="box">
-  <h3>Membership</h3>
-  <div class="grid">
-    <button onclick="pilih('Membership Bulanan',80862)">Bulanan<br>Rp 80.862</button>
-    <button onclick="pilih('Membership Mingguan',19292)">Mingguan<br>Rp 19.292</button>
-    <button onclick="pilih('Booyah Pass',40928)">Booyah Pass<br>Rp 40.928</button>
-  </div>
-</div>
-
-<!-- DIAMOND -->
-<div class="box">
-  <h3>Pilih Nominal Diamond</h3>
-  <div class="grid">
-    <button onclick="pilih('5 Diamonds',1000)">5 💎<br>Rp 1.000</button>
-    <button onclick="pilih('12 Diamonds',2000)">12 💎<br>Rp 2.000</button>
-    <button onclick="pilih('30 Diamonds',8000)">30 💎<br>Rp 8.000</button>
-    <button onclick="pilih('70 Diamonds',2180)">70 💎<br>Rp 2.180</button>
-    <button onclick="pilih('100 Diamonds',16990)">100 💎<br>Rp 15.990</button>
-    <button onclick="pilih('140 Diamonds',50860)">140 💎<br>Rp 17.860</button>
-    <button onclick="pilih('200 Diamonds',28642)">200 💎<br>Rp 28.642</button>
-    <button onclick="pilih('1000 Diamonds',140960)">1000 💎<br>Rp 140.960</button>
-    <button onclickclick="pilih('300 Diamonds'',40.861)">💎300 <br>Rp 40.861</button>
-    <button onclick="pilih('200 Diamonds',28642)">200 💎<br>Rp 28.642</button
-  </didiv</div>
-
-<!-- RINGKASAN -->
-<div class="box">
-  <h3>Ringkasan</h3>
-  <p id="ringkasan">cba cek lagi/p>
-  <button class="submit" onclick="kirimOrder()">Kirim Order</button>
-</div>
-
+<title>Order Free Fire</title>
 <style>
-.box{
-  max-width:420px;
-  margin:15px auto;
-  padding:15px;
-  background:rgba(0,0,0,0.65);
-  border-radius:12px;
-  box-shadow:0 0 15px rgba(0,255,156,0.4);
-}
-input{
-  width:100%;
-  padding:10px;
-  border-radius:8px;
-  border:none;
-  margin-bottom:10px;
-}
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-button{
-  padding:10px;
-  border-radius:10px;
-  background:#021f14;
-  color:white;
-  border:1px solid #00ff9c;
-  cursor:pointer;
-}
-.submit{
-  width:100%;
-  margin-top:10px;
-  background:#00ff9c;
-  border:none;
-  color:black;
-  font-size:16px;
-  font-weight:bold;
-}
+body {margin:0; font-family:Arial,sans-serif; background:#fff; color:#000;}
+.container{max-width:480px; margin:auto; padding:20px;}
+.banner{display:block; margin:auto; max-width:80%; padding:10px;}
+h2{text-align:center;margin-bottom:20px;}
+label{display:block;margin-top:10px;font-weight:600;}
+input{width:100%; padding:10px; margin-top:5px; border:1px solid #ccc; border-radius:5px; font-size:14px;}
+.diamonds{display:flex; flex-wrap:wrap; margin-top:10px; gap:10px;}
+.diamond-btn{flex:1 1 48%; padding:10px; border:1px solid #00b3ff; border-radius:5px; cursor:pointer; text-align:center; transition:0.2s; background:#fff;}
+.diamond-btn.selected{background:#00b3ff;color:#fff;}
+button.submit-btn{width:100%; padding:12px; margin-top:20px; background:#00b3ff; color:#fff; border:none; border-radius:5px; font-size:16px; cursor:pointer;}
 </style>
 
-<script>
-let pilihan = null;
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+  import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
 
-function pilih(item, harga){
-  pilihan = { item, harga };
-  document.getElementById("ringkasan").innerHTML =
-    `Game: Free Fire<br>Item: ${item}<br>Harga: Rp ${harga}`;
-}
-
-function kirimOrder(){
-  const data = {
-    game: "Free Fire",
-    playerId: playerId.value,
-    nickname: nickname.value,
-    whatsapp: wa.value,
-    email: email.value,
-    item: pilihan?.item,
-    harga: pilihan?.harga,
-    status: "MENUNGGU",
-    waktu: new Date().toLocaleString()
+  const firebaseConfig = {
+    apiKey: "AIzaSyCmnfh6p5yG5TU98Wmv3ktrnL0NxCaSZZQ",
+    authDomain: "databse-c8850.firebaseapp.com",
+    projectId: "databse-c8850",
+    storageBucket: "databse-c8850.firebasestorage.app",
+    messagingSenderId: "768418021481",
+    appId: "1:768418021481:web:2d9c93d26cbc518cc962f8",
+    measurementId: "G-KPKNC016NK",
+    databaseURL: "https://databse-c8850-default-rtdb.firebaseio.com/"
   };
 
-  if(!data.playerId || !data.whatsapp || !data.email || !data.nickname || !data.item){
-    alert("Lengkapi semua data dulu");
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+</script>
+
+<!-- EmailJS -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+emailjs.init("U8RMiL7QYvlKAmOkI"); // Ganti PUBLIC_KEY_LO dengan public key EmailJS lo
+</script>
+
+</head>
+<body>
+<div class="container">
+  <img src="banner.png" alt="Topup Banner" class="banner">
+  <h2>Order Free Fire</h2>
+
+  <form id="orderForm" action="https://taufiqshop.my.id/payment/ff" method="POST">
+    <label for="playerId">ID</label>
+    <input type="text" id="playerId" name="playerId" placeholder="Masukkan ID" required>
+
+    <label for="whatsapp">Nomor WhatsApp</label>
+    <input type="text" id="whatsapp" name="whatsapp" placeholder="Masukkan WA" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Masukkan Email" required>
+
+    <label>Pilih Diamonds</label>
+    <div class="diamonds" id="diamondList"></div>
+
+    <input type="hidden" name="diamonds" id="selectedDiamond">
+    <button type="submit" class="submit-btn">Next</button>
+  </form>
+</div>
+
+<script>
+const diamondData = [
+  {name:"5 Diamonds", price:"Rp 830"},
+  {name:"10 Diamonds", price:"Rp 1.660"},
+  {name:"12 Diamonds", price:"Rp 1.850"},
+  {name:"55 Diamonds", price:"Rp 7.460"},
+  {name:"70 Diamonds", price:"Rp 9.120"},
+  {name:"80 Diamonds", price:"Rp 10.780"},
+  {name:"100 Diamonds", price:"Rp 14.090"},
+  {name:"120 Diamonds", price:"Rp 15.750"},
+  {name:"140 Diamonds", price:"Rp 18.240"},
+  {name:"150 Diamonds", price:"Rp 19.890"},
+  {name:"190 Diamonds", price:"Rp 24.870"},
+  {name:"200 Diamonds", price:"Rp 26.520"},
+  {name:"210 Diamonds", price:"Rp 27.350"},
+  {name:"280 Diamonds", price:"Rp 36.470"},
+  {name:"355 Diamonds", price:"Rp 45.580"},
+  {name:"420 Diamonds", price:"Rp 54.700"},
+  {name:"500 Diamonds", price:"Rp 64.640"},
+  {name:"510 Diamonds", price:"Rp 66.300"},
+  {name:"565 Diamonds", price:"Rp 72.930"},
+  {name:"635 Diamonds", price:"Rp 82.040"},
+  {name:"720 Diamonds", price:"Rp 91.160"},
+  {name:"800 Diamonds", price:"Rp 101.930"},
+  {name:"860 Diamonds", price:"Rp 109.390"},
+  {name:"930 Diamonds", price:"Rp 118.510"},
+  {name:"1000 Diamonds", price:"Rp 127.620"},
+  {name:"1050 Diamonds", price:"Rp 134.250"},
+  {name:"1075 Diamonds", price:"Rp 136.740"},
+  {name:"1080 Diamonds", price:"Rp 137.570"},
+  {name:"2180 Diamonds", price:"Rp 276.780"},
+  {name:"2200 Diamonds", price:"Rp 280.100"},
+  {name:"3640 Diamonds", price:"Rp 462.410"},
+  {name:"36500 Diamonds", price:"Rp 4.557.750"},
+  {name:"73100 Diamonds", price:"Rp 9.115.500"}
+];
+
+const diamondList = document.getElementById("diamondList");
+const selectedDiamond = document.getElementById("selectedDiamond");
+
+diamondData.forEach(d => {
+  const btn = document.createElement("div");
+  btn.classList.add("diamond-btn");
+  btn.innerText = `${d.name}\n${d.price}`;
+  btn.onclick = () => {
+    document.querySelectorAll(".diamond-btn").forEach(b=>b.classList.remove("selected"));
+    btn.classList.add("selected");
+    selectedDiamond.value = d.name;
+  };
+  diamondList.appendChild(btn);
+});
+
+document.getElementById("orderForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const playerId = document.getElementById("playerId").value;
+  const whatsapp = document.getElementById("whatsapp").value;
+  const email = document.getElementById("email").value;
+  const diamonds = document.getElementById("selectedDiamond").value;
+
+  if(!diamonds){
+    alert("Pilih paket diamond dulu!");
     return;
   }
 
-  let orders = JSON.parse(localStorage.getItem("orders")) || [];
-  orders.push(data);
-  localStorage.setItem("orders", JSON.stringify(orders));
+  const data = {
+    playerId, whatsapp, email, diamonds, game:"Free Fire", price:diamonds.split(" ")[0]=="5"? "Rp 830": "Rp ...", // Bisa diisi sesuai
+    paymentMethod:"QRIS", status:"LUNAS", time:new Date().toISOString()
+  };
 
-  window.location.href = "payment/ff.html";
-}
-</script>
+  // Firebase
+  import("https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js").then(({getDatabase, ref, push})=>{
+    const db = getDatabase();
+    push(ref(db,"orders"), data).catch(err=>console.log(err));
+  });
 
-</body>
-                 </html>
+  // LocalStorage
+  localStorage.setItem("lastOrder", JSON.stringify(data));
+
+  // EmailJS
+  email
