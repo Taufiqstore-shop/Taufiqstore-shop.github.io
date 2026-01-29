@@ -1,149 +1,116 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Order Free Fire</title>
-<style>
-body {margin:0; font-family:Arial,sans-serif; background:#fff; color:#000;}
-.container{max-width:480px; margin:auto; padding:20px;}
-.banner{display:block; margin:auto; max-width:80%; padding:10px;}
-h2{text-align:center;margin-bottom:20px;}
-label{display:block;margin-top:10px;font-weight:600;}
-input{width:100%; padding:10px; margin-top:5px; border:1px solid #ccc; border-radius:5px; font-size:14px;}
-.diamonds{display:flex; flex-wrap:wrap; margin-top:10px; gap:10px;}
-.diamond-btn{flex:1 1 48%; padding:10px; border:1px solid #00b3ff; border-radius:5px; cursor:pointer; text-align:center; transition:0.2s; background:#fff;}
-.diamond-btn.selected{background:#00b3ff;color:#fff;}
-button.submit-btn{width:100%; padding:12px; margin-top:20px; background:#00b3ff; color:#fff; border:none; border-radius:5px; font-size:16px; cursor:pointer;}
-</style>
 
-<!-- Firebase SDK -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
-  import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyCmnfh6p5yG5TU98Wmv3ktrnL0NxCaSZZQ",
-    authDomain: "databse-c8850.firebaseapp.com",
-    projectId: "databse-c8850",
-    storageBucket: "databse-c8850.firebasestorage.app",
-    messagingSenderId: "768418021481",
-    appId: "1:768418021481:web:2d9c93d26cbc518cc962f8",
-    measurementId: "G-KPKNC016NK",
-    databaseURL: "https://databse-c8850-default-rtdb.firebaseio.com/"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-</script>
-
-<!-- EmailJS -->
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-emailjs.init("U8RMiL7QYvlKAmOkI"); // Ganti PUBLIC_KEY_LO dengan public key EmailJS lo
+(function(){
+  emailjs.init("U8RMiL7QYvlKAmOkI"); // PUBLIC KEY LU
+})();
 </script>
 
+<style>
+body{
+  margin:0;
+  background:#000;
+  color:#fff;
+  font-family:Arial;
+}
+.box{
+  max-width:420px;
+  margin:20px auto;
+  padding:15px;
+}
+input,button{
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border:none;
+  border-radius:8px;
+}
+button{
+  background:#1abc9c;
+  color:#000;
+  font-weight:bold;
+}
+.diamond{
+  background:#111;
+  border:1px solid #333;
+  margin:6px 0;
+}
+.active{
+  border:2px solid #1abc9c;
+}
+</style>
 </head>
+
 <body>
-<div class="container">
-  <img src="banner.png" alt="Topup Banner" class="banner">
-  <h2>Order Free Fire</h2>
 
-  <form id="orderForm" action="https://taufiqshop.my.id/payment/ff" method="POST">
-    <label for="playerId">ID</label>
-    <input type="text" id="playerId" name="playerId" placeholder="Masukkan ID" required>
+<div class="box">
+<h2>FREE FIRE</h2>
 
-    <label for="whatsapp">Nomor WhatsApp</label>
-    <input type="text" id="whatsapp" name="whatsapp" placeholder="Masukkan WA" required>
+<input id="idGame" placeholder="ID Game">
+<input id="wa" placeholder="No WhatsApp">
+<input id="email" placeholder="Email">
 
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="Masukkan Email" required>
+<h3>Pilih Diamonds</h3>
 
-    <label>Pilih Diamonds</label>
-    <div class="diamonds" id="diamondList"></div>
+<div class="diamond" onclick="pilih(this,'5 Diamonds','830')">5 Diamonds - Rp 830</div>
+<div class="diamond" onclick="pilih(this,'70 Diamonds','9120')">70 Diamonds - Rp 9.120</div>
+<div class="diamond" onclick="pilih(this,'140 Diamonds','18240')">140 Diamonds - Rp 18.240</div>
+<div class="diamond" onclick="pilih(this,'355 Diamonds','45580')">355 Diamonds - Rp 45.580</div>
+<div class="diamond" onclick="pilih(this,'720 Diamonds','91160')">720 Diamonds - Rp 91.160</div>
+<div class="diamond" onclick="pilih(this,'1000 Diamonds','127620')">1000 Diamonds - Rp 127.620</div>
 
-    <input type="hidden" name="diamonds" id="selectedDiamond">
-    <button type="submit" class="submit-btn">Next</button>
-  </form>
+<button onclick="kirim()">NEXT</button>
 </div>
 
 <script>
-const diamondData = [
-  {name:"5 Diamonds", price:"Rp 830"},
-  {name:"10 Diamonds", price:"Rp 1.660"},
-  {name:"12 Diamonds", price:"Rp 1.850"},
-  {name:"55 Diamonds", price:"Rp 7.460"},
-  {name:"70 Diamonds", price:"Rp 9.120"},
-  {name:"80 Diamonds", price:"Rp 10.780"},
-  {name:"100 Diamonds", price:"Rp 14.090"},
-  {name:"120 Diamonds", price:"Rp 15.750"},
-  {name:"140 Diamonds", price:"Rp 18.240"},
-  {name:"150 Diamonds", price:"Rp 19.890"},
-  {name:"190 Diamonds", price:"Rp 24.870"},
-  {name:"200 Diamonds", price:"Rp 26.520"},
-  {name:"210 Diamonds", price:"Rp 27.350"},
-  {name:"280 Diamonds", price:"Rp 36.470"},
-  {name:"355 Diamonds", price:"Rp 45.580"},
-  {name:"420 Diamonds", price:"Rp 54.700"},
-  {name:"500 Diamonds", price:"Rp 64.640"},
-  {name:"510 Diamonds", price:"Rp 66.300"},
-  {name:"565 Diamonds", price:"Rp 72.930"},
-  {name:"635 Diamonds", price:"Rp 82.040"},
-  {name:"720 Diamonds", price:"Rp 91.160"},
-  {name:"800 Diamonds", price:"Rp 101.930"},
-  {name:"860 Diamonds", price:"Rp 109.390"},
-  {name:"930 Diamonds", price:"Rp 118.510"},
-  {name:"1000 Diamonds", price:"Rp 127.620"},
-  {name:"1050 Diamonds", price:"Rp 134.250"},
-  {name:"1075 Diamonds", price:"Rp 136.740"},
-  {name:"1080 Diamonds", price:"Rp 137.570"},
-  {name:"2180 Diamonds", price:"Rp 276.780"},
-  {name:"2200 Diamonds", price:"Rp 280.100"},
-  {name:"3640 Diamonds", price:"Rp 462.410"},
-  {name:"36500 Diamonds", price:"Rp 4.557.750"},
-  {name:"73100 Diamonds", price:"Rp 9.115.500"}
-];
+let DIAMONDS="", HARGA="";
 
-const diamondList = document.getElementById("diamondList");
-const selectedDiamond = document.getElementById("selectedDiamond");
+function pilih(el,d,h){
+  document.querySelectorAll('.diamond').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active');
+  DIAMONDS=d;
+  HARGA=h;
+}
 
-diamondData.forEach(d => {
-  const btn = document.createElement("div");
-  btn.classList.add("diamond-btn");
-  btn.innerText = `${d.name}\n${d.price}`;
-  btn.onclick = () => {
-    document.querySelectorAll(".diamond-btn").forEach(b=>b.classList.remove("selected"));
-    btn.classList.add("selected");
-    selectedDiamond.value = d.name;
+function kirim(){
+  const order={
+    game:"Free Fire",
+    idGame:idGame.value,
+    wa:wa.value,
+    email:email.value,
+    diamonds:DIAMONDS,
+    harga:HARGA,
+    status:"MENUNGGU",
+    waktu:new Date().toLocaleString()
   };
-  diamondList.appendChild(btn);
-});
 
-document.getElementById("orderForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  const playerId = document.getElementById("playerId").value;
-  const whatsapp = document.getElementById("whatsapp").value;
-  const email = document.getElementById("email").value;
-  const diamonds = document.getElementById("selectedDiamond").value;
-
-  if(!diamonds){
-    alert("Pilih paket diamond dulu!");
-    return;
-  }
-
-  const data = {
-    playerId, whatsapp, email, diamonds, game:"Free Fire", price:diamonds.split(" ")[0]=="5"? "Rp 830": "Rp ...", // Bisa diisi sesuai
-    paymentMethod:"QRIS", status:"LUNAS", time:new Date().toISOString()
-  };
+  // localStorage (backup)
+  localStorage.setItem("lastOrder",JSON.stringify(order));
 
   // Firebase
-  import("https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js").then(({getDatabase, ref, push})=>{
-    const db = getDatabase();
-    push(ref(db,"orders"), data).catch(err=>console.log(err));
+  fetch("https://databse-c8850.firebaseio.com/orders.json",{
+    method:"POST",
+    body:JSON.stringify(order)
   });
 
-  // LocalStorage
-  localStorage.setItem("lastOrder", JSON.stringify(data));
+  // EMAIL KE USER
+  emailjs.send("service_x3qrpsy","template_order",{
+    to_email:order.email,
+    game:order.game,
+    diamonds:order.diamonds,
+    harga:order.harga,
+    status:"MENUNGGU"
+  });
 
-  // EmailJS
-  email
+  location.href="/payment/ff";
+}
+</script>
+
+</body>
+</html>
