@@ -1,6 +1,52 @@
-.logo {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  object-fit: cover;
+body {
+  background: #e6e6e6;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 15px;
+}
+
+/* Banner */
+.slider {
+  border-radius: 14px;
+  overflow: hidden;
+}
+.slide {
+  width: 100%;
+  display: none;
+}
+.slide.active {
+  display: block;
+}
+
+.title {
+  margin: 18px 0 10px;
+}
+
+/* Game */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.game-card {
+  background: linear-gradient(145deg,#FFD700,#FFB800);
+  border-radius: 16px;
+  padding: 14px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  box-shadow: 0 6px 0 #c99700;
+}
+
+.game-card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 6px;
+}
+
+.game-card:active {
+  transform: translateY(3px);
+  box-shadow: 0 3px 0 #c99700;
 }
