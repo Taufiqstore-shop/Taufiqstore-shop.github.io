@@ -1,117 +1,68 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Halaman Utama</title>
-<style>
-body{margin:0;font-family:Arial,sans-serif;background:#fff;color:#000;}
-/* Header + Nav */
-.header{display:flex;align-items:center;padding:10px;background:#f7f7f7;box-shadow:0 2px 5px #ccc;}
-.header img{width:50px;height:50px;cursor:pointer;margin-right:10px;}
-.header button{margin-left:auto;padding:8px 14px;border:none;background:#2ecc71;color:#fff;border-radius:5px;cursor:pointer;font-weight:600;}
-.nav-bar{display:flex;gap:15px;padding:10px 20px;background:#3498db;}
-.nav-bar a{color:#fff;text-decoration:none;font-weight:600;padding:6px 12px;border-radius:5px;transition:0.2s;}
-.nav-bar a:hover{background:#2980b9;}
-/* Slider */
-.slider{position:relative;max-width:90%;margin:20px auto;overflow:hidden;border-radius:10px;}
-.slides{display:flex;width:200%;transition:0.5s;}
-.slides img{width:50%;border-radius:10px;}
-/* Game Buttons Horizontal */
-.game-bar{display:flex;overflow-x:auto;padding:10px 20px;gap:15px;margin-bottom:20px;}
-.game-btn{flex:0 0 auto;background:#3498db;color:#fff;border-radius:8px;cursor:pointer;font-weight:600;white-space:nowrap;text-align:center;transition:0.2s;width:120px;}
-.game-btn img{width:100%;border-radius:8px;}
-.game-btn span{display:block;margin-top:5px;font-size:14px;font-weight:600;}
-.game-btn:hover{opacity:0.85;}
-/* Hide scrollbar */
-.game-bar::-webkit-scrollbar{display:none;}
-.game-bar{-ms-overflow-style:none;scrollbar-width:none;}
-</style>
+  <meta charset="UTF-8">
+  <title>TaufiqShop - Topup Game Murah</title>
+  <meta name="description" content="Topup game murah, instan 24 jam & terpercaya">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <meta property="og:title" content="TaufiqShop Topup Game">
+  <meta property="og:description" content="Topup FF, ML, Valorant, dll murah & instan">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.ico">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Header -->
-<div class="header">
-    <img src="shop.jpg" alt="Shop">
-    <button onclick="login()">Login</button>
-</div>
-
-<!-- Nav Bar -->
-<div class="nav-bar">
-    <a href="index.html">Home</a>
-    <a href="riwayat.html">Riwayat Transaksi</a>
-    <a href="transaksi-terakhir.html">Transaksi Terakhir</a>
-    <a href="login.html">Login</a>
-</div>
-
-<!-- Banner Slider -->
+<!-- 🔥 Banner -->
 <div class="slider">
-    <div class="slides">
-        <img src="banner1.jpg" alt="Banner 1">
-        <img src="banner2.jpg" alt="Banner 2">
-    </div>
+  <img src="assets/banner.jpg" class="slide active">
+  <img src="assets/banner2.jpg" class="slide">
 </div>
 
-<!-- Game Buttons Horizontal -->
-<div class="game-bar">
-    <a href="https://taufiqshop.my.id/order/ff" class="game-btn">
-        <img src="ff.jpg" alt="Free Fire">
-        <span>Free Fire</span>
-    </a>
-    <a href="https://taufiqshop.my.id/order/ffmax" class="game-btn">
-        <img src="ffmax.jpg" alt="Free Fire MAX">
-        <span>Free Fire MAX</span>
-    </a>
-    <a href="https://taufiqshop.my.id/order/ml" class="game-btn">
-        <img src="ml.jpg" alt="Mobile Legends">
-        <span>Mobile Legends</span>
-    </a>
-    <a href="https://taufiqshop.my.id/order/genshin" class="game-btn">
-        <img src="genshin.jpg" alt="Genshin Impact">
-        <span>Genshin Impact</span>
-    </a>
-    <a href="https://taufiqshop.my.id/order/valorant" class="game-btn">
-        <img src="valorant.jpg" alt="Valorant">
-        <span>Valorant</span>
-    </a>
-    <a href="https://taufiqshop.my.id/order/pubg" class="game-btn">
-        <img src="pubg.jpg" alt="PUBG">
-        <span>PUBG</span>
-    </a>
-    <a href="https://taufiqshop.my.id/order/tears" class="game-btn">
-        <img src="tears.jpg" alt="Tears">
-        <span>Tears</span>
-    </a>
-    <a href="https://taufiqshop.my.id/order/steam" class="game-btn">
-        <img src="steam.jpg" alt="Steam">
-        <span>Steam</span>
-    </a>
-    <a href="https://taufiqshop.my.id/order/duelnight" class="game-btn">
-        <img src="duelnight.jpg" alt="Duel Night Abbes">
-        <span>Duel Night Abbes</span>
-    </a>
-    <a href="https://taufiqshop.my.id/order/thetown" class="game-btn">
-        <img src="thetown.jpg" alt="Thetown">
-        <span>Thetown</span>
-    </a>
+<h2 class="title">🔥 Trending Game</h2>
+
+<!-- 🎮 Game List -->
+<div class="game-grid">
+
+  <a href="https://taufiqshop.my.id/order/ff" class="game-card">
+    <img src="assets/games/ff.jpg">
+    <span>Free Fire</span>
+  </a>
+
+  <a href="https://taufiqshop.my.id/order/ml" class="game-card">
+    <img src="assets/games/ml.jpg">
+    <span>Mobile Legends</span>
+  </a>
+
+  <a href="https://taufiqshop.my.id/order/valorant" class="game-card">
+    <img src="assets/games/valo.jpg">
+    <span>Valorant</span>
+  </a>
+
+  <a href="https://taufiqshop.my.id/order/hok" class="game-card">
+    <img src="assets/games/hok.png">
+    <span>Honor of Kings</span>
+  </a>
+
+  <a href="https://taufiqshop.my.id/order/steam" class="game-card">
+    <img src="assets/games/steam.jpg">
+    <span>Steam Wallet</span>
+  </a>
+<a href="https://taufiqshop.my.id/order/pubg" class="game-card">
+  <img src="assets/games/pubg.png">
+  <span>PUBG Mobile</span>
+</a>
+    <a href="https://taufiqshop.my.id/order/roblox" class="game-card">
+  <img src="assets/games/pubg.png">
+  <span>Roblox</span>
+</a>
+    
 </div>
 
-<script>
-// Tombol login
-function login(){
-    alert("Tombol login diklik!"); // bisa diganti redirect login page
-}
-
-// Slider otomatis
-let slideIndex = 0;
-const slides = document.querySelector(".slides");
-function showSlides(){
-    slideIndex++;
-    if(slideIndex > 1) slideIndex = 0;
-    slides.style.transform = `translateX(-${slideIndex * 50}%)`;
-}
-setInterval(showSlides, 3000);
-</script>
-
+<script src="script.js"></script>
 </body>
-          </html>
+</html>
