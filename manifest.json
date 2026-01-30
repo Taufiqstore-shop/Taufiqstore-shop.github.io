@@ -1,26 +1,20 @@
 {
-  "background_color": "#ffffff",
-  "dir": "ltr",
+  "name": "TaufiqShop Admin",
+  "short_name": "Admin",
+  "start_url": "panel-admin.html",
   "display": "standalone",
-  "name": "taufiqshop",
-  "orientation": "any",
-  "scope": "/",
-  "short_name": "taufiqshop",
-  "start_url": "/",
-  "theme_color": "#ffffff",
+  "background_color": "#0f0f0f",
+  "theme_color": "#111111",
   "icons": [
     {
-      "src": "https://taufiqshop.my.id/favicon.jpg",
-      "type": "image/jpeg",
-      "sizes": "1280x1280",
-      "isSquare": true,
-      "isPng": false,
-      "isWebp": false,
-      "isJpg": true,
-      "width": 1280,
-      "is512x512": false,
-      "is256x256": false,
-      "is192x192": false
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ]
 }
