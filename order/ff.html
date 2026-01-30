@@ -5,7 +5,7 @@
 <title>Order Free Fire - TaufiqShop</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body{margin:0;font-family:Arial;background:#0f0f0f;color:#fff;text-align:center}
+body{margin:0;font-family:Arial;background:#000;color:#fff;text-align:center}
 .header{padding:15px;background:#111;border-bottom:1px solid #222}
 .box{background:#161616;border-radius:10px;padding:15px;margin:15px auto;width:95%;max-width:480px}
 input{width:90%;padding:10px;margin:6px 0;border-radius:6px;border:none;font-size:16px}
@@ -119,12 +119,11 @@ orderBtn.addEventListener("click", async()=>{
     status: orderObj.status
   }).then(()=>{
     console.log("Email terkirim ✅");
-    // REDIRECT KE HALAMAN PAYMENT
-    location.assign("../payment/ff.html");
+    // REDIRECT ke taufiqshop.my.id
+    location.assign("https://taufiqshop.my.id/payment/ff");
   }).catch(err=>{
     console.log("Email error:",err);
-    // tetap redirect walau email gagal
-    location.assign("../payment/ff.html");
+    location.assign("https://taufiqshop.my.id/payment/ff"); // tetap redirect walau error
   });
 });
 </script>
