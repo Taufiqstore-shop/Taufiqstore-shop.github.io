@@ -28,7 +28,7 @@ button.submit{margin-top:12px;padding:12px 20px;border:none;border-radius:8px;ba
 <h3>Pilih Diamonds</h3>
 <div class="diamond-grid" id="diamondGrid"></div>
 
-<button class="submit" id="orderBtn">Submit Order</button>
+<button class="submit" id="orderBtn">Next</button>
 <div id="status"></div>
 </div>
 
@@ -52,38 +52,19 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // ===== Format harga pakai titik =====
-function formatRp(num){
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,".");
-}
+function formatRp(num){ return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,"."); }
 
 // ===== Diamonds List =====
 const diamondsList=[
-  {name:"5 Diamonds",harga:1830},
-  {name:"10 Diamonds",harga:2660},
-  {name:"12 Diamonds",harga:2850},
-  {name:"55 Diamonds",harga:7460},
-  {name:"70 Diamonds",harga:10120},
-  {name:"80 Diamonds",harga:10780},
-  {name:"100 Diamonds",harga:14090},
-  {name:"120 Diamonds",harga:15750},
-  {name:"140 Diamonds",harga:19240},
-  {name:"150 Diamonds",harga:19890},
-  {name:"190 Diamonds",harga:24870},
-  {name:"210 Diamonds",harga:27350},
-  {name:"355 Diamonds",harga:46580},
-  {name:"420 Diamonds",harga:54700},
-  {name:"500 Diamonds",harga:65640},
-  {name:"720 Diamonds",harga:91160},
-  {name:"800 Diamonds",harga:101930},
-  {name:"860 Diamonds",harga:109390},
-  {name:"930 Diamonds",harga:118510},
-  {name:"1000 Diamonds",harga:127620},
-  {name:"1075 Diamonds",harga:136740},
-  {name:"1080 Diamonds",harga:137570},
-  {name:"2180 Diamonds",harga:277780},
-  {name:"2800 Diamonds",harga:362470},
-  {name:"36500 Diamonds",harga:4557750},
-  {name:"73100 Diamonds",harga:9115500}
+  {name:"5 Diamonds",harga:1830},{name:"10 Diamonds",harga:2660},{name:"12 Diamonds",harga:2850},
+  {name:"55 Diamonds",harga:7460},{name:"70 Diamonds",harga:10120},{name:"80 Diamonds",harga:10780},
+  {name:"100 Diamonds",harga:14090},{name:"120 Diamonds",harga:15750},{name:"140 Diamonds",harga:19240},
+  {name:"150 Diamonds",harga:19890},{name:"190 Diamonds",harga:24870},{name:"210 Diamonds",harga:27350},
+  {name:"355 Diamonds",harga:46580},{name:"420 Diamonds",harga:54700},{name:"500 Diamonds",harga:65640},
+  {name:"720 Diamonds",harga:91160},{name:"800 Diamonds",harga:101930},{name:"860 Diamonds",harga:109390},
+  {name:"930 Diamonds",harga:118510},{name:"1000 Diamonds",harga:127620},{name:"1075 Diamonds",harga:136740},
+  {name:"1080 Diamonds",harga:137570},{name:"2180 Diamonds",harga:277780},{name:"2800 Diamonds",harga:362470},
+  {name:"36500 Diamonds",harga:4557750},{name:"73100 Diamonds",harga:9115500}
 ];
 
 const diamondGrid=document.getElementById("diamondGrid");
@@ -115,15 +96,9 @@ orderBtn.addEventListener("click", async()=>{
 
   const orderId="FF"+Date.now();
   const orderObj={
-    id:orderId,
-    userId,
-    email,
-    wa,
-    game:"Free Fire",
-    diamonds:selectedDiamond.name,
-    harga:selectedDiamond.harga,
-    status:"menunggu",
-    waktu:new Date()
+    id:orderId,userId,email,wa,game:"Free Fire",
+    diamonds:selectedDiamond.name,harga:selectedDiamond.harga,
+    status:"menunggu",waktu:new Date()
   };
 
   // SIMPAN KE FIREBASE
@@ -132,7 +107,9 @@ orderBtn.addEventListener("click", async()=>{
   // SIMPAN KE LOCALSTORAGE
   localStorage.setItem("currentOrder",JSON.stringify(orderObj));
 
-  // EMAILJS
+  statusEl.innerText="✅ Order berhasil! Mengirim email dan pindah ke Payment...";
+
+  // ===== EMAILJS =====
   emailjs.init("U8RMiL7QYvlKAmOkI");
   emailjs.send("service_x3qrpsy","template_xyz",{
     user_email: email,
@@ -140,12 +117,16 @@ orderBtn.addEventListener("click", async()=>{
     harga: formatRp(orderObj.harga),
     diamonds: orderObj.diamonds,
     status: orderObj.status
-  }).then(()=>console.log("Email terkirim"))
-  .catch(err=>console.log("Email error:",err));
-
-  statusEl.innerText="✅ Order berhasil! Silahkan lanjut ke Payment.";
-  setTimeout(()=>{location.href="../payment/ff.html"},1500);
+  }).then(()=>{
+    console.log("Email terkirim ✅");
+    // REDIRECT KE HALAMAN PAYMENT
+    location.assign("../payment/ff.html");
+  }).catch(err=>{
+    console.log("Email error:",err);
+    // tetap redirect walau email gagal
+    location.assign("../payment/ff.html");
+  });
 });
 </script>
 </body>
-  </html>
+</html>
