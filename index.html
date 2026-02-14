@@ -1,56 +1,216 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TOPUP MURAH SE INDONESIA GAS TOPUP DI TAUFIQSHOP</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SYSTEM BOOT</title>
 
-  <!-- Favicon JPG -->
-  <link rel="icon" href="favicon.jpg" type="image/jpeg">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:monospace;
+}
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #ff0000, #800080);
-      font-family: Arial, sans-serif;
-    }
+body{
+  background:#000;
+  color:#0ff;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
 
-    .box {
-      width: 350px;
-      padding: 25px;
-      background: white;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
+/* SCANLINE */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03) 0px,
+    rgba(255,255,255,0.03) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events:none;
+  animation:scan 0.15s infinite;
+}
+@keyframes scan{
+  0%{transform:translateY(0)}
+  100%{transform:translateY(2px)}
+}
 
-    h2 {
-      margin: 0 0 15px 0;
-    }
-  </style>
+.container{
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+
+/* IMAGE */
+img{
+  width:180px;
+  border-radius:16px;
+  box-shadow:0 0 60px rgba(0,255,255,.9);
+  animation:flicker 0.12s infinite;
+}
+
+@keyframes flicker{
+  0%{opacity:1}
+  50%{opacity:.65}
+  100%{opacity:1}
+}
+
+/* LOADING */
+.loading{
+  width:240px;
+  height:6px;
+  background:#111;
+  margin:22px auto;
+  overflow:hidden;
+}
+.loading::after{
+  content:"";
+  display:block;
+  width:35%;
+  height:100%;
+  background:#0ff;
+  animation:load .6s infinite;
+}
+@keyframes load{
+  0%{transform:translateX(-200%)}
+  100%{transform:translateX(400%)}
+}
+
+/* GLITCH */
+.glitch{
+  position:relative;
+  font-size:15px;
+  letter-spacing:2px;
+  animation:glitch .3s infinite;
+}
+.glitch::before,
+.glitch::after{
+  content:attr(data-text);
+  position:absolute;
+  left:0;
+  width:100%;
+}
+.glitch::before{
+  color:#ff0055;
+  animation:gtop .2s infinite;
+}
+.glitch::after{
+  color:#00ffff;
+  animation:gbot .25s infinite;
+}
+
+@keyframes glitch{
+  0%{transform:none}
+  25%{transform:translate(-3px,2px) skew(-4deg)}
+  50%{transform:translate(4px,-1px) skew(4deg)}
+  75%{transform:translate(-5px,1px)}
+  100%{transform:none}
+}
+@keyframes gtop{
+  0%{clip-path:inset(0 0 70% 0)}
+  50%{clip-path:inset(0 0 40% 0)}
+  100%{clip-path:inset(0 0 70% 0)}
+}
+@keyframes gbot{
+  0%{clip-path:inset(60% 0 0 0)}
+  50%{clip-path:inset(30% 0 0 0)}
+  100%{clip-path:inset(60% 0 0 0)}
+}
+
+.done{
+  display:none;
+  margin-top:10px;
+  color:#22c55e;
+}
+
+/* PETIR */
+#lightning{
+  position:fixed;
+  inset:0;
+  background:white;
+  opacity:0;
+  z-index:5;
+  pointer-events:none;
+}
+.flash{
+  animation:flash .15s steps(1) 6;
+}
+@keyframes flash{
+  0%{opacity:0}
+  20%{opacity:1}
+  40%{opacity:0}
+  60%{opacity:1}
+  80%{opacity:0}
+  100%{opacity:0}
+}
+</style>
 </head>
 <body>
 
-<div class="box">
-  <h2>Verifikasi google reCAPTCHA:</h2>
+<div id="lightning"></div>
 
-  <!-- reCAPTCHA -->
-  <div class="g-recaptcha" data-sitekey="6LfkrVAsAAAAAFywVLMDPEZYmFcJ9bKrYr7ZT4vi" data-callback="onSuccess"></div>
+<div class="container">
+  <img src="loading.jpg" alt="BOOT">
+
+  <div class="loading"></div>
+
+  <div class="glitch" id="init" data-text="SYSTEM OVERLOAD...">
+    SYSTEM OVERLOAD...
+  </div>
+
+  <div class="done" id="done">
+    SYSTEM COMPLETE ✅🌐
+  </div>
 </div>
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<audio id="sound" src="tra.mp3" autoplay></audio>
 
 <script>
-  function onSuccess() {
-    // redirect ke halaman topup setelah verifikasi sukses
-    window.location.href = "https://taufiqshop.my.id/topup";
-  }
+const audio = document.getElementById("sound");
+audio.volume = 1.0;
+
+setTimeout(()=>{
+  init("SYNCING DATABASE...");
+},3000);
+
+setTimeout(()=>{
+  init("FINALIZING SYSTEM...");
+},5500);
+
+function init(text){
+  const el=document.getElementById("init");
+  el.dataset.text=text;
+  el.innerText=text;
+}
+
+audio.onended=()=>{
+  // PETIR
+  const l=document.getElementById("lightning");
+  l.classList.add("flash");
+
+  // TAMPIL SELESAI
+  document.getElementById("init").style.display="none";
+  document.getElementById("done").style.display="block";
+
+  // REDIRECT
+  setTimeout(()=>{
+    window.location.href="topup.html";
+  },1200);
+};
+
+// fallback mobile
+window.addEventListener("click",()=>{
+  if(audio.paused) audio.play();
+},{once:true});
 </script>
 
 </body>
-</html>
+  </html>
