@@ -3,213 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SYSTEM BOOT</title>
+<title>System Initializing</title>
 
 <style>
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:monospace;
+  font-family: monospace;
 }
 
 body{
-  background:#000;
-  color:#0ff;
+  background:black;
+  color:#00ffea;
   height:100vh;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   overflow:hidden;
-}
-
-/* SCANLINE */
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.03) 0px,
-    rgba(255,255,255,0.03) 1px,
-    transparent 2px,
-    transparent 4px
-  );
-  pointer-events:none;
-  animation:scan 0.15s infinite;
-}
-@keyframes scan{
-  0%{transform:translateY(0)}
-  100%{transform:translateY(2px)}
 }
 
 .container{
   text-align:center;
-  position:relative;
-  z-index:2;
+  width:100%;
 }
 
-/* IMAGE */
 img{
-  width:180px;
-  border-radius:16px;
-  box-shadow:0 0 60px rgba(0,255,255,.9);
-  animation:flicker 0.12s infinite;
+  width:100%;
+  max-height:65vh;
+  object-fit:cover;
+}
+
+#text{
+  margin-top:20px;
+  font-size:16px;
+  letter-spacing:2px;
+  animation:flicker 1.5s infinite;
 }
 
 @keyframes flicker{
   0%{opacity:1}
-  50%{opacity:.65}
+  50%{opacity:0.4}
   100%{opacity:1}
 }
 
-/* LOADING */
-.loading{
-  width:240px;
-  height:6px;
-  background:#111;
-  margin:22px auto;
-  overflow:hidden;
-}
-.loading::after{
-  content:"";
-  display:block;
-  width:35%;
-  height:100%;
-  background:#0ff;
-  animation:load .6s infinite;
-}
-@keyframes load{
-  0%{transform:translateX(-200%)}
-  100%{transform:translateX(400%)}
-}
-
-/* GLITCH */
-.glitch{
-  position:relative;
-  font-size:15px;
-  letter-spacing:2px;
-  animation:glitch .3s infinite;
-}
-.glitch::before,
-.glitch::after{
-  content:attr(data-text);
-  position:absolute;
-  left:0;
-  width:100%;
-}
-.glitch::before{
-  color:#ff0055;
-  animation:gtop .2s infinite;
-}
-.glitch::after{
+/* TAP OVERLAY */
+#tap{
+  position:fixed;
+  inset:0;
+  background:black;
   color:#00ffff;
-  animation:gbot .25s infinite;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:20px;
+  letter-spacing:3px;
+  cursor:pointer;
+  z-index:999;
+  animation:blink 1s infinite;
 }
 
-@keyframes glitch{
-  0%{transform:none}
-  25%{transform:translate(-3px,2px) skew(-4deg)}
-  50%{transform:translate(4px,-1px) skew(4deg)}
-  75%{transform:translate(-5px,1px)}
-  100%{transform:none}
-}
-@keyframes gtop{
-  0%{clip-path:inset(0 0 70% 0)}
-  50%{clip-path:inset(0 0 40% 0)}
-  100%{clip-path:inset(0 0 70% 0)}
-}
-@keyframes gbot{
-  0%{clip-path:inset(60% 0 0 0)}
-  50%{clip-path:inset(30% 0 0 0)}
-  100%{clip-path:inset(60% 0 0 0)}
-}
-
-.done{
-  display:none;
-  margin-top:10px;
-  color:#22c55e;
+@keyframes blink{
+  0%,100%{opacity:1}
+  50%{opacity:0.4}
 }
 
 /* PETIR */
-#lightning{
+#flash{
   position:fixed;
   inset:0;
   background:white;
   opacity:0;
-  z-index:5;
   pointer-events:none;
 }
-.flash{
-  animation:flash .15s steps(1) 6;
-}
-@keyframes flash{
-  0%{opacity:0}
-  20%{opacity:1}
-  40%{opacity:0}
-  60%{opacity:1}
-  80%{opacity:0}
-  100%{opacity:0}
+
+/* SHAKE */
+@keyframes shake{
+  0%{transform:translate(0)}
+  25%{transform:translate(4px,-4px)}
+  50%{transform:translate(-4px,4px)}
+  75%{transform:translate(4px,4px)}
+  100%{transform:translate(0)}
 }
 </style>
 </head>
+
 <body>
 
-<div id="lightning"></div>
+<div id="tap">TAP TO START</div>
 
 <div class="container">
-  <img src="loading.jpg" alt="BOOT">
-
-  <div class="loading"></div>
-
-  <div class="glitch" id="init" data-text="SYSTEM OVERLOAD...">
-    SYSTEM OVERLOAD...
-  </div>
-
-  <div class="done" id="done">
-    SYSTEM COMPLETE ✅🌐
-  </div>
+  <img src="loading.jpg">
+  <div id="text">𝚂𝚈𝚂𝚃𝙴𝙼 𝙸𝙽𝙸𝚃𝙸𝙰𝙻𝙸𝚉𝙸𝙽𝙶</div>
 </div>
 
-<audio id="sound" src="tra.mp3" autoplay></audio>
+<div id="flash"></div>
+
+<audio id="sound" src="tra.mp3" preload="auto"></audio>
 
 <script>
-const audio = document.getElementById("sound");
-audio.volume = 1.0;
+const tap=document.getElementById("tap");
+const text=document.getElementById("text");
+const flash=document.getElementById("flash");
+const sound=document.getElementById("sound");
 
-setTimeout(()=>{
-  init("SYNCING DATABASE...");
-},3000);
+sound.volume=1;
 
-setTimeout(()=>{
-  init("FINALIZING SYSTEM...");
-},5500);
-
-function init(text){
-  const el=document.getElementById("init");
-  el.dataset.text=text;
-  el.innerText=text;
-}
-
-audio.onended=()=>{
-  // PETIR
-  const l=document.getElementById("lightning");
-  l.classList.add("flash");
-
-  // TAMPIL SELESAI
-  document.getElementById("init").style.display="none";
-  document.getElementById("done").style.display="block";
-
-  // REDIRECT
-  setTimeout(()=>{
-    window.location.href="topup.html";
-  },1200);
+tap.onclick=()=>{
+  tap.style.display="none";
+  sound.play();
+  startSystem();
 };
 
-// fallback mobile
-window.addEventListener("click",()=>{
-  if(audio.paused) audio.play();
-},{once:true});
+function startSystem(){
+  setTimeout(()=>text.innerHTML="𝚂𝚈𝚂𝚃𝙴𝙼 𝙲𝙾𝙼𝙿𝙻𝙰𝚃𝙴",3000);
+  setTimeout(()=>text.innerHTML="𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴 𝙿𝚁𝙸𝙲𝙴𝚂...",6000);
+  setTimeout(()=>text.innerHTML="𝙲𝙾𝙼𝙿𝙻𝙰𝚃𝙴 𝙳𝙰𝚃𝙰 𝙱𝙰𝚂𝙴",9000);
+  setTimeout(()=>text.innerHTML="𝚂𝙴𝚁𝚅𝙴𝚁 𝙲𝙷𝙴𝙲𝙺𝙸𝙽𝙶 𝙳𝙰𝚃𝙴...",12000);
+}
+
+/* PETIR + REDIRECT */
+sound.onended=()=>{
+  let i=0;
+  const storm=setInterval(()=>{
+    flash.style.opacity=Math.random();
+    document.body.style.animation="shake 0.15s";
+    i++;
+    if(i>12){
+      clearInterval(storm);
+      flash.style.opacity=0;
+      document.body.style.animation="";
+      setTimeout(()=>{
+        location.href="dashboard.html";
+      },600);
+    }
+  },100);
+};
 </script>
 
 </body>
